@@ -85,7 +85,8 @@ export function Nav() {
                         {group.items.map((item) => (
                           <li key={item.label}>
                             <a href={item.href} onClick={() => setDropdown(null)}>
-                              {item.label}
+                              <span className="nav__dd-title">{item.label}</span>
+                              {item.description && <span className="nav__dd-desc">{item.description}</span>}
                             </a>
                           </li>
                         ))}

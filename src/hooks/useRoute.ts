@@ -1,6 +1,6 @@
 import { useEffect, useSyncExternalStore } from 'react'
 
-export type Route = 'home' | 'blog' | 'privacy' | 'terms' | 'login' | 'admin' | 'team'
+export type Route = 'home' | 'blog' | 'privacy' | 'terms' | 'login' | 'admin' | 'team' | 'cookies'
 
 function subscribe(callback: () => void) {
   window.addEventListener('hashchange', callback)
@@ -13,6 +13,7 @@ function getRoute(): Route {
   if (hash === '#/privacy') return 'privacy'
   if (hash === '#/terms') return 'terms'
   if (hash === '#/team') return 'team'
+  if (hash === '#/cookies') return 'cookies'
   if (hash === '#/login') return 'login'
   if (hash === '#/admin') return 'admin'
   return 'home'

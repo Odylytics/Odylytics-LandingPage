@@ -135,7 +135,7 @@ export function Hero() {
 
         <p className="hero__note">
           <img src={brand.symbol} alt="" />
-          Engineering Safer Communities.
+          {HERO.note}
         </p>
       </div>
     </section>

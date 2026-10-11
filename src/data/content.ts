@@ -1,4 +1,4 @@
-export type NavItem = { label: string; href: string }
+export type NavItem = { label: string; href: string; description?: string }
 
 export type Solution = {
   id: string
@@ -52,6 +52,8 @@ export type RecognitionGroup = {
 export type Partner = {
   name: string
   type: string
+  /** UTS and HCMUT sit side by side in the centre of the partner row. */
+  featured?: boolean
   logo: string | null
 }
 
@@ -70,6 +72,8 @@ export type TeamMember = {
   bio: string
   photo: string | null
   linkedin: string | null
+  /** One-word title shown under the portrait, e.g. 'CEO'. */
+  shortRole: string
   /** Concrete day-to-day responsibilities. */
   responsibilities: string[]
 }
@@ -107,18 +111,18 @@ export const NAV: NavGroup[] = [
   {
     label: 'Solutions',
     items: [
-      { label: 'All solutions', href: '#solutions' },
-      { label: 'AquaGuard', href: '#featured' },
-      { label: 'EnableCode', href: '#featured' },
+      { label: 'All solutions', href: '#solutions', description: 'Six digital products built by students' },
+      { label: 'AquaGuard', href: '#featured', description: 'Flood rescue coordination' },
+      { label: 'EnableCode', href: '#featured', description: 'Hands-free coding education' },
     ],
   },
   {
     label: 'Company',
     items: [
-      { label: 'Mission', href: '#mission' },
-      { label: 'Partners', href: '#partners' },
-      { label: 'Testimonials', href: '#testimonials' },
-      { label: 'Team', href: '#/team' },
+      { label: 'Mission', href: '#mission', description: 'Why we exist and where we are heading' },
+      { label: 'Partners', href: '#partners', description: 'Universities and companies we build with' },
+      { label: 'Testimonials', href: '#testimonials', description: 'What partners and users say' },
+      { label: 'Team', href: '#/team', description: 'The five builders behind Odylytics' },
     ],
   },
   { label: 'Prizes', href: '#recognition' },
@@ -129,17 +133,18 @@ export const NAV: NavGroup[] = [
 // ─── 1. Hero ────────────────────────────────────────────────────────────────
 
 export const HERO = {
-  eyebrow: 'AI-powered digital solutions',
+  eyebrow: 'Student-built digital solutions',
   // Option A (selected). Alternatives from CONTENT_OUTLINE.md §1:
   //   B. Intelligent solutions for safer, smarter communities.
   //   C. We build AI that works when it matters most.
-  headlineTop: 'AI that turns data',
-  headlineBottom: 'into decisions that',
-  rotatingWords: ['predict', 'protect', 'respond', 'recover'],
-  srHeadline: 'AI that turns data into decisions that predict, protect, respond and recover.',
+  headlineTop: 'Student-built software',
+  headlineBottom: 'that replaces labour with',
+  rotatingWords: ['logic', 'speed', 'scale', 'insight'],
+  srHeadline: 'Student-built software that replaces labour with logic, speed, scale and insight.',
+  note: 'Student ideas. Market-ready products.',
   // TODO(content): confirm what Odylytics provides and to whom.
   subheadline:
-    'Odylytics is an AI startup delivering real-time monitoring, predictive analytics and decision-support platforms for governments, enterprises and communities.',
+    'Odylytics takes solutions built by students to market: digital products that raise productivity by replacing manual, repetitive labour with logic.',
   holdCta: { label: 'Hold to find out', doneLabel: "Let's go", target: '#solutions' },
   // TODO(content): confirm marquee keywords.
   marquee: ['AI analytics', 'IoT monitoring', 'Early warning', 'Data platforms', 'Decision support', 'Inclusive design'],
@@ -149,30 +154,30 @@ export const HERO = {
 
 export const MISSION = {
   eyebrow: 'Our mission',
-  lead: 'Engineering safer communities.',
-  main: 'One decision at a time.',
+  lead: 'From student idea.',
+  main: 'To market.',
   // TODO(content): confirm wording of the mission and vision with the founders.
   mission:
-    'We build AI that gives people the right information at the moment it matters: before a flood, during a crisis, and in everyday life for those the digital world forgot.',
+    'We help students turn their digital solutions into products that go to market. We build software that raises productivity by replacing manual, repetitive labour with logic.',
   vision:
-    'A future where every community, whatever its size or ability, has the intelligence it needs to anticipate risk, respond fast and recover together.',
+    'A world where a good idea from a student becomes a real product used by real people, and where routine work is done by well-designed logic so people can focus on what only they can do.',
   pillarsHeading: 'Where we are heading',
   pillars: [
     {
-      title: 'Prove it in the field',
-      text: 'Take AquaGuard and EnableCode from award-winning prototypes to pilots with local governments, schools and rescue teams.',
+      title: 'Take student work to market',
+      text: 'Give student-built solutions the product, design and business support they need to reach real customers, not stay in a classroom.',
     },
     {
-      title: 'Build one shared AI core',
-      text: 'Keep a single intelligence layer behind every product, so each new solution launches faster and learns from the others.',
+      title: 'Replace labour with logic',
+      text: 'Build products that automate repetitive work, from coordinating rescue teams to teaching code, so people spend time on judgement and care.',
     },
     {
-      title: 'Design for everyone',
-      text: 'Make accessibility a starting point, not an add-on, from hands-free coding to disaster alerts anyone can understand.',
+      title: 'Build one shared core',
+      text: 'Keep a single technical foundation behind every product, so each new solution launches faster and learns from the others.',
     },
     {
       title: 'Grow through partnerships',
-      text: 'Work with universities, public bodies and companies in Vietnam and abroad to bring research into real communities.',
+      text: 'Work with universities, public bodies and companies in Vietnam and abroad to test, fund and distribute what we build.',
     },
   ] as Pillar[],
 }
@@ -184,7 +189,7 @@ export const SOLUTIONS_HEADING = {
   lead: 'Six solutions.',
   main: 'One intelligence layer.',
   // TODO(content): confirm intro sentence.
-  intro: 'Each Odylytics solution shares the same AI core — built once, adapted to every domain we serve.',
+  intro: 'Every Odylytics product starts as a student solution to a real problem and is shaped into something people can use and pay for.',
 }
 
 export const SOLUTIONS: Solution[] = [
@@ -363,18 +368,27 @@ export const RECOGNITION: RecognitionGroup[] = [
 export const PARTNERS_HEADING = {
   eyebrow: 'Partnerships',
   lead: 'Trusted by institutions.',
-  main: 'Built with communities.',
-  // TODO(content): partnership intro sentence.
-  intro: 'We work with public bodies, researchers and companies to turn reliable data into everyday safety.',
+  main: 'Built with universities.',
+  intro: 'We build with the universities and companies that back student innovation.',
 }
 
 export const PARTNERS: Partner[] = [
-  { name: 'Arizona State University', type: 'Academic', logo: '/assets/partners/asu.png' },
-  { name: 'RMIT University', type: 'Academic', logo: '/assets/partners/rmit.png' },
-  { name: 'Sorbonne Université', type: 'Academic', logo: '/assets/partners/sorbonne.png' },
-  { name: 'University of Technology Sydney', type: 'Academic', logo: '/assets/partners/uts.png' },
-  { name: 'Université Laval', type: 'Academic', logo: '/assets/partners/laval.png' },
-  { name: 'Dow', type: 'Corporate', logo: '/assets/partners/dow.png' },
+  { name: 'Arizona State University', type: 'Academic', logo: '/assets/partners/row/asu.png' },
+  { name: 'RMIT University', type: 'Academic', logo: '/assets/partners/row/rmit.png' },
+  { name: 'Dow', type: 'Corporate', logo: '/assets/partners/row/dow.png' },
+  { name: 'University of Technology Sydney', type: 'Academic', logo: '/assets/partners/row/uts.png', featured: true },
+  // TODO(content): replace hcmut.svg with the official HCMUT logo file.
+  { name: 'Ho Chi Minh City University of Technology', type: 'Academic', logo: '/assets/partners/row/hcmut.svg', featured: true },
+  { name: 'Sorbonne Université', type: 'Academic', logo: '/assets/partners/row/sorbonne.png' },
+  { name: 'Université Laval', type: 'Academic', logo: '/assets/partners/row/laval.png' },
+]
+
+export type Stat = { value: number; suffix?: string; label: string }
+export const STATS: Stat[] = [
+  { value: 4, label: 'Competition prizes' },
+  { value: 6, label: 'Digital solutions' },
+  { value: 5, label: 'Student builders' },
+  { value: 7, label: 'Partner institutions' },
 ]
 
 // ─── 6. Testimonials ────────────────────────────────────────────────────────
@@ -446,6 +460,7 @@ export const TEAM: TeamMember[] = [
   {
     name: 'Quân',
     role: 'Chief Executive Officer',
+    shortRole: 'CEO',
     bio: 'Leads Odylytics’ vision and strategy, building partnerships that bring our solutions to the communities that need them.',
     photo: '/assets/team/quan-a.png',
     linkedin: null,
@@ -458,6 +473,7 @@ export const TEAM: TeamMember[] = [
   {
     name: 'Nghĩa',
     role: 'Chief Technology Officer',
+    shortRole: 'CTO',
     bio: 'Leads our technology and shared AI core, designing the models that turn sensor and community data into timely predictions.',
     photo: '/assets/team/nghia.png',
     linkedin: null,
@@ -471,6 +487,7 @@ export const TEAM: TeamMember[] = [
   {
     name: 'Sơn',
     role: 'Product & UX Lead',
+    shortRole: 'Product',
     bio: 'Designs accessible, human-centred experiences so every solution stays simple to use, even in a crisis.',
     photo: '/assets/team/son.png',
     linkedin: null,
@@ -483,6 +500,7 @@ export const TEAM: TeamMember[] = [
   {
     name: 'Quân',
     role: 'Head of Marketing',
+    shortRole: 'Marketing',
     bio: 'Shapes how Odylytics reaches governments, partners and communities, and tells the stories behind our impact.',
     photo: '/assets/team/quan-b.png',
     linkedin: null,
@@ -495,6 +513,7 @@ export const TEAM: TeamMember[] = [
   {
     name: 'Khang',
     role: 'Software Engineer',
+    shortRole: 'Engineer',
     bio: 'Builds the platforms behind our solutions, from real-time data pipelines to the dashboards responders rely on.',
     photo: '/assets/team/khang.png',
     linkedin: null,
@@ -601,7 +620,7 @@ export const FOOTER_NOTE =
 export const LEGAL_LINKS: NavItem[] = [
   { label: 'Privacy Policy', href: '#/privacy' },
   { label: 'Terms of Use', href: '#/terms' },
-  { label: 'Cookie Policy', href: '#/privacy' },
+  { label: 'Cookie Policy', href: '#/cookies' },
   { label: 'Sitemap', href: '#home' },
   { label: 'Member login', href: '#/login' },
 ]

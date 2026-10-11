@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Button } from '../components/Button'
+import { BRAND } from '../data/content'
 import { backendConfigured, demoMode } from '../lib/backend'
 import { signIn, useAuth } from '../lib/auth'
 
@@ -8,6 +9,7 @@ export function Login() {
   const { member } = useAuth()
   const [error, setError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const [show, setShow] = useState(false)
   const available = backendConfigured || demoMode
 
   useEffect(() => {
@@ -19,42 +21,67 @@ export function Login() {
     event.preventDefault()
     const form = new FormData(event.currentTarget)
     setBusy(true)
-    setError(await signIn(String(form.get('email')), String(form.get('password'))))
+    setError(null)
+    setError(await signIn(String(form.get('email')).trim(), String(form.get('password'))))
     setBusy(false)
   }
 
   return (
-    <section className="section page" aria-labelledby="login-title">
-      <div className="container auth">
-        <header className="page__head">
-          <p className="eyebrow">Members</p>
-          <h1 id="login-title" className="display">
-            Member <span className="em">login.</span>
-          </h1>
-          <p className="body-l page__intro">Sign in to edit news and testimonials.</p>
-        </header>
+    <section className="login" aria-labelledby="login-title">
+      <div className="login__shell">
+        <aside className="login__aside">
+          <div className="aurora" aria-hidden="true" />
+          <a className="login__brand" href="#home" aria-label="Odylytics, back to the website">
+            <img src={BRAND.wordmarkDark} alt="" width="1826" height="565" />
+          </a>
+          <div className="login__pitch">
+            <h2 className="h2-serif">
+              Tell the story. <em className="em">Keep it current.</em>
+            </h2>
+            <p>Members publish news, update prizes and manage testimonials. Everything saved here appears on the public site straight away.</p>
+          </div>
+          <p className="login__foot">Student ideas. Market-ready products.</p>
+        </aside>
 
-        {demoMode && <p className="notice">Demo mode: no Supabase project is connected, so any email and password works and edits stay in this browser.</p>}
-        {!available && <p className="notice">Member login is not set up on this site yet.</p>}
+        <div className="login__panel">
+          <form className="login__form" onSubmit={onSubmit}>
+            <p className="eyebrow">Members only</p>
+            <h1 id="login-title" className="login__title">
+              Welcome back
+            </h1>
+            <p className="login__lead">Sign in with the account the Odylytics team created for you.</p>
 
-        <form className="card auth__form" onSubmit={onSubmit}>
-          <label className="field">
-            <span className="label">Email</span>
-            <input name="email" type="email" autoComplete="email" required disabled={!available} />
-          </label>
-          <label className="field">
-            <span className="label">Password</span>
-            <input name="password" type="password" autoComplete="current-password" required disabled={!available} />
-          </label>
-          {error && (
-            <p className="form-error" role="alert">
-              {error}
-            </p>
-          )}
-          <Button type="submit" arrow={false} variant="primary">
-            {busy ? 'Signing in…' : 'Sign in'}
-          </Button>
-        </form>
+            {demoMode && <p className="notice">Demo mode: no Supabase project is connected, so any email and password works and edits stay in this browser.</p>}
+            {!available && <p className="notice">Member login is not switched on for this site yet. The site owner needs to connect the member database.</p>}
+
+            <label className="field">
+              <span className="label">Email</span>
+              <input name="email" type="email" autoComplete="email" placeholder="you@odylytics.com" required disabled={!available} />
+            </label>
+            <label className="field">
+              <span className="label">Password</span>
+              <span className="field__password">
+                <input name="password" type={show ? 'text' : 'password'} autoComplete="current-password" placeholder="Your password" required disabled={!available} />
+                <button type="button" className="field__toggle" onClick={() => setShow((value) => !value)} aria-pressed={show}>
+                  {show ? 'Hide' : 'Show'}
+                </button>
+              </span>
+            </label>
+
+            {error && (
+              <p className="form-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <Button type="submit" arrow={false} variant="primary" className="login__submit">
+              {busy ? 'Signing in…' : 'Sign in'}
+            </Button>
+            <a className="text-btn" href="#home">
+              ‹ Back to the website
+            </a>
+          </form>
+        </div>
       </div>
     </section>
   )
