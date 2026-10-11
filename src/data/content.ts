@@ -93,8 +93,7 @@ export const HERO = {
   // TODO(content): confirm what Odylytics provides and to whom.
   subheadline:
     'Odylytics is an AI startup delivering real-time monitoring, predictive analytics and decision-support platforms for governments, enterprises and communities.',
-  primaryCta: { label: 'Explore solutions', href: '#solutions' },
-  secondaryCta: { label: 'Partner with us', href: '#contact' },
+  holdCta: { label: 'Hold to find out', doneLabel: "Let's go", target: '#solutions' },
   // TODO(content): confirm marquee keywords.
   marquee: ['AI analytics', 'IoT monitoring', 'Early warning', 'Data platforms', 'Decision support', 'Inclusive design'],
 }

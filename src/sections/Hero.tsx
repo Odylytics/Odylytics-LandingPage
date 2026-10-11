@@ -1,45 +1,74 @@
-import { useEffect, useRef } from 'react'
-import { Aurora } from '../components/Aurora'
-import { Button } from '../components/Button'
+import { Suspense, lazy, useState } from 'react'
+import HoldButton from '../components/HoldButton'
+import type { HoldButtonPhase } from '../components/HoldButton'
 import { HERO } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { useRotatingWord } from '../hooks/useRotatingWord'
-import { setPastHero, useTheme } from '../hooks/useTheme'
+import { scrollToSection } from '../hooks/useSmoothScroll'
+import { useTheme } from '../hooks/useTheme'
 
-const AURORA_STOPS: [string, string, string] = ['#AE0BFF', '#FF8C00', '#AE0BFF']
+const Hyperspeed = lazy(() => import('../components/Hyperspeed'))
+
+const LIGHT_COLORS = ['#AE0BFF', '#FF8C00', '#AE0BFF']
+const POLE_COLORS = ['#AE0BFF']
+
+function supportsWebgl() {
+  try {
+    const canvas = document.createElement('canvas')
+    return Boolean(canvas.getContext('webgl2') ?? canvas.getContext('webgl'))
+  } catch {
+    return false
+  }
+}
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  const brand = useBrandAssets('hero')
+  const brand = useBrandAssets()
   const theme = useTheme()
   const reducedMotion = usePrefersReducedMotion()
+  const [webgl] = useState(supportsWebgl)
+  const dark = theme !== 'light'
+  const [holdPhase, setHoldPhase] = useState<HoldButtonPhase>('idle')
   const wordIndex = useRotatingWord(HERO.rotatingWords.length, 2500, !reducedMotion)
   const previousIndex = (wordIndex - 1 + HERO.rotatingWords.length) % HERO.rotatingWords.length
 
-  useEffect(() => {
-    const hero = ref.current
-    if (!hero) return
-    const root = document.documentElement
-    // The page turns light once the hero's bottom edge rises above mid-viewport.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setPastHero(!entry.isIntersecting && entry.boundingClientRect.top < 0)
-        // Enable the colour fade only after the first measurement so a reload mid-page doesn't animate.
-        requestAnimationFrame(() => root.classList.add('surface-animate'))
-      },
-      { rootMargin: '-50% 0px 0px 0px' },
-    )
-    observer.observe(hero)
-    return () => {
-      observer.disconnect()
-      setPastHero(false)
-    }
-  }, [])
-
   return (
-    <section id="home" ref={ref} className="hero" aria-labelledby="hero-title">
-      <Aurora colorStops={AURORA_STOPS} amplitude={1} blend={0.5} speed={0.5} lightMode={theme === 'light'} paused={reducedMotion} flip />
+    <section id="home" className="hero" aria-labelledby="hero-title">
+      {webgl ? (
+        <Suspense fallback={null}>
+          <Hyperspeed
+            className="hero__road"
+            theme={dark ? 'dark' : 'light'}
+            curve="gentle"
+            curvature={0.55}
+            speed={reducedMotion ? 0 : 1.05}
+            boost={3}
+            fov={81}
+            boostFov={160}
+            lanes={6}
+            roadWidth={20}
+            medianWidth={2.5}
+            density={40}
+            trailLength={0.9}
+            lightSize={1}
+            poles={15}
+            dust={1500}
+            glow={0.6}
+            reflections={0.5}
+            roadOpacity={0.25}
+            steer={0.25}
+            tailColors={LIGHT_COLORS}
+            headColors={LIGHT_COLORS}
+            poleColors={POLE_COLORS}
+            interactive={!reducedMotion}
+            boosting={holdPhase !== 'idle'}
+            roadColor={dark ? '#000000' : undefined}
+            lineColor={dark ? '#2d2d2d' : undefined}
+          />
+        </Suspense>
+      ) : (
+        <div className="aurora" aria-hidden="true" />
+      )}
 
       <div className="container hero__content">
         <img className="hero__logo" src={brand.wordmark} alt="Odylytics" width="1826" height="565" />
@@ -68,12 +97,30 @@ export function Hero() {
         <p className="body-l hero__sub">{HERO.subheadline}</p>
 
         <div className="hero__ctas">
-          <Button href={HERO.primaryCta.href} arrow={false}>
-            {HERO.primaryCta.label}
-          </Button>
-          <Button href={HERO.secondaryCta.href} variant="outline" arrow={false}>
-            {HERO.secondaryCta.label}
-          </Button>
+          <HoldButton
+            doneLabel={HERO.holdCta.doneLabel}
+            backgroundColor="var(--surface-2)"
+            fillColor="#AE0BFF"
+            textColor="var(--text)"
+            fillTextColor="#ffffff"
+            size="lg"
+            radius={999}
+            fillDirection="right"
+            holdTime={1000}
+            releaseTime={200}
+            pressScale={0.97}
+            wave
+            waveAmplitude={6}
+            glow
+            resetAfter={1200}
+            onPhaseChange={setHoldPhase}
+            onHold={() => {
+              const next = document.querySelector<HTMLElement>(HERO.holdCta.target)
+              if (next) scrollToSection(next)
+            }}
+          >
+            {HERO.holdCta.label}
+          </HoldButton>
         </div>
 
         <p className="hero__note">
