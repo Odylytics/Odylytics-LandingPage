@@ -7,11 +7,13 @@ import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { useRotatingWord } from '../hooks/useRotatingWord'
 import { scrollToSection } from '../hooks/useSmoothScroll'
 import { useTheme } from '../hooks/useTheme'
+import { playPop, startCharge, stopCharge } from '../lib/holdSfx'
 
 const Hyperspeed = lazy(() => import('../components/Hyperspeed'))
 
 const LIGHT_COLORS = ['#AE0BFF', '#FF8C00', '#AE0BFF']
 const POLE_COLORS = ['#AE0BFF']
+const HOLD_MS = 1000
 
 function supportsWebgl() {
   try {
@@ -106,14 +108,21 @@ export function Hero() {
             size="lg"
             radius={999}
             fillDirection="right"
-            holdTime={1000}
+            holdTime={HOLD_MS}
             releaseTime={200}
             pressScale={0.97}
             wave
             waveAmplitude={6}
             glow
             resetAfter={1200}
-            onPhaseChange={setHoldPhase}
+            onPhaseChange={(phase) => {
+              if (phase === 'holding') startCharge(HOLD_MS)
+              else if (phase === 'done') {
+                stopCharge(60)
+                playPop()
+              } else stopCharge()
+              setHoldPhase(phase)
+            }}
             onHold={() => {
               const next = document.querySelector<HTMLElement>(HERO.holdCta.target)
               if (next) scrollToSection(next)
