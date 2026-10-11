@@ -27,7 +27,7 @@ export const VI: DeepPartial<Content> = {
     note: 'Ý tưởng sinh viên. Sản phẩm sẵn sàng ra thị trường.',
     subheadline:
       'Odylytics đưa các giải pháp do sinh viên xây dựng ra thị trường: sản phẩm số giúp nâng cao năng suất bằng cách thay lao động thủ công, lặp đi lặp lại bằng logic.',
-    holdCta: { label: 'Nhấn giữ để khám phá', doneLabel: 'Đi thôi' },
+    scrollCue: 'Cuộn để khám phá',
     marquee: ['Phân tích AI', 'Giám sát IoT', 'Cảnh báo sớm', 'Nền tảng dữ liệu', 'Hỗ trợ quyết định', 'Thiết kế bao trùm'],
   },
 

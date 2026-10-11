@@ -107,15 +107,27 @@
 
 /* ─── Hero ──────────────────────────────────────────────────────────────── */
 
+/* The hero is a scroll track taller than the viewport; its stage stays pinned while the
+   visitor scrolls through it (copy fades out, then the road boosts, see Hero.tsx). */
 .hero {
+  --hero-stage-h: max(680px, 100svh);
+  --hero-track: 350svh; /* set from INTRO in Hero.tsx; this mirrors it for the first paint */
+  --hero-fade: 0;
   position: relative;
+  height: calc(var(--hero-stage-h) + var(--hero-track));
+  background: var(--bg);
+  color: var(--text);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero { --hero-track: 0px; }
+}
+.hero__stage {
+  position: sticky; top: 0;
   display: flex; flex-direction: column;
-  min-height: max(680px, 100svh);
+  height: var(--hero-stage-h);
   padding-top: var(--nav-h);
   overflow: hidden;
   isolation: isolate;
-  background: var(--bg);
-  color: var(--text);
 }
 .hero .aurora { z-index: -1; }
 
@@ -142,8 +154,12 @@
   flex: 1;
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
   padding-block: 48px 128px;
-  animation: hero-in 900ms var(--ease-out) both;
+  opacity: calc(1 - var(--hero-fade));
+  transform: translateY(calc(var(--hero-fade) * -14vh));
+  /* `backwards` only: a filled end state would override the scroll-driven transform. */
+  animation: hero-in 900ms var(--ease-out) backwards;
 }
+.hero.is-faded .hero__content { visibility: hidden; }
 
 @keyframes hero-in { from { opacity: 0; transform: translateY(12px); } }
 
@@ -169,14 +185,38 @@
 
 .hero__sub { margin-top: 24px; color: var(--text-muted); max-width: 52ch; }
 
-.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 36px; }
-
 .hero__note {
   display: inline-flex; align-items: center; gap: 10px;
   margin-top: 28px;
   font-size: 14px; color: var(--text-muted);
 }
 .hero__note img { width: 16px; height: 16px; opacity: 0.7; }
+
+.hero__cue {
+  position: absolute; left: 50%; bottom: 28px;
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13.5px; font-weight: var(--fw-medium); letter-spacing: 0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: calc(1 - var(--hero-fade) * 3);
+  transform: translateX(-50%);
+}
+.hero__cue-icon {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-pill);
+  background: var(--wash);
+  color: var(--text);
+  animation: cue-bob 1.8s var(--ease-out) infinite;
+}
+@keyframes cue-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__cue-icon { animation: none; }
+}
 
 /* ─── Logo strip (solutions marquee after the Solutions grid) ──────────────── */
 
@@ -190,287 +230,6 @@
 }
 .strip-item img { max-height: 100%; max-width: 100%; width: auto; object-fit: contain; }
 .strip-item--placeholder { border: 1px dashed var(--border-strong); border-radius: var(--radius-chip); color: var(--text-faint); font-size: 12.5px; font-weight: var(--fw-medium); }
-
-@media (max-width: 520px) {
-  .hero__ctas { flex-direction: column; align-items: stretch; width: 100%; }
-}
-
-/* ─── Hold button (React Bits HoldButton) ────────────────────────────── */
-
-.hold-button {
-  --hb-radius: 14px;
-  --hb-bg: #27272a;
-  --hb-fill: #5227ff;
-  --hb-text: #f5f5f5;
-  --hb-fill-text: #ffffff;
-  --hb-hold: 2000ms;
-  --hb-release: 200ms;
-  --hb-press: 0.97;
-  --hb-wave: 6px;
-  --hb-w: 0px;
-  --hb-h: 0px;
-  --hb-cycles: 2;
-  --hb-p: 0;
-  --hb-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --hb-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  --hb-glow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 32px -6px color-mix(in srgb, var(--hb-fill) 70%, transparent);
-
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  isolation: isolate;
-  margin: 0;
-  border: 0;
-  border-radius: var(--hb-radius);
-  background: var(--hb-bg);
-  color: var(--hb-text);
-  font-family: inherit;
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.01em;
-  line-height: 1;
-  box-shadow: var(--hb-shadow);
-  cursor: pointer;
-  outline: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  transition:
-    transform 160ms var(--hb-ease-out),
-    background-color 160ms ease,
-    box-shadow var(--hb-release) var(--hb-ease-out);
-}
-
-.hold-button--sm {
-  height: 36px;
-  padding: 0 16px;
-  font-size: 13px;
-}
-
-.hold-button--md {
-  height: 44px;
-  padding: 0 22px;
-  font-size: 15px;
-}
-
-.hold-button--lg {
-  height: 52px;
-  padding: 0 28px;
-  font-size: 17px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .hold-button:not(:disabled):hover {
-    background: color-mix(in srgb, var(--hb-bg) 92%, #fff);
-  }
-}
-
-.hold-button[data-phase='holding'][data-input='pointer'] {
-  transform: scale(var(--hb-press));
-}
-
-.hold-button[data-glow='true'][data-phase='holding'],
-.hold-button[data-glow='true'][data-phase='done'] {
-  box-shadow: var(--hb-glow);
-}
-
-.hold-button[data-glow='true'][data-phase='holding'] {
-  transition:
-    transform 160ms var(--hb-ease-out),
-    background-color 160ms ease,
-    box-shadow var(--hb-hold) linear;
-}
-
-.hold-button:focus-visible {
-  outline: 2px solid var(--hb-fill);
-  outline-offset: 3px;
-}
-
-.hold-button:disabled {
-  opacity: 0.5;
-  cursor: default;
-  pointer-events: none;
-}
-
-.hold-button__pulse {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: var(--hb-radius);
-  pointer-events: none;
-  opacity: 0;
-}
-
-.hold-button[data-glow='true'][data-phase='done'] .hold-button__pulse {
-  animation: hb-pulse 600ms var(--hb-ease-out) forwards;
-}
-
-@keyframes hb-pulse {
-  from {
-    opacity: 1;
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--hb-fill) 55%, transparent);
-  }
-  to {
-    opacity: 0;
-    box-shadow: 0 0 0 14px color-mix(in srgb, var(--hb-fill) 0%, transparent);
-  }
-}
-
-.hold-button__label {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-}
-
-.hold-button__label > span {
-  grid-area: 1 / 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  transition:
-    opacity 200ms ease,
-    filter 200ms ease;
-}
-
-.hold-button__icon {
-  display: inline-flex;
-  flex: none;
-}
-
-.hold-button__icon > svg {
-  display: block;
-}
-
-.hold-button__done {
-  opacity: 0;
-  filter: blur(2px);
-}
-
-.hold-button[data-phase='done'] .hold-button__idle {
-  opacity: 0;
-  filter: blur(2px);
-}
-
-.hold-button[data-phase='done'] .hold-button__done {
-  opacity: 1;
-  filter: blur(0);
-}
-
-.hold-button__clip {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  clip-path: inset(0 round var(--hb-radius));
-  pointer-events: none;
-}
-
-.hold-button__fill {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: var(--hb-fill);
-  color: var(--hb-fill-text);
-  clip-path: inset(
-    0 calc((1 - var(--hb-p)) * (100% + 0.75 * var(--hb-wave)) - var(--hb-p) * 0.25 * var(--hb-wave)) 0 0
-  );
-}
-
-.hold-button[data-direction='up'] .hold-button__fill {
-  clip-path: inset(
-    calc((1 - var(--hb-p)) * (100% + 0.75 * var(--hb-wave)) - var(--hb-p) * 0.25 * var(--hb-wave)) 0 0 0
-  );
-}
-
-.hold-button__crest {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: var(--hb-fill);
-  color: var(--hb-fill-text);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='200' viewBox='0 0 20 200' preserveAspectRatio='none'%3E%3Cpath d='M0 0H10C18 8 18 25.3 10 33.3S2 58.7 10 66.7S18 92 10 100S2 125.3 10 133.3S18 158.7 10 166.7S2 192 10 200H0Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='200' viewBox='0 0 20 200' preserveAspectRatio='none'%3E%3Cpath d='M0 0H10C18 8 18 25.3 10 33.3S2 58.7 10 66.7S18 92 10 100S2 125.3 10 133.3S18 158.7 10 166.7S2 192 10 200H0Z'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: repeat-y;
-  mask-repeat: repeat-y;
-  -webkit-mask-size: var(--hb-wave) calc(var(--hb-h) * 2);
-  mask-size: var(--hb-wave) calc(var(--hb-h) * 2);
-  -webkit-mask-position-x: calc(-1 * var(--hb-wave) + var(--hb-p) * (var(--hb-w) + var(--hb-wave)));
-  mask-position-x: calc(-1 * var(--hb-wave) + var(--hb-p) * (var(--hb-w) + var(--hb-wave)));
-  -webkit-mask-position-y: calc(-1 * var(--hb-p) * var(--hb-cycles) * var(--hb-h));
-  mask-position-y: calc(-1 * var(--hb-p) * var(--hb-cycles) * var(--hb-h));
-}
-
-.hold-button[data-direction='up'] .hold-button__crest {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='20' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20V10C12 2 38 2 50 10S88 18 100 10S138 2 150 10S188 18 200 10V20Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='20' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20V10C12 2 38 2 50 10S88 18 100 10S138 2 150 10S188 18 200 10V20Z'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
-  -webkit-mask-size: calc(var(--hb-w) * 2) var(--hb-wave);
-  mask-size: calc(var(--hb-w) * 2) var(--hb-wave);
-  -webkit-mask-position-x: calc(-1 * var(--hb-p) * var(--hb-cycles) * var(--hb-w));
-  mask-position-x: calc(-1 * var(--hb-p) * var(--hb-cycles) * var(--hb-w));
-  -webkit-mask-position-y: calc(var(--hb-h) - var(--hb-p) * (var(--hb-h) + var(--hb-wave)));
-  mask-position-y: calc(var(--hb-h) - var(--hb-p) * (var(--hb-h) + var(--hb-wave)));
-}
-
-.hold-button__label--fill {
-  z-index: auto;
-}
-
-.hold-button__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-@media (prefers-contrast: more) {
-  .hold-button {
-    outline: 1px solid var(--hb-text);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hold-button {
-    transition:
-      background-color 160ms ease,
-      box-shadow var(--hb-release) ease;
-    transform: none !important;
-  }
-
-  .hold-button__fill,
-  .hold-button[data-direction='up'] .hold-button__fill {
-    clip-path: inset(0);
-    opacity: 0;
-    transition: opacity var(--hb-release) ease;
-  }
-
-  .hold-button__crest {
-    display: none;
-  }
-
-  .hold-button[data-phase='holding'] .hold-button__fill,
-  .hold-button[data-phase='done'] .hold-button__fill {
-    opacity: 1;
-    transition: opacity var(--hb-hold) linear;
-  }
-
-  .hold-button__pulse {
-    animation: none !important;
-  }
-
-  .hold-button__label > span {
-    transition: opacity 200ms ease;
-    filter: none !important;
-  }
-}
 
 /* ─── Marquee ───────────────────────────────────────────────────────────── */
 
@@ -539,7 +298,7 @@
 
 .feat-card > .btn { margin-top: 28px; align-self: flex-start; }
 
-@media (max-width: 1024px) {
+  @media (max-width: 1024px) {
   .feat-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
@@ -647,7 +406,7 @@
   display: flex; align-items: center; justify-content: center;
   aspect-ratio: 4 / 5;
   background: radial-gradient(120% 80% at 50% 100%, var(--photo-glow), transparent 70%), var(--surface-2);
-  border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
 .team-card__photo img:not(.team-card__placeholder) {

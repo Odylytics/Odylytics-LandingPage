@@ -150,7 +150,7 @@ export const HERO = {
   // TODO(content): confirm what Odylytics provides and to whom.
   subheadline:
     'Odylytics takes solutions built by students to market: digital products that raise productivity by replacing manual, repetitive labour with logic.',
-  holdCta: { label: 'Hold to find out', doneLabel: "Let's go", target: '#solutions' },
+  scrollCue: 'Scroll to find out',
   // TODO(content): confirm marquee keywords.
   marquee: ['AI analytics', 'IoT monitoring', 'Early warning', 'Data platforms', 'Decision support', 'Inclusive design'],
 }
