@@ -106,7 +106,7 @@ export function Nav() {
             {member ? ui.dashboard : ui.memberLogin}
           </a>
           <SettingsMenu />
-          <Button href="#contact" variant="inverse" size="sm" arrow={false} className="nav__cta">
+          <Button href="#contact" variant="primary" size="sm" arrow={false} className="nav__cta">
             {ui.getInTouch}
           </Button>
           <button
@@ -154,7 +154,7 @@ export function Nav() {
         <a className="nav__menu-member" href={memberHref} onClick={() => setOpen(false)}>
           {member ? ui.dashboard : ui.memberLogin}
         </a>
-        <Button href="#contact" variant="inverse" arrow={false} onClick={() => setOpen(false)}>
+        <Button href="#contact" variant="primary" arrow={false} onClick={() => setOpen(false)}>
           {ui.getInTouch}
         </Button>
       </div>

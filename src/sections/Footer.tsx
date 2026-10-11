@@ -12,7 +12,7 @@ export function Footer() {
       <div className="container footer__grid">
         <div className="footer__lead">
           <p className="footer__tagline">{HERO.note}</p>
-          <Button href="#contact" variant="signal" arrow className="btn--mono">
+          <Button href="#contact" variant="primary" arrow>
             {CLOSING.cta}
           </Button>
         </div>
@@ -20,7 +20,7 @@ export function Footer() {
         <div className="footer__groups">
           {groups.map((group) => (
             <nav key={group.heading} className="footer__group" aria-label={group.heading}>
-              <h2 className="footer__label">[{group.heading}]</h2>
+              <h2 className="footer__label">{group.heading}</h2>
               <ul>
                 {group.links.map((link) => (
                   <li key={link.label}>

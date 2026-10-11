@@ -1,94 +1,65 @@
-# Odylytics — Design Guidelines (v2, dark-first)
+# Odylytics — Design Guidelines (v3)
 
-Tham chiếu visual duy nhất: [React Bits Pro — Finance template (Finaro)](https://rbp-finance-template.vercel.app/).
-Lấy layout, nhịp điệu, component và motion của template; màu luôn theo brand Odylytics bên dưới.
+One system for the whole site: **Geist + Geist Mono, orange and purple on black and white**. If a style is not listed here, do not invent one; add it here first.
 
-Tagline: **"Engineering Safer Communities."**
+Tagline: **Student ideas. Market-ready products.**
 
 ---
 
-## 1. Định hướng
+## 1. Direction
 
-Phong cách **premium fintech, dark-first**: nền tối gần đen, heading serif lớn (vế nhấn in nghiêng), nút và badge dạng pill bo tròn hoàn toàn, card bo góc lớn với viền mảnh, hiệu ứng aurora gradient mờ ở hero và CTA cuối. Sang trọng, tối giản, không góc cạnh.
+Calm, confident tech-company page. Big sans headlines with a dimmed second line, generous whitespace, real photos of the team, one rounded shape language. References: Apple (type, restraint), Cosmos (photo-led sections), NUSX (bracketed mono labels, black footer). No gradients as backgrounds, no glow decoration, no box shadows.
 
-Khác biệt chính so với v1 (NUSX-style): không còn góc vuông, không còn label mono in hoa giãn chữ làm chủ đạo, không còn đường kẻ 1px chia khối. Thay bằng bo tròn, surface tối nhiều lớp và khoảng trắng.
+## 2. Colour roles
 
-## 2. Color system
+Brand ramps live in `index.css` (`--purple-*`, `--orange-*`, `--neutral-*`). Components use semantic tokens only; light mode is a token override.
 
-Giữ nguyên palette brand (`OdylyticsBrand/Color Palette Shades.png`): tím `#AE0BFF` (65% phần màu brand) và cam `#FF8C00` (35%), cùng các shade `--purple-100…700`, `--orange-100…700`, neutral `--neutral-100…700` như v1.
-
-Semantic cho dark mode (mặc định):
-
-| Token | Giá trị | Dùng cho |
+| Role | Colour | Where |
 |---|---|---|
-| `--bg` | `#0B0A0E` (derived, tối hơn neutral-700) | Nền trang |
-| `--surface` | `#141318` | Card, panel |
-| `--surface-2` | `#1C1B21` | Card lồng trong card, input |
-| `--border` | `rgb(255 255 255 / 0.08)` | Viền card, divider |
-| `--text` | `#FAFAFA` | Chữ chính |
-| `--text-muted` | `--neutral-300` `#97949B` | Chữ phụ |
-| `--accent` | `--purple-400` | CTA, link, focus, icon |
-| `--accent-soft` | `--purple-300` | Chữ tím cỡ nhỏ trên nền tối (AA) |
-| `--signal` | `--orange-300` | Số liệu, badge nhấn, từ khóa hero (AA trên nền tối) |
+| **Neutral** | black `#0B0A0E` / white `#FAFAFB` and the surface steps | Backgrounds, text, borders (`--bg`, `--surface`, `--surface-2`, `--text*`, `--border*`) |
+| **Purple = action** | `--accent` `#AE0BFF`, soft text `--accent-soft` | Primary buttons, links, focus, category tags, active states |
+| **Orange = signal** | `--signal` `#FF8C00` (dark) / `--orange-500` (light) | Mono eyebrows and labels, role titles, status highlights |
 
-- Aurora gradient (hero, CTA): các đốm radial mờ từ `--purple-600`, `--purple-500`, `--orange-600`, blur ≥ 80px, opacity ≤ 0.55. Không dùng gradient brand làm nền phẳng.
-- Light mode (sau này): override semantic dưới `[data-theme="light"]`; cấm chữ cam `#FF8C00` trên nền sáng — dùng `--orange-500`.
+- One primary CTA style everywhere: purple pill, white text.
+- Orange text only on dark backgrounds, or the darker `--orange-500` in light mode. On an orange fill use dark text.
+- Footer is always black (`.scope-dark`), whichever theme is chosen.
+- Never hard-code a colour in component CSS; add a token with both theme values.
 
 ## 3. Typography
 
-| Vai trò | Font | Ghi chú |
+| Role | Font | Weight |
 |---|---|---|
-| Display / heading | **Instrument Serif** 400 (roman + italic) | Headline lớn; vế nhấn hoặc dòng thứ hai in *nghiêng* |
-| Body / UI / nút / label | **Inter** 400–600 | Toàn bộ phần còn lại |
+| Display, headings, body, buttons | **Geist** (variable, self-hosted via `@fontsource-variable/geist`) | 500 headings and UI, 400 body, 300 large numerals only |
+| Labels, eyebrows, tags, stat captions, footer | **Geist Mono** (`@fontsource-variable/geist-mono`) | 400, uppercase, tracking `0.06em` |
 
-```css
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
-```
+Scale (tokens in `index.css`): display `--fs-display` 44–84px · h2 `--fs-h2` 34–60px · h3 `--fs-h3` 26–38px · h4 `--fs-h4` 22px · lead `--fs-lead` 19px · body 16px · small 14px · label `--fs-label` 12.5px. Display tracking `-0.04em`, headings `-0.03em`.
 
-Scale (desktop): Display `clamp(44px, 5.5vw, 76px)/1.05`, H2 `clamp(34px, 4vw, 56px)/1.1`, H3 20–22px Inter 600, body 16px/1.6, body-l 18–20px, label 13–14px Inter 500 (không bắt buộc uppercase; sentence case như Finaro).
+- Two-tone headline: first phrase `--text`, second phrase in `<em class="em">` (dimmed, not italic).
+- Eyebrows are mono, uppercase, orange and wrapped in brackets: `[ OUR MISSION ]`. Footer group labels use the same bracket device.
+- Do not add a third typeface or another weight.
 
-Headline hai tông kiểu Finaro: cả câu serif màu trắng, **vế nhấn in nghiêng** (không đổi màu), hoặc từ khóa màu `--signal`.
+## 4. Shape
 
-## 4. Shape & component
+Pills for buttons, chips, inputs and the nav. Four corner sizes for everything else: `--radius-panel` 36px (big photo panels, login shell) · `--radius-card` 28px (cards) · `--radius-media` 20px (images inside panels, popovers) · `--radius-chip` 14px (small boxes). No shadows; separation comes from 1px `--border` hairlines and surface steps.
 
-- Radius: nút/badge/input = pill (`999px`); card = `20px`; card nhỏ/chip = `14px`.
-- **Button**: pill, padding `12px 24px`, Inter 600 15px, sentence case, không bắt buộc mũi tên. Variants: `primary` (nền `--accent`, chữ trắng, hover `--purple-500`), `inverse` (nền trắng, chữ đen — dùng trên aurora/CTA), `outline` (viền `--border`, nền `--surface` mờ), `signal` (nền cam, chữ đen).
-- **Badge pill**: viền mảnh, nền surface, chấm hoặc icon nhỏ + text 13px (thay cho eyebrow vuông v1).
-- **Card**: nền `--surface`, viền 1px `--border`, radius 20px, padding 24–32px; hover nâng nhẹ nền (không shadow màu).
-- **Bento**: lưới 3 cột card cao bằng nhau, mỗi card có khối visual minh hoạ ở trên (bảng so sánh / bar chart / code block giả) + H3 + mô tả + link "Learn more →".
-- **Stats row**: 4 số lớn (Inter 600 hoặc serif) + label muted, ngăn cách bằng khoảng trắng, không kẻ.
-- **Logo marquee**: dải logo chạy ngang, pause khi hover; logo đặt trong chip trắng bo tròn (logo gốc nền sáng).
-- **Testimonials**: carousel scroll-snap, card ảnh lớn bo 20px, prev/next dạng nút pill tròn.
-- **FAQ/Accordion**: card bo tròn, mở rộng mượt.
-- Shadow: chỉ dùng shadow đen mờ rất nhẹ cho dropdown/modal. Không glow màu.
+## 5. Components
 
-## 5. Logo
+- **Buttons**: pill, Geist 500 15px. `primary` (purple), `outline`, `inverse` (only for segmented/active states), `signal` (rare). Sizes `md` / `sm`.
+- **Nav**: floating glass capsule, centred links, dropdowns with title and one-line description, Settings (theme, language), member login, purple CTA.
+- **Tags**: mono pill; purple for categories, neutral for meta, orange for status.
+- **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces.
+- **Placeholders**: any missing content is a grey skeleton frame plus a dashed mono tag "Updating soon" (`.soon-line`, `.soon-tag`). Never invent copy to fill a gap.
+- **Stats**: large light numerals (300), hairline above, mono caption below. No boxes.
+- **Footer**: black, tagline plus primary CTA, 2×2 bracketed link groups, giant white wordmark, mono contact block.
 
-| File | Dùng khi |
-|---|---|
-| `public/assets/brand/odylytics-wordmark-dark.svg` (từ `OdylyticsBrand/Horizontal Wordmark Logo Darkmode.svg`, đã crop) | **Mặc định** — nav, footer trên nền tối |
-| `public/assets/brand/odylytics-wordmark.svg` | Nền sáng (chip trắng, light mode sau này) |
-| `public/assets/brand/odylytics-symbol-dark.svg` / `odylytics-symbol.svg` | Symbol trắng / đen; favicon dùng bản gốc `favicon.svg` |
+## 6. Layout patterns
 
-Không đổi màu gradient trong logo, không thêm hiệu ứng.
+Stats band after the hero · sticky split (heading left, cards pop up right) · photo story panel · solutions grid · stacked featured cards (sticky) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · scattered-card closing CTA · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
 
-## 6. Motion
+## 7. Motion
 
-- Reveal khi vào viewport: fade + translateY 16px, 600ms ease-out, stagger 70ms.
-- Aurora: trôi rất chậm (60s+), tắt hoàn toàn khi `prefers-reduced-motion`.
-- Marquee 40s/vòng, pause hover, tắt khi reduced motion (thay bằng grid tĩnh).
-- Hover card: background sáng lên 200ms; hover nút: đổi nền 200ms.
-- Không bounce/elastic/parallax mạnh.
+Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers, sticky stacking, drifting closing cards, Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
 
-## 7. Giọng nói & copy
+## 8. Voice
 
-Giữ nguyên: Clear · Trustworthy · Calm · Human. Headline sentence case; nhãn/nút sentence case (bỏ quy tắc UPPERCASE của v1).
-
-## 8. Checklist section mới
-
-- [ ] Nền `--bg`, nội dung trong container 1200–1280px
-- [ ] Card dùng `--surface` + `--border`, radius 20px
-- [ ] Heading serif, vế nhấn italic; body Inter
-- [ ] Màu brand ≤ ~15% diện tích, tím:cam ≈ 65:35; chữ cam chỉ trên nền tối
-- [ ] Nút pill, contrast AA (trắng trên tím ~4.9:1 ✅, đen trên cam ~8:1 ✅)
-- [ ] Motion tôn trọng `prefers-reduced-motion`
+Plain, specific, short. Say what the product does and who it is for; credit prizes and press to their organisers. English first, Vietnamese in full (`content.vi.ts`).

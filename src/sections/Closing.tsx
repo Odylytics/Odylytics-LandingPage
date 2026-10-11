@@ -36,7 +36,7 @@ export function Closing() {
         <h2 id="closing-title" className="display">
           {CLOSING.lead} <em className="em">{CLOSING.main}</em>
         </h2>
-        <Button href="#contact" variant="inverse" arrow={false} className="closing__cta">
+        <Button href="#contact" variant="primary" arrow={false} className="closing__cta">
           {CLOSING.cta}
         </Button>
       </div>
