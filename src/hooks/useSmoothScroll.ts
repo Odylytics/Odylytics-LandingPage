@@ -56,6 +56,7 @@ export function useSmoothScroll() {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return
       const link = (event.target as Element).closest<HTMLAnchorElement>('a[href^="#"]')
       if (!link || link.classList.contains('skip-link')) return
+      if (link.hash.startsWith('#/')) return
       const target = document.querySelector<HTMLElement>(link.hash)
       if (!target) return
 

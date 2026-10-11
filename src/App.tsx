@@ -1,4 +1,8 @@
 import './App.css'
+import { Blog } from './pages/Blog'
+import { Legal } from './pages/Legal'
+import { PRIVACY, TERMS } from './data/legal'
+import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { Contact } from './sections/Contact'
@@ -6,6 +10,8 @@ import { Featured } from './sections/Featured'
 import { Footer } from './sections/Footer'
 import { Hero } from './sections/Hero'
 import { LogoStrip } from './sections/LogoStrip'
+import { Mission } from './sections/Mission'
+import { News } from './sections/News'
 import { Nav } from './sections/Nav'
 import { Partners } from './sections/Partners'
 import { Recognition } from './sections/Recognition'
@@ -14,7 +20,8 @@ import { Team } from './sections/Team'
 import { Testimonials } from './sections/Testimonials'
 
 function App() {
-  useReveal()
+  const route = useRoute()
+  useReveal(route)
   useSmoothScroll()
 
   return (
@@ -24,15 +31,24 @@ function App() {
       </a>
       <Nav />
       <main id="main">
-        <Hero />
-        <Solutions />
-        <LogoStrip />
-        <Featured />
-        <Recognition />
-        <Partners />
-        <Testimonials />
-        <Team />
-        <Contact />
+        {route === 'blog' && <Blog />}
+        {route === 'privacy' && <Legal doc={PRIVACY} />}
+        {route === 'terms' && <Legal doc={TERMS} />}
+        {route === 'home' && (
+          <>
+            <Hero />
+            <Mission />
+            <Solutions />
+            <LogoStrip />
+            <Featured />
+            <Recognition />
+            <Partners />
+            <Testimonials />
+            <Team />
+            <News />
+            <Contact />
+          </>
+        )}
       </main>
       <Footer />
     </>

@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 
 /** One shared IntersectionObserver that adds `is-visible` to every `[data-reveal]` element. */
-export function useReveal() {
+/** Pass the current route so elements of a newly mounted page are observed too. */
+export function useReveal(route?: string) {
   useEffect(() => {
     const root = document.documentElement
     root.classList.add('reveal-ready')
@@ -28,5 +29,5 @@ export function useReveal() {
       observer.disconnect()
       root.classList.remove('reveal-ready')
     }
-  }, [])
+  }, [route])
 }

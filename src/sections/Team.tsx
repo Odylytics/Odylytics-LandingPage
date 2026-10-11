@@ -24,6 +24,11 @@ export function Team() {
                 <h3 className="team-card__name">{member.name}</h3>
                 <span className="team-card__role">{member.role}</span>
                 <p className="team-card__bio">{member.bio}</p>
+                <ul className="team-card__duties" aria-label={`${member.name}'s responsibilities`}>
+                  {member.responsibilities.map((duty) => (
+                    <li key={duty}>{duty}</li>
+                  ))}
+                </ul>
                 {member.linkedin ? (
                   <a className="icon-link" href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`}>
                     <LinkedInIcon />

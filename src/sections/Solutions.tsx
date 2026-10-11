@@ -26,7 +26,8 @@ export function Solutions() {
                 <h3 className="sol-card__name">{solution.name}</h3>
                 <p className="sol-card__cat">{solution.category}</p>
               </div>
-              <p className="sol-card__desc">{solution.oneLiner}</p>
+              <p className="sol-card__tagline">{solution.oneLiner}</p>
+              <p className="sol-card__desc">{solution.description}</p>
             </li>
           ))}
         </ul>

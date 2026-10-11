@@ -45,7 +45,7 @@ export function Recognition() {
                           </span>
                         )}
                       </div>
-                      <div>
+                      <div className="rec-card__content">
                         <span className={typeClass[item.type]}>{item.type}</span>
                         <h4 className="rec-card__title">{item.title}</h4>
                         <p className="rec-card__meta">
@@ -58,6 +58,20 @@ export function Recognition() {
                           )}
                         </p>
                         {item.context && <p className="rec-card__context">{item.context}</p>}
+                        <div className="rec-card__photo">
+                          {item.image ? (
+                            <img src={item.image} alt={`${item.title}, ${item.issuer}`} loading="lazy" />
+                          ) : (
+                            <span className="logo-placeholder">Photo coming soon</span>
+                          )}
+                        </div>
+                        {item.href ? (
+                          <a className="text-btn" href={item.href} target="_blank" rel="noreferrer">
+                            Read the article ›
+                          </a>
+                        ) : (
+                          <span className="rec-card__soon">Article link coming soon</span>
+                        )}
                       </div>
                     </li>
                   ))}
