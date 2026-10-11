@@ -56,6 +56,7 @@ export type Partner = {
 }
 
 export type Testimonial = {
+  id: string
   quote: string
   name: string
   role: string
@@ -76,7 +77,7 @@ export type TeamMember = {
 export type PostCategory = 'Awards' | 'Press' | 'Milestones' | 'Product'
 
 export type Post = {
-  slug: string
+  id: string
   title: string
   excerpt: string
   category: PostCategory
@@ -358,6 +359,7 @@ export const TESTIMONIALS_HEADING = {
 // TODO(content): 4 approved quotes with name, role, photo and consent.
 export const TESTIMONIALS: Testimonial[] = [
   {
+    id: 'seed-1',
     quote:
       'Placeholder testimonial from a government or institutional partner. This space holds a 40–80 word quote describing a specific, verifiable outcome they saw after working with Odylytics — for example, how a team made faster decisions with shared, reliable data. Replace it with the approved wording and confirm consent before publishing. Longer quotes like this one open in a dialog so the card stays compact.',
     name: 'Name Surname',
@@ -366,6 +368,7 @@ export const TESTIMONIALS: Testimonial[] = [
     solution: 'AquaGuard',
   },
   {
+    id: 'seed-2',
     quote:
       'Placeholder testimonial from a delivery partner. Replace with a 40–80 word quote about what you built together and the result it produced.',
     name: 'Name Surname',
@@ -374,6 +377,7 @@ export const TESTIMONIALS: Testimonial[] = [
     solution: 'AirGuard',
   },
   {
+    id: 'seed-3',
     quote:
       'Placeholder testimonial from an end user or community member. Replace with a 40–80 word quote about how the solution helped them in daily life.',
     name: 'Name Surname',
@@ -382,6 +386,7 @@ export const TESTIMONIALS: Testimonial[] = [
     solution: 'AquaGuard',
   },
   {
+    id: 'seed-4',
     quote:
       'Placeholder testimonial from an expert or mentor. Replace with a 40–80 word quote on the team, the approach and the potential impact.',
     name: 'Name Surname',
@@ -504,48 +509,48 @@ export const POST_CATEGORIES: ('All' | PostCategory)[] = ['All', 'Awards', 'Pres
 // TODO(content): drafts based on known wins. Add dates, cover photos and article links (`href`), and correct any detail.
 export const POSTS: Post[] = [
   {
-    slug: 'quantum-scholarship',
+    id: 'quantum-scholarship',
     title: 'Our founder receives the Quantum scholarship',
     excerpt: 'The scholarship backs the next stage of Odylytics, from product research to bringing our solutions to more communities.',
     category: 'Milestones',
     featured: true,
   },
   {
-    slug: 'thanh-nien-feature',
+    id: 'thanh-nien-feature',
     title: 'Odylytics featured in Thanh Niên newspaper',
     excerpt: 'Vietnam’s national daily tells the story of a student team building AI for floods and accessibility.',
     category: 'Press',
     source: 'Thanh Niên',
   },
   {
-    slug: 'aquaguard-oisp-first-prize',
+    id: 'aquaguard-oisp-first-prize',
     title: 'AquaGuard wins 1st prize at the OISP Presentation Contest',
     excerpt: 'Our flood rescue coordination platform took first place in the 2025 presentation round.',
     category: 'Awards',
     date: '2025',
   },
   {
-    slug: 'aquaguard-epics-first-prize',
+    id: 'aquaguard-epics-first-prize',
     title: 'AquaGuard takes 1st prize at the EPICS 8th Competition',
     excerpt: 'Judges recognised how the system connects victims, rescue teams and coordinators in real time.',
     category: 'Awards',
   },
   {
-    slug: 'aquaguard-bach-khoa-second-prize',
+    id: 'aquaguard-bach-khoa-second-prize',
     title: 'AquaGuard earns 2nd prize at Bach Khoa Innovation',
     excerpt: 'A runner-up finish among innovation projects at Ho Chi Minh City University of Technology.',
     category: 'Awards',
     date: '2026',
   },
   {
-    slug: 'enablecode-devcamp-first-prize',
+    id: 'enablecode-devcamp-first-prize',
     title: 'EnableCode wins Fessior DevCamp 2026 Prometheus',
     excerpt: 'Our hands-free coding platform for people with upper-limb disabilities won first place.',
     category: 'Awards',
     date: '2026',
   },
   {
-    slug: 'team-wins',
+    id: 'team-wins',
     title: 'Our team brings home four prizes in a year',
     excerpt: 'A look back at the competitions, late nights and mentors behind this year’s results.',
     category: 'Milestones',
@@ -562,6 +567,7 @@ export const LEGAL_LINKS: NavItem[] = [
   { label: 'Terms of Use', href: '#/terms' },
   { label: 'Cookie Policy', href: '#/privacy' },
   { label: 'Sitemap', href: '#home' },
+  { label: 'Member login', href: '#/login' },
 ]
 
 export const FOOTER_GROUPS: { heading: string; links: NavItem[] }[] = [

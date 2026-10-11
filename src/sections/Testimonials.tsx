@@ -2,8 +2,9 @@ import { useRef, useState } from 'react'
 import { ArrowLeftIcon, ArrowRightIcon } from '../components/Icons'
 import { Modal } from '../components/Modal'
 import { SectionHeading } from '../components/SectionHeading'
-import { TESTIMONIALS, TESTIMONIALS_HEADING } from '../data/content'
+import { TESTIMONIALS_HEADING } from '../data/content'
 import type { Testimonial } from '../data/content'
+import { testimonialsStore } from '../lib/stores'
 
 const MAX_QUOTE = 300
 
@@ -28,6 +29,7 @@ function Person({ item }: { item: Testimonial }) {
 }
 
 export function Testimonials() {
+  const testimonials = testimonialsStore.useItems()
   const [active, setActive] = useState<Testimonial | null>(null)
   const trackRef = useRef<HTMLUListElement>(null)
 
@@ -45,7 +47,7 @@ export function Testimonials() {
         <SectionHeading id="testimonials-title" {...TESTIMONIALS_HEADING} />
 
         <ul className="quotes__track" ref={trackRef} data-reveal>
-          {TESTIMONIALS.map((item, index) => {
+          {testimonials.map((item, index) => {
             const long = item.quote.length > MAX_QUOTE
             return (
               <li key={index} className="card quote-card">

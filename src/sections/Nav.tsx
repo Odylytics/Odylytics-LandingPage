@@ -4,6 +4,7 @@ import { CloseIcon, MenuIcon } from '../components/Icons'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { NAV_ITEMS } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
+import { useAuth } from '../lib/auth'
 import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
 
 export function Nav() {
@@ -12,6 +13,7 @@ export function Nav() {
   const menuRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const brand = useBrandAssets()
+  const { member } = useAuth()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -60,6 +62,9 @@ export function Nav() {
         </nav>
 
         <div className="nav__actions">
+          <a className="nav__member" href={member ? '#/admin' : '#/login'}>
+            {member ? 'Dashboard' : 'Member login'}
+          </a>
           <ThemeToggle />
           <Button href="#contact" variant="inverse" size="sm" arrow={false} className="nav__cta">
             Get in touch
@@ -91,6 +96,9 @@ export function Nav() {
             ))}
           </ol>
         </nav>
+        <a className="nav__menu-member" href={member ? '#/admin' : '#/login'} onClick={() => setOpen(false)}>
+          {member ? 'Dashboard' : 'Member login'}
+        </a>
         <Button href="#contact" variant="inverse" arrow={false} onClick={() => setOpen(false)}>
           Get in touch
         </Button>

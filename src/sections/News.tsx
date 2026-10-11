@@ -1,16 +1,17 @@
 import { PostCard } from '../components/PostCard'
 import { SectionHeading } from '../components/SectionHeading'
-import { NEWS_HEADING, POSTS } from '../data/content'
+import { NEWS_HEADING } from '../data/content'
+import { postsStore } from '../lib/stores'
 
 export function News() {
-  const latest = POSTS.slice(0, 3)
+  const latest = postsStore.useItems().slice(0, 3)
   return (
     <section id="news" className="section" aria-labelledby="news-title">
       <div className="container">
         <SectionHeading id="news-title" {...NEWS_HEADING} />
         <ul className="post-grid">
           {latest.map((post) => (
-            <li key={post.slug}>
+            <li key={post.id}>
               <PostCard post={post} />
             </li>
           ))}

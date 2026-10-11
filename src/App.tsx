@@ -1,6 +1,8 @@
 import './App.css'
 import { Blog } from './pages/Blog'
+import { Admin } from './pages/Admin'
 import { Legal } from './pages/Legal'
+import { Login } from './pages/Login'
 import { PRIVACY, TERMS } from './data/legal'
 import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
@@ -34,6 +36,8 @@ function App() {
         {route === 'blog' && <Blog />}
         {route === 'privacy' && <Legal doc={PRIVACY} />}
         {route === 'terms' && <Legal doc={TERMS} />}
+        {route === 'login' && <Login />}
+        {route === 'admin' && <Admin />}
         {route === 'home' && (
           <>
             <Hero />

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { PostCard } from '../components/PostCard'
-import { POSTS, POST_CATEGORIES } from '../data/content'
+import { POST_CATEGORIES } from '../data/content'
 import type { PostCategory } from '../data/content'
+import { postsStore } from '../lib/stores'
 
 export function Blog() {
+  const allPosts = postsStore.useItems()
   const [category, setCategory] = useState<'All' | PostCategory>('All')
-  const posts = POSTS.filter((post) => category === 'All' || post.category === category)
+  const posts = allPosts.filter((post) => category === 'All' || post.category === category)
   const [first, ...rest] = posts
 
   return (
@@ -29,10 +31,10 @@ export function Blog() {
 
         {first ? (
           <>
-            <PostCard key={`${category}-${first.slug}`} post={first} large />
+            <PostCard key={`${category}-${first.id}`} post={first} large />
             <ul className="post-grid">
               {rest.map((post) => (
-                <li key={`${category}-${post.slug}`}>
+                <li key={`${category}-${post.id}`}>
                   <PostCard post={post} />
                 </li>
               ))}

@@ -1,6 +1,6 @@
 import { useEffect, useSyncExternalStore } from 'react'
 
-export type Route = 'home' | 'blog' | 'privacy' | 'terms'
+export type Route = 'home' | 'blog' | 'privacy' | 'terms' | 'login' | 'admin'
 
 function subscribe(callback: () => void) {
   window.addEventListener('hashchange', callback)
@@ -12,10 +12,12 @@ function getRoute(): Route {
   if (hash === '#/blog') return 'blog'
   if (hash === '#/privacy') return 'privacy'
   if (hash === '#/terms') return 'terms'
+  if (hash === '#/login') return 'login'
+  if (hash === '#/admin') return 'admin'
   return 'home'
 }
 
-/** Tiny hash router: `#/blog`, `#/privacy`, `#/terms`; every other hash is a home-page anchor. */
+/** Tiny hash router: `#/blog`, `#/privacy`, `#/terms`, `#/login`, `#/admin`; every other hash is a home-page anchor. */
 export function useRoute(): Route {
   const route = useSyncExternalStore(subscribe, getRoute, () => 'home' as Route)
 
