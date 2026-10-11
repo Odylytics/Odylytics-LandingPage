@@ -3,7 +3,9 @@ import { Blog } from './pages/Blog'
 import { Admin } from './pages/Admin'
 import { Legal } from './pages/Legal'
 import { Login } from './pages/Login'
+import { TeamPage } from './pages/TeamPage'
 import { PRIVACY, TERMS } from './data/legal'
+import { useUi } from './hooks/useContent'
 import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
@@ -18,24 +20,26 @@ import { Nav } from './sections/Nav'
 import { Partners } from './sections/Partners'
 import { Recognition } from './sections/Recognition'
 import { Solutions } from './sections/Solutions'
-import { Team } from './sections/Team'
+import { TeamTeaser } from './sections/TeamTeaser'
 import { Testimonials } from './sections/Testimonials'
 
 function App() {
   const route = useRoute()
+  const ui = useUi()
   useReveal(route)
   useSmoothScroll()
 
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to content
+        {ui.skip}
       </a>
       <Nav />
       <main id="main">
         {route === 'blog' && <Blog />}
         {route === 'privacy' && <Legal doc={PRIVACY} />}
         {route === 'terms' && <Legal doc={TERMS} />}
+        {route === 'team' && <TeamPage />}
         {route === 'login' && <Login />}
         {route === 'admin' && <Admin />}
         {route === 'home' && (
@@ -48,7 +52,7 @@ function App() {
             <Recognition />
             <Partners />
             <Testimonials />
-            <Team />
+            <TeamTeaser />
             <News />
             <Contact />
           </>

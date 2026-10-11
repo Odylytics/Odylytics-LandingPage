@@ -1,7 +1,7 @@
 import { Suspense, lazy, useState } from 'react'
 import HoldButton from '../components/HoldButton'
 import type { HoldButtonPhase } from '../components/HoldButton'
-import { HERO } from '../data/content'
+import { useContent } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { useRotatingWord } from '../hooks/useRotatingWord'
@@ -25,6 +25,7 @@ function supportsWebgl() {
 }
 
 export function Hero() {
+  const { HERO } = useContent()
   const brand = useBrandAssets()
   const theme = useTheme()
   const reducedMotion = usePrefersReducedMotion()

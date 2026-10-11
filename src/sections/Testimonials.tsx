@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { ArrowLeftIcon, ArrowRightIcon } from '../components/Icons'
 import { Modal } from '../components/Modal'
 import { SectionHeading } from '../components/SectionHeading'
-import { TESTIMONIALS_HEADING } from '../data/content'
+import { useContent, useUi } from '../hooks/useContent'
 import type { Testimonial } from '../data/content'
 import { testimonialsStore } from '../lib/stores'
 
@@ -29,6 +29,8 @@ function Person({ item }: { item: Testimonial }) {
 }
 
 export function Testimonials() {
+  const { TESTIMONIALS_HEADING } = useContent()
+  const ui = useUi()
   const testimonials = testimonialsStore.useItems()
   const [active, setActive] = useState<Testimonial | null>(null)
   const trackRef = useRef<HTMLUListElement>(null)
@@ -57,7 +59,7 @@ export function Testimonials() {
                 </blockquote>
                 {long && (
                   <button type="button" className="text-btn" onClick={() => setActive(item)}>
-                    Read more <span className="sr-only">from {item.name}</span>
+                    {ui.readMore} <span className="sr-only">from {item.name}</span>
                   </button>
                 )}
                 <Person item={item} />
@@ -67,10 +69,10 @@ export function Testimonials() {
         </ul>
 
         <div className="quotes__nav">
-          <button type="button" className="quotes__arrow" aria-label="Previous testimonial" onClick={() => scrollByCard(-1)}>
+          <button type="button" className="quotes__arrow" aria-label={ui.prev} onClick={() => scrollByCard(-1)}>
             <ArrowLeftIcon />
           </button>
-          <button type="button" className="quotes__arrow" aria-label="Next testimonial" onClick={() => scrollByCard(1)}>
+          <button type="button" className="quotes__arrow" aria-label={ui.next} onClick={() => scrollByCard(1)}>
             <ArrowRightIcon />
           </button>
         </div>

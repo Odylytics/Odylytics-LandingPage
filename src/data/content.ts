@@ -100,11 +100,28 @@ export const BRAND = {
   symbolDark: '/assets/brand/odylytics-symbol-dark.svg',
 }
 
-export const NAV_ITEMS: NavItem[] = [
-  { label: 'About', href: '#mission' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Recognition', href: '#recognition' },
-  { label: 'Team', href: '#team' },
+export type NavGroup = { label: string; href?: string; items?: NavItem[] }
+
+/** Top navigation: groups with `items` render as dropdowns. */
+export const NAV: NavGroup[] = [
+  {
+    label: 'Solutions',
+    items: [
+      { label: 'All solutions', href: '#solutions' },
+      { label: 'AquaGuard', href: '#featured' },
+      { label: 'EnableCode', href: '#featured' },
+    ],
+  },
+  {
+    label: 'Company',
+    items: [
+      { label: 'Mission', href: '#mission' },
+      { label: 'Partners', href: '#partners' },
+      { label: 'Testimonials', href: '#testimonials' },
+      { label: 'Team', href: '#/team' },
+    ],
+  },
+  { label: 'Prizes', href: '#recognition' },
   { label: 'News', href: '#/blog' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -292,10 +309,22 @@ export const FEATURED: FeaturedSolution[] = [
 // ─── 4. Awards & Certifications ─────────────────────────────────────────────
 
 export const RECOGNITION_HEADING = {
-  eyebrow: 'Recognition',
+  eyebrow: 'Prizes',
   lead: 'Independent proof.',
   main: 'Recognised for impact.',
+  intro: 'Four prizes across competitions in Vietnam, won by one team.',
 }
+
+export type GalleryPhoto = { src: string; alt: string; caption: string }
+
+export const GALLERY_HEADING = 'Behind the wins'
+
+// TODO(content): confirm the captions and add more photos as they come in.
+export const GALLERY: GalleryPhoto[] = [
+  { src: '/assets/gallery/team-working.jpg', alt: 'The team working together around laptops', caption: 'Building AquaGuard together' },
+  { src: '/assets/gallery/epics-certificate.jpg', alt: 'The team holding the EPICS certificate of achievement', caption: 'EPICS certificate of achievement' },
+  { src: '/assets/gallery/tech-planter.jpg', alt: 'The team in front of the Tech Planter banner', caption: 'Tech Planter' },
+]
 
 // TODO(content): award photos (`image`), press links (`href`) and issuer logos.
 export const RECOGNITION: RecognitionGroup[] = [
@@ -308,8 +337,8 @@ export const RECOGNITION: RecognitionGroup[] = [
         issuerLogo: null, image: null, href: null,
       },
       {
-        type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'EPICS 8th Competition',
-        issuerLogo: null, image: null, href: null,
+        type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'EPICS 8th Competition (ASU & Dow Vietnam)', year: '2026',
+        issuerLogo: null, image: '/assets/gallery/epics-first-place.jpg', href: null,
       },
       {
         type: 'AWARD', place: '2nd', title: '2nd Prize', issuer: 'Bach Khoa Innovation', year: '2026',
@@ -403,6 +432,13 @@ export const TEAM_HEADING = {
   lead: 'Five builders.',
   main: 'The people behind Odylytics.',
   intro: 'Five builders working across AI, engineering, design and community impact.',
+}
+
+export const TEAM_TEASER = {
+  eyebrow: 'Core team',
+  lead: 'Five builders.',
+  main: 'One mission.',
+  intro: 'Meet the people behind Odylytics, what each of them owns, and how they work together.',
 }
 
 // TODO(content): full names and LinkedIn URLs for all 5 members; confirm roles, bios and responsibilities.
@@ -586,7 +622,7 @@ export const FOOTER_GROUPS: { heading: string; links: NavItem[] }[] = [
     heading: 'Company',
     links: [
       { label: 'Mission', href: '#mission' },
-      { label: 'Core team', href: '#team' },
+      { label: 'Core team', href: '#/team' },
       { label: 'Recognition', href: '#recognition' },
       { label: 'Partners', href: '#partners' },
     ],

@@ -1,8 +1,9 @@
 import { SectionHeading } from '../components/SectionHeading'
-import { SOLUTIONS, SOLUTIONS_HEADING } from '../data/content'
+import { useContent } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
 export function Solutions() {
+  const { SOLUTIONS, SOLUTIONS_HEADING } = useContent()
   const { solutionLogo } = useBrandAssets()
   return (
     <section id="solutions" className="section" aria-labelledby="solutions-title">

@@ -1,0 +1,156 @@
+import type { Content, DeepPartial } from '../hooks/useContent'
+
+/** Vietnamese copy. Keys mirror content.ts; arrays are matched by position. Anything missing stays English. */
+export const VI: DeepPartial<Content> = {
+  NAV: [
+    { label: 'Giải pháp', items: [{ label: 'Tất cả giải pháp' }, {}, {}] },
+    { label: 'Công ty', items: [{ label: 'Sứ mệnh' }, { label: 'Đối tác' }, { label: 'Đánh giá' }, { label: 'Đội ngũ' }] },
+    { label: 'Giải thưởng' },
+    { label: 'Tin tức' },
+    { label: 'Liên hệ' },
+  ],
+
+  HERO: {
+    eyebrow: 'Giải pháp số ứng dụng AI',
+    headlineTop: 'AI biến dữ liệu',
+    headlineBottom: 'thành quyết định giúp',
+    rotatingWords: ['dự báo', 'bảo vệ', 'ứng phó', 'phục hồi'],
+    srHeadline: 'AI biến dữ liệu thành quyết định giúp dự báo, bảo vệ, ứng phó và phục hồi.',
+    subheadline:
+      'Odylytics là startup AI phát triển các nền tảng giám sát thời gian thực, phân tích dự báo và hỗ trợ ra quyết định cho chính quyền, doanh nghiệp và cộng đồng.',
+    holdCta: { label: 'Nhấn giữ để khám phá', doneLabel: 'Đi thôi' },
+    marquee: ['Phân tích AI', 'Giám sát IoT', 'Cảnh báo sớm', 'Nền tảng dữ liệu', 'Hỗ trợ quyết định', 'Thiết kế bao trùm'],
+  },
+
+  MISSION: {
+    eyebrow: 'Sứ mệnh',
+    lead: 'Xây dựng cộng đồng an toàn hơn.',
+    main: 'Từng quyết định một.',
+    mission:
+      'Chúng tôi xây dựng AI để mọi người có đúng thông tin vào đúng thời điểm quan trọng: trước một trận lũ, giữa khủng hoảng, và trong đời sống hằng ngày của những người thế giới số hay bỏ quên.',
+    vision:
+      'Một tương lai nơi mọi cộng đồng, dù lớn hay nhỏ, dù khả năng ra sao, đều có đủ trí tuệ để lường trước rủi ro, ứng phó nhanh và cùng nhau phục hồi.',
+    pillarsHeading: 'Định hướng của chúng tôi',
+    pillars: [
+      { title: 'Chứng minh ngoài thực tế', text: 'Đưa AquaGuard và EnableCode từ nguyên mẫu đạt giải đến các chương trình thí điểm cùng chính quyền địa phương, trường học và đội cứu hộ.' },
+      { title: 'Xây một lõi AI dùng chung', text: 'Giữ một tầng trí tuệ duy nhất đằng sau mọi sản phẩm, để mỗi giải pháp mới ra mắt nhanh hơn và học được từ các giải pháp khác.' },
+      { title: 'Thiết kế cho mọi người', text: 'Coi khả năng tiếp cận là điểm xuất phát chứ không phải tính năng thêm vào, từ lập trình rảnh tay đến cảnh báo thiên tai ai cũng hiểu.' },
+      { title: 'Lớn lên cùng đối tác', text: 'Hợp tác với trường đại học, cơ quan nhà nước và doanh nghiệp trong nước lẫn quốc tế để đưa nghiên cứu vào cộng đồng thật.' },
+    ],
+  },
+
+  SOLUTIONS_HEADING: {
+    eyebrow: 'Giải pháp số cốt lõi',
+    lead: 'Sáu giải pháp.',
+    main: 'Một tầng trí tuệ.',
+    intro: 'Mỗi giải pháp của Odylytics dùng chung một lõi AI, xây một lần và điều chỉnh cho từng lĩnh vực.',
+  },
+  SOLUTIONS: [
+    { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
+    { oneLiner: 'Lập trình kéo thả, rảnh tay cho người khuyết tật chi trên.', description: 'Webcam theo dõi đầu người học, cử chỉ đầu di chuyển và nhấp chuột. Chương trình được ghép từ các khối kéo thả, nên có thể lập trình mà không cần bàn phím hay chuột.', category: 'Giáo dục bao trùm' },
+    { oneLiner: 'Giám sát chất lượng không khí dễ tiếp cận cho đô thị khỏe mạnh hơn.', description: 'Cảm biến chi phí thấp và bảng điều khiển đơn giản biến số liệu không khí thô thành cảnh báo rõ ràng theo khu vực để người dân, trường học và đội quản lý đô thị hành động.', category: 'Môi trường' },
+    { oneLiner: 'Công cụ giúp tổ chức chào đón tất cả mọi người.', description: 'Nền tảng giúp tổ chức làm cho sự kiện, nơi làm việc và dịch vụ cởi mở với người có mọi khả năng, kèm danh sách kiểm tra và hướng dẫn thực tế.', category: 'Thiết kế bao trùm' },
+    { oneLiner: 'Ghép đôi thông minh, an toàn hơn cho cuộc sống chung.', description: 'Kết nối người với bạn cùng phòng và chỗ ở phù hợp dựa trên sở thích chung và tín hiệu tin cậy, để việc tìm nơi ở an toàn và dễ dàng hơn.', category: 'Cộng đồng' },
+    { oneLiner: 'Việc làm dễ tiếp cận cho người khiếm thính và nghe kém.', description: 'Kết nối người khiếm thính và nghe kém với nhà tuyển dụng, dùng phụ đề trực tiếp và công cụ giao tiếp bằng hình ảnh để phỏng vấn và công việc hằng ngày dễ tiếp cận.', category: 'Việc làm bao trùm' },
+  ],
+
+  FEATURED_HEADING: { eyebrow: 'Giải pháp nổi bật', lead: 'Hai nền tảng.', main: 'Đã kiểm chứng thực tế.' },
+  FEATURED: [
+    {
+      badge: 'Chủ lực',
+      tagline: 'Hệ thống điều phối cứu hộ lũ lụt đa nền tảng đang vận hành tại Việt Nam.',
+      problem: 'Khi lũ về, nạn nhân, đội cứu hộ và điều phối viên thường bị cắt đứt liên lạc. AquaGuard kết nối cả ba theo thời gian thực, trên web lẫn di động.',
+      features: [
+        { title: 'Yêu cầu SOS', text: 'Người dân gửi lời cầu cứu đến tay đội cứu hộ ngay lập tức.' },
+        { title: 'Bản đồ lũ trực tiếp', text: 'Một bức tranh cập nhật về vùng ngập và các yêu cầu cứu trợ.' },
+        { title: 'Điều phối cứu hộ', text: 'Điều phối viên và đội cứu hộ làm việc trên cùng một màn hình trực tiếp.' },
+        { title: 'Hướng dẫn an toàn', text: 'Chỉ dẫn rõ ràng cho người dân trong vùng bị ảnh hưởng.' },
+      ],
+      metrics: [{ label: 'Giải thưởng cuộc thi' }, { label: 'Nhóm đối tượng được kết nối' }, { label: 'Nền tảng: web & di động' }],
+      cta: 'Tìm hiểu thêm',
+    },
+    {
+      badge: 'Chủ lực',
+      tagline: 'Nền tảng dạy lập trình kéo thả dành cho người khuyết tật chi trên.',
+      problem: 'Học lập trình thường giả định có bàn phím và chuột, khiến người không dùng được tay bị bỏ lại. EnableCode cho phép họ viết và chạy code hoàn toàn rảnh tay.',
+      features: [
+        { title: 'Nhận diện khuôn mặt bằng AI', text: 'Webcam theo dõi chuyển động đầu theo thời gian thực.' },
+        { title: 'Con trỏ bằng cử chỉ đầu', text: 'Cử chỉ đầu di chuyển và nhấp con trỏ.' },
+        { title: 'Lập trình kéo thả', text: 'Chương trình ghép từ các khối thay vì gõ cú pháp.' },
+        { title: 'Chạy code rảnh tay', text: 'Viết, chạy và kiểm thử code mà không chạm vào thiết bị.' },
+      ],
+      metrics: [{ label: 'Lập trình rảnh tay' }, { label: 'Fessior DevCamp 2026' }],
+      cta: 'Tìm hiểu thêm',
+    },
+  ],
+
+  RECOGNITION_HEADING: {
+    eyebrow: 'Giải thưởng',
+    lead: 'Được công nhận độc lập.',
+    main: 'Ghi nhận vì tác động.',
+    intro: 'Bốn giải thưởng từ các cuộc thi tại Việt Nam, đều của cùng một đội.',
+  },
+  RECOGNITION: [
+    { items: [{ title: 'Giải Nhất' }, { title: 'Giải Nhất' }, { title: 'Giải Nhì' }] },
+    { items: [{ title: 'Giải Nhất' }] },
+  ],
+  GALLERY_HEADING: 'Phía sau những chiến thắng',
+  GALLERY: [
+    { alt: 'Cả đội làm việc cùng nhau quanh những chiếc laptop', caption: 'Cùng xây dựng AquaGuard' },
+    { alt: 'Cả đội cầm giấy chứng nhận EPICS', caption: 'Giấy chứng nhận EPICS' },
+    { alt: 'Cả đội chụp trước banner Tech Planter', caption: 'Tech Planter' },
+  ],
+
+  PARTNERS_HEADING: {
+    eyebrow: 'Đối tác',
+    lead: 'Được các tổ chức tin tưởng.',
+    main: 'Xây cùng cộng đồng.',
+    intro: 'Chúng tôi làm việc với cơ quan nhà nước, nhà nghiên cứu và doanh nghiệp để biến dữ liệu tin cậy thành sự an toàn hằng ngày.',
+  },
+  PARTNERS: [{ type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Doanh nghiệp' }],
+
+  TESTIMONIALS_HEADING: { eyebrow: 'Đánh giá', lead: 'Lời của họ.', main: 'Đối tác và người dùng nói gì.' },
+
+  TEAM_HEADING: {
+    eyebrow: 'Đội ngũ cốt lõi',
+    lead: 'Năm người xây dựng.',
+    main: 'Những người đứng sau Odylytics.',
+    intro: 'Năm người làm việc trên các mảng AI, kỹ thuật, thiết kế và tác động cộng đồng.',
+  },
+  TEAM: [
+    { role: 'Giám đốc điều hành (CEO)', bio: 'Dẫn dắt tầm nhìn và chiến lược của Odylytics, xây dựng quan hệ đối tác để đưa giải pháp đến những cộng đồng cần nhất.', responsibilities: ['Đặt tầm nhìn, chiến lược và lộ trình công ty', 'Dẫn dắt hợp tác với trường đại học, chính quyền và nhà tài trợ', 'Đại diện Odylytics tại các cuộc thi, sự kiện và trên báo chí'] },
+    { role: 'Giám đốc công nghệ (CTO)', bio: 'Dẫn dắt công nghệ và lõi AI dùng chung, thiết kế các mô hình biến dữ liệu cảm biến và cộng đồng thành dự báo kịp thời.', responsibilities: ['Phụ trách lõi AI dùng chung và kiến trúc hệ thống', 'Huấn luyện và đánh giá mô hình cho lũ lụt, không khí và khả năng tiếp cận', 'Rà soát code, bảo mật và tuyển dụng kỹ thuật'] },
+    { role: 'Trưởng nhóm Sản phẩm & UX', bio: 'Thiết kế trải nghiệm dễ tiếp cận, lấy con người làm trung tâm để mọi giải pháp vẫn đơn giản dù trong khủng hoảng.', responsibilities: ['Nghiên cứu người dùng với đội cứu hộ và người khuyết tật', 'Thiết kế giao diện và hệ thống thiết kế của Odylytics', 'Biến phản hồi thành danh sách việc cần làm'] },
+    { role: 'Trưởng nhóm Marketing', bio: 'Định hình cách Odylytics tiếp cận chính quyền, đối tác và cộng đồng, và kể câu chuyện đằng sau tác động của chúng tôi.', responsibilities: ['Phụ trách thương hiệu, website và mạng xã hội', 'Đưa câu chuyện đến báo chí và quản lý trang tin tức', 'Chuẩn bị hồ sơ dự thi và tài liệu cho đối tác'] },
+    { role: 'Kỹ sư phần mềm', bio: 'Xây dựng các nền tảng đằng sau giải pháp, từ luồng dữ liệu thời gian thực đến bảng điều khiển cho đội cứu hộ.', responsibilities: ['Xây ứng dụng web và di động cho AquaGuard và EnableCode', 'Duy trì luồng dữ liệu và bản đồ trực tiếp', 'Phát hành phiên bản và theo dõi hệ thống'] },
+  ],
+  TEAM_TEASER: { eyebrow: 'Đội ngũ cốt lõi', lead: 'Năm người xây dựng.', main: 'Một sứ mệnh.', intro: 'Gặp những người đứng sau Odylytics, vai trò của từng người và cách họ làm việc cùng nhau.' },
+
+  NEWS_HEADING: { eyebrow: 'Tin tức', lead: 'Mới nhất từ Odylytics.', main: 'Giải thưởng, báo chí và cột mốc.', intro: 'Kết quả cuộc thi, tin báo chí và cập nhật từ đội ngũ.' },
+  POSTS: [
+    { title: 'Nhà sáng lập của chúng tôi nhận học bổng Quantum', excerpt: 'Học bổng hỗ trợ giai đoạn tiếp theo của Odylytics, từ nghiên cứu sản phẩm đến đưa giải pháp đến nhiều cộng đồng hơn.', category: 'Milestones' },
+    { title: 'Odylytics lên báo Thanh Niên', excerpt: 'Nhật báo quốc gia kể câu chuyện về một nhóm sinh viên xây dựng AI cho lũ lụt và khả năng tiếp cận.', category: 'Press' },
+    { title: 'AquaGuard đoạt giải Nhất cuộc thi thuyết trình OISP', excerpt: 'Nền tảng điều phối cứu hộ lũ lụt của chúng tôi giành giải nhất vòng thuyết trình năm 2025.', category: 'Awards' },
+    { title: 'AquaGuard đoạt giải Nhất cuộc thi EPICS lần thứ 8', excerpt: 'Ban giám khảo ghi nhận cách hệ thống kết nối nạn nhân, đội cứu hộ và điều phối viên theo thời gian thực.', category: 'Awards' },
+    { title: 'AquaGuard giành giải Nhì Bách Khoa Innovation', excerpt: 'Về nhì trong các dự án đổi mới sáng tạo tại Trường Đại học Bách Khoa TP.HCM.', category: 'Awards' },
+    { title: 'EnableCode vô địch Fessior DevCamp 2026 Prometheus', excerpt: 'Nền tảng lập trình rảnh tay cho người khuyết tật chi trên của chúng tôi giành giải nhất.', category: 'Awards' },
+    { title: 'Đội ngũ mang về bốn giải thưởng trong một năm', excerpt: 'Nhìn lại các cuộc thi, những đêm thức khuya và người cố vấn đứng sau kết quả năm nay.', category: 'Milestones' },
+  ],
+
+  CONTACT: {
+    eyebrow: 'Liên hệ',
+    lead: 'Cùng xây điều có ý nghĩa.',
+    main: 'Cùng nhau.',
+    subcopy: 'Hợp tác, thí điểm hay báo chí, chúng tôi luôn muốn lắng nghe bạn.',
+  },
+
+  FOOTER_NOTE:
+    'AquaGuard, EnableCode, AirGuard, Includio, RooMie và HearWork là sản phẩm của Odylytics. Giải thưởng và tin báo chí thuộc về đơn vị tổ chức và tòa soạn tương ứng. Một số sản phẩm đang trong giai đoạn thí điểm hoặc nguyên mẫu và tính năng có thể thay đổi.',
+  FOOTER_GROUPS: [
+    { heading: 'Giải pháp' },
+    { heading: 'Công ty', links: [{ label: 'Sứ mệnh' }, { label: 'Đội ngũ cốt lõi' }, { label: 'Giải thưởng' }, { label: 'Đối tác' }] },
+    { heading: 'Tin tức', links: [{ label: 'Tất cả tin tức' }, { label: 'Giải thưởng' }, { label: 'Báo chí' }, { label: 'Cột mốc' }] },
+    { heading: 'Liên hệ', links: [{ label: 'Hợp tác' }, { label: 'Thí điểm' }, { label: 'Báo chí' }] },
+  ],
+  LEGAL_LINKS: [{ label: 'Chính sách bảo mật' }, { label: 'Điều khoản sử dụng' }, { label: 'Chính sách cookie' }, { label: 'Sơ đồ trang' }, { label: 'Đăng nhập thành viên' }],
+}

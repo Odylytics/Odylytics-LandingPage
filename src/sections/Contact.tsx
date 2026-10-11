@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Button } from '../components/Button'
-import { CONTACT } from '../data/content'
+import { useContent, useUi } from '../hooks/useContent'
 
 export function Contact() {
+  const { CONTACT } = useContent()
+  const ui = useUi()
   const [sent, setSent] = useState(false)
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -30,35 +32,35 @@ export function Contact() {
           </h2>
           <p className="body-l">{CONTACT.subcopy}</p>
           <p className="contact__email">
-            Or email us directly at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+            {ui.orEmail} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
           </p>
         </div>
 
         <form className="card form" onSubmit={onSubmit} data-reveal>
           <div className="form__row">
             <label className="field">
-              <span className="label">Name</span>
+              <span className="label">{ui.name}</span>
               <input name="name" type="text" autoComplete="name" required />
             </label>
             <label className="field">
-              <span className="label">Email</span>
+              <span className="label">{ui.email}</span>
               <input name="email" type="email" autoComplete="email" required />
             </label>
           </div>
           <label className="field">
-            <span className="label">Organisation</span>
+            <span className="label">{ui.organisation}</span>
             <input name="organisation" type="text" autoComplete="organization" />
           </label>
           <label className="field">
-            <span className="label">Message</span>
+            <span className="label">{ui.message}</span>
             <textarea name="message" rows={5} required />
           </label>
           <div className="form__actions">
             <Button type="submit" arrow={false}>
-              Send message
+              {ui.send}
             </Button>
             <p className="form__status" role="status">
-              {sent ? 'Your email app should open with the message ready to send.' : ''}
+              {sent ? ui.sent : ''}
             </p>
           </div>
         </form>

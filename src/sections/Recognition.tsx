@@ -1,85 +1,61 @@
 import { SectionHeading } from '../components/SectionHeading'
-import { RECOGNITION, RECOGNITION_HEADING, SOLUTIONS } from '../data/content'
-import type { RecognitionType } from '../data/content'
+import { SOLUTIONS } from '../data/content'
+import { useContent, useUi } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
-const typeClass: Record<RecognitionType, string> = {
-  AWARD: 'tag',
-  CERTIFICATION: 'tag tag--neutral',
-  ACCELERATOR: 'tag tag--signal',
-}
-
 export function Recognition() {
+  const { RECOGNITION, RECOGNITION_HEADING, GALLERY, GALLERY_HEADING } = useContent()
+  const ui = useUi()
   const { solutionLogo } = useBrandAssets()
+  const prizes = RECOGNITION.flatMap((group) => group.items.map((item) => ({ ...item, solutionId: group.solutionId, solutionName: group.solutionName })))
+
   return (
     <section id="recognition" className="section" aria-labelledby="recognition-title">
       <div className="container">
         <SectionHeading id="recognition-title" {...RECOGNITION_HEADING} />
 
-        <div className="rec-columns">
-          {RECOGNITION.map((group) => {
-            const logo = SOLUTIONS.find((solution) => solution.id === group.solutionId)?.logo
+        <ul className="prize-grid">
+          {prizes.map((prize, index) => {
+            const logo = SOLUTIONS.find((solution) => solution.id === prize.solutionId)?.logo
             return (
-              <div key={group.solutionId} className="card rec-column" data-reveal>
-                <h3 className="rec-column__title">
-                  {logo && (
-                    <span className="logo-chip">
-                      <img src={solutionLogo(logo)} alt="" loading="lazy" />
-                    </span>
+              <li key={index} className="card card--hover prize" data-reveal>
+                <div className="prize__media">
+                  {prize.image ? <img src={prize.image} alt={`${prize.title}, ${prize.issuer}`} loading="lazy" /> : <span className="logo-placeholder">{ui.photoSoon}</span>}
+                  <span className={`prize__medal${prize.place === '1st' ? ' prize__medal--first' : ''}`}>{prize.place ?? prize.type}</span>
+                </div>
+                <div className="prize__body">
+                  <span className="logo-chip prize__project">
+                    {logo ? <img src={solutionLogo(logo)} alt={prize.solutionName} loading="lazy" /> : prize.solutionName}
+                  </span>
+                  <h3 className="prize__title">{prize.title}</h3>
+                  <p className="prize__issuer">
+                    {prize.issuer}
+                    {prize.year && <> · {prize.year}</>}
+                  </p>
+                  {prize.href ? (
+                    <a className="text-btn" href={prize.href} target="_blank" rel="noreferrer">
+                      {ui.readTheArticle}
+                    </a>
+                  ) : (
+                    <span className="prize__soon">{ui.articleLinkSoon}</span>
                   )}
-                  <span>{group.solutionName}</span>
-                </h3>
-                <ul>
-                  {group.items.map((item, index) => (
-                    <li key={index} className="rec-card">
-                      <div className="rec-card__logo">
-                        {item.issuerLogo ? (
-                          <img src={item.issuerLogo} alt={`${item.issuer} logo`} loading="lazy" />
-                        ) : item.place ? (
-                          <span className={`rec-card__medal${item.place === '1st' ? ' rec-card__medal--first' : ''}`} aria-hidden="true">
-                            {item.place}
-                          </span>
-                        ) : (
-                          <span className="logo-placeholder" aria-hidden="true">
-                            Logo
-                          </span>
-                        )}
-                      </div>
-                      <div className="rec-card__content">
-                        <span className={typeClass[item.type]}>{item.type}</span>
-                        <h4 className="rec-card__title">{item.title}</h4>
-                        <p className="rec-card__meta">
-                          {item.issuer}
-                          {item.year && (
-                            <>
-                              {' '}
-                              <span aria-hidden="true">·</span> {item.year}
-                            </>
-                          )}
-                        </p>
-                        {item.context && <p className="rec-card__context">{item.context}</p>}
-                        <div className="rec-card__photo">
-                          {item.image ? (
-                            <img src={item.image} alt={`${item.title}, ${item.issuer}`} loading="lazy" />
-                          ) : (
-                            <span className="logo-placeholder">Photo coming soon</span>
-                          )}
-                        </div>
-                        {item.href ? (
-                          <a className="text-btn" href={item.href} target="_blank" rel="noreferrer">
-                            Read the article ›
-                          </a>
-                        ) : (
-                          <span className="rec-card__soon">Article link coming soon</span>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                </div>
+              </li>
             )
           })}
-        </div>
+        </ul>
+
+        <h3 className="mission__subheading" data-reveal>
+          {GALLERY_HEADING}
+        </h3>
+        <ul className="gallery">
+          {GALLERY.map((photo) => (
+            <li key={photo.src} className="gallery__item" data-reveal>
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+              <span className="gallery__caption">{photo.caption}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

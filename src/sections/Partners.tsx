@@ -1,7 +1,8 @@
 import { SectionHeading } from '../components/SectionHeading'
-import { PARTNERS, PARTNERS_HEADING } from '../data/content'
+import { useContent } from '../hooks/useContent'
 
 export function Partners() {
+  const { PARTNERS, PARTNERS_HEADING } = useContent()
   return (
     <section id="partners" className="section" aria-labelledby="partners-title">
       <div className="container">

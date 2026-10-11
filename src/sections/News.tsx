@@ -1,10 +1,13 @@
 import { PostCard } from '../components/PostCard'
 import { SectionHeading } from '../components/SectionHeading'
-import { NEWS_HEADING } from '../data/content'
+import { useContent, useUi } from '../hooks/useContent'
 import { postsStore } from '../lib/stores'
 
 export function News() {
-  const latest = postsStore.useItems().slice(0, 3)
+  const { NEWS_HEADING, POSTS } = useContent()
+  const ui = useUi()
+  const stored = postsStore.useItems()
+  const latest = (postsStore.isSeeded() ? POSTS : stored).slice(0, 3)
   return (
     <section id="news" className="section" aria-labelledby="news-title">
       <div className="container">
@@ -18,7 +21,7 @@ export function News() {
         </ul>
         <p className="news__more" data-reveal>
           <a className="text-btn" href="#/blog">
-            View all news ›
+            {ui.viewAllNews}
           </a>
         </p>
       </div>

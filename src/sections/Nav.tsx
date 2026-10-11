@@ -1,19 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../components/Button'
-import { CloseIcon, MenuIcon } from '../components/Icons'
-import { ThemeToggle } from '../components/ThemeToggle'
-import { NAV_ITEMS } from '../data/content'
+import { ChevronDownIcon, CloseIcon, MenuIcon } from '../components/Icons'
+import { SettingsMenu, SettingsPanel } from '../components/SettingsMenu'
 import { useBrandAssets } from '../hooks/useBrandAssets'
-import { useAuth } from '../lib/auth'
+import { useContent, useUi } from '../hooks/useContent'
 import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
+import { useAuth } from '../lib/auth'
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [dropdown, setDropdown] = useState<number | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
+  const linksRef = useRef<HTMLElement>(null)
   const brand = useBrandAssets()
+  const { NAV } = useContent()
+  const ui = useUi()
   const { member } = useAuth()
+  const memberHref = member ? '#/admin' : '#/login'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -21,6 +26,20 @@ export function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (dropdown === null) return
+    const onPointer = (event: PointerEvent) => {
+      if (!linksRef.current?.contains(event.target as Node)) setDropdown(null)
+    }
+    const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setDropdown(null)
+    document.addEventListener('pointerdown', onPointer)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('pointerdown', onPointer)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [dropdown])
 
   useEffect(() => {
     if (!open) return
@@ -47,27 +66,47 @@ export function Nav() {
   return (
     <header className={`nav${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}`}>
       <div className="nav__inner">
-        <a className="nav__brand" href="#home" aria-label="Odylytics — back to top">
+        <a className="nav__brand" href="#home" aria-label="Odylytics, back to top">
           <img src={brand.wordmark} alt="" width="1826" height="565" />
         </a>
 
-        <nav className="nav__links" aria-label="Primary">
+        <nav className="nav__links" aria-label="Primary" ref={linksRef}>
           <ul>
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
+            {NAV.map((group, index) => (
+              <li key={group.label} className="nav__item" onMouseEnter={() => group.items && setDropdown(index)} onMouseLeave={() => setDropdown(null)}>
+                {group.items ? (
+                  <>
+                    <button type="button" className="nav__trigger" aria-expanded={dropdown === index} aria-haspopup="true" onClick={() => setDropdown(dropdown === index ? null : index)}>
+                      {group.label}
+                      <ChevronDownIcon />
+                    </button>
+                    {dropdown === index && (
+                      <ul className="nav__dropdown">
+                        {group.items.map((item) => (
+                          <li key={item.label}>
+                            <a href={item.href} onClick={() => setDropdown(null)}>
+                              {item.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <a href={group.href}>{group.label}</a>
+                )}
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="nav__actions">
-          <a className="nav__member" href={member ? '#/admin' : '#/login'}>
-            {member ? 'Dashboard' : 'Member login'}
+          <a className="nav__member" href={memberHref}>
+            {member ? ui.dashboard : ui.memberLogin}
           </a>
-          <ThemeToggle />
+          <SettingsMenu />
           <Button href="#contact" variant="inverse" size="sm" arrow={false} className="nav__cta">
-            Get in touch
+            {ui.getInTouch}
           </Button>
           <button
             ref={toggleRef}
@@ -75,7 +114,7 @@ export function Nav() {
             className="nav__toggle"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={ui.menu}
             onClick={() => setOpen((value) => !value)}
           >
             {open ? <CloseIcon /> : <MenuIcon />}
@@ -85,22 +124,37 @@ export function Nav() {
 
       <div id="mobile-menu" ref={menuRef} className="nav__menu" hidden={!open} data-lenis-prevent>
         <nav aria-label="Mobile">
-          <ol>
-            {NAV_ITEMS.map((item, index) => (
-              <li key={item.href}>
-                <a href={item.href} onClick={() => setOpen(false)}>
-                  <span className="nav__menu-index">{String(index + 1).padStart(2, '0')}</span>
-                  {item.label}
-                </a>
+          <ul className="nav__menu-groups">
+            {NAV.map((group) => (
+              <li key={group.label}>
+                {group.items ? (
+                  <>
+                    <span className="nav__menu-heading">{group.label}</span>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li key={item.label}>
+                          <a href={item.href} onClick={() => setOpen(false)}>
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <a className="nav__menu-top" href={group.href} onClick={() => setOpen(false)}>
+                    {group.label}
+                  </a>
+                )}
               </li>
             ))}
-          </ol>
+          </ul>
         </nav>
-        <a className="nav__menu-member" href={member ? '#/admin' : '#/login'} onClick={() => setOpen(false)}>
-          {member ? 'Dashboard' : 'Member login'}
+        <SettingsPanel />
+        <a className="nav__menu-member" href={memberHref} onClick={() => setOpen(false)}>
+          {member ? ui.dashboard : ui.memberLogin}
         </a>
         <Button href="#contact" variant="inverse" arrow={false} onClick={() => setOpen(false)}>
-          Get in touch
+          {ui.getInTouch}
         </Button>
       </div>
     </header>

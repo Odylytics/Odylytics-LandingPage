@@ -1,8 +1,10 @@
 import type { Post } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
+import { useUi } from '../hooks/useContent'
 
 export function PostCard({ post, large = false }: { post: Post; large?: boolean }) {
   const brand = useBrandAssets()
+  const ui = useUi()
   const meta = [post.source, post.date].filter(Boolean).join(' · ')
   const body = (
     <>
@@ -10,12 +12,12 @@ export function PostCard({ post, large = false }: { post: Post; large?: boolean 
         {post.image ? <img src={post.image} alt="" loading="lazy" /> : <img className="post-card__placeholder" src={brand.symbol} alt="" />}
       </div>
       <div className="post-card__body">
-        <span className="tag tag--neutral">{post.category}</span>
+        <span className="tag tag--neutral">{ui.categories[post.category] ?? post.category}</span>
         <h3 className="post-card__title">{post.title}</h3>
         <p className="post-card__excerpt">{post.excerpt}</p>
         <p className="post-card__meta">
           {meta && <span>{meta}</span>}
-          {post.href ? <span className="post-card__read">Read article ›</span> : <span className="post-card__soon">Article coming soon</span>}
+          {post.href ? <span className="post-card__read">{ui.readArticle}</span> : <span className="post-card__soon">{ui.articleSoon}</span>}
         </p>
       </div>
     </>

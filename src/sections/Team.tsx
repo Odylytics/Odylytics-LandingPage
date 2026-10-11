@@ -1,9 +1,10 @@
 import { LinkedInIcon } from '../components/Icons'
 import { SectionHeading } from '../components/SectionHeading'
-import { TEAM, TEAM_HEADING } from '../data/content'
+import { useContent } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
 export function Team() {
+  const { TEAM, TEAM_HEADING } = useContent()
   const brand = useBrandAssets()
   return (
     <section id="team" className="section" aria-labelledby="team-title">

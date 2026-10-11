@@ -1,7 +1,9 @@
 import { SectionHeading } from '../components/SectionHeading'
-import { MISSION } from '../data/content'
+import { useContent, useUi } from '../hooks/useContent'
 
 export function Mission() {
+  const { MISSION } = useContent()
+  const ui = useUi()
   return (
     <section id="mission" className="section" aria-labelledby="mission-title">
       <div className="container">
@@ -9,11 +11,11 @@ export function Mission() {
 
         <div className="mission__statements">
           <div className="card mission__statement" data-reveal>
-            <h3 className="label">Mission</h3>
+            <h3 className="label">{ui.mission}</h3>
             <p>{MISSION.mission}</p>
           </div>
           <div className="card mission__statement" data-reveal>
-            <h3 className="label">Vision</h3>
+            <h3 className="label">{ui.vision}</h3>
             <p>{MISSION.vision}</p>
           </div>
         </div>

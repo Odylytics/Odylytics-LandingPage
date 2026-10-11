@@ -1,10 +1,11 @@
 import { Button } from '../components/Button'
 import { CheckIcon } from '../components/Icons'
 import { SectionHeading } from '../components/SectionHeading'
-import { FEATURED, FEATURED_HEADING } from '../data/content'
+import { useContent } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
 export function Featured() {
+  const { FEATURED, FEATURED_HEADING } = useContent()
   const { solutionLogo } = useBrandAssets()
   return (
     <section id="featured" className="section" aria-labelledby="featured-title">

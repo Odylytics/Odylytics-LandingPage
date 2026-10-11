@@ -1,8 +1,11 @@
-import { CONTACT, FOOTER_GROUPS, FOOTER_NOTE, LEGAL_LINKS, SOCIALS } from '../data/content'
+import { CONTACT, SOCIALS } from '../data/content'
+import { useContent, useUi } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
 export function Footer() {
   const brand = useBrandAssets()
+  const { FOOTER_GROUPS, FOOTER_NOTE, LEGAL_LINKS } = useContent()
+  const ui = useUi()
   return (
     <footer className="footer">
       <div className="container">
@@ -23,7 +26,7 @@ export function Footer() {
           ))}
 
           <div className="footer__col">
-            <h2 className="footer__heading">Contact</h2>
+            <h2 className="footer__heading">{ui.contact}</h2>
             <ul>
               <li>{CONTACT.address}</li>
               <li>
@@ -33,7 +36,7 @@ export function Footer() {
                 <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
               </li>
             </ul>
-            <h2 className="footer__heading footer__heading--spaced">Follow</h2>
+            <h2 className="footer__heading footer__heading--spaced">{ui.follow}</h2>
             <ul>
               {SOCIALS.map((social) => (
                 <li key={social.label}>
@@ -48,7 +51,7 @@ export function Footer() {
           <a className="footer__brand" href="#home" aria-label="Odylytics, back to top">
             <img src={brand.wordmark} alt="" width="1826" height="565" />
           </a>
-          <p>© 2026 Odylytics. All rights reserved.</p>
+          <p>{ui.rights}</p>
           <ul className="footer__legal">
             {LEGAL_LINKS.map((link) => (
               <li key={link.label}>
