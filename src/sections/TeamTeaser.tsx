@@ -10,7 +10,7 @@ export function TeamTeaser() {
   return (
     <section id="team" className="section" aria-labelledby="team-teaser-title">
       <div className="container">
-        <SectionHeading id="team-teaser-title" {...TEAM_TEASER} />
+        <SectionHeading id="team-teaser-title" center {...TEAM_TEASER} />
         <ul className="teaser" data-reveal>
           {TEAM.map((member, index) => (
             <li key={index} className="teaser__item">

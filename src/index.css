@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 
 /* ─── Tokens (DESIGN_GUIDELINES.md v2) ──────────────────────────────────── */
 
@@ -15,9 +16,10 @@
   --neutral-400: #736F78; --neutral-500: #504D53; --neutral-600: #2F2D31; --neutral-700: #111013;
 
   /* Type */
-  /* SF Pro on Apple devices; Inter everywhere else. */
-  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  /* Geist: a clean Swiss grotesk, self-hosted (no third-party font requests). */
+  --font-display: 'Geist Variable', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Geist Variable', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Shape */
   --radius-card: 28px;
@@ -173,8 +175,8 @@ img { display: block; max-width: 100%; height: auto; }
 
 .display, .h2-serif {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.035em;
+  font-weight: 500;
+  letter-spacing: -0.04em;
   color: var(--text);
 }
 .display { font-size: clamp(44px, 6vw, 80px); line-height: 1.04; }

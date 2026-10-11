@@ -699,3 +699,18 @@ export const FOOTER_GROUPS: { heading: string; links: NavItem[] }[] = [
     ],
   },
 ]
+
+// ─── 11. Story panel and closing call to action ─────────────────────────────
+
+export const STORY = {
+  eyebrow: 'Behind the product',
+  lead: 'Built by students,',
+  main: 'in the room.',
+  intro: 'Late nights, competition days and the people who showed up.',
+}
+
+export const CLOSING = {
+  lead: 'Student ideas.',
+  main: 'Market-ready products.',
+  cta: 'Get in touch',
+}

@@ -53,7 +53,6 @@ export const PRIVACY: LegalDoc = {
       items: [
         'Vercel Inc., which hosts and delivers this website and keeps the request logs described above.',
         'Supabase, which provides member sign-in and stores member-managed content.',
-        'Google Fonts, which serves the typefaces used on the site. Your browser requests font files from Google, so Google receives your IP address and browser details.',
         'Your own email provider, when you send us a message.',
         'Professional advisers, public authorities and courts where we are legally required to or need to protect our legal rights.',
       ],
@@ -173,7 +172,7 @@ export const TERMS: LegalDoc = {
     },
     {
       heading: 'Third-party links and services',
-      body: ['The Site links to third-party websites and relies on third-party services for hosting, sign-in and fonts. We do not control them and are not responsible for their content, availability or practices.'],
+      body: ['The Site links to third-party websites and relies on third-party services for hosting and sign-in. We do not control them and are not responsible for their content, availability or practices.'],
     },
     {
       heading: 'Disclaimers',
@@ -245,7 +244,7 @@ export const COOKIES: LegalDoc = {
     {
       heading: 'Third-party requests',
       items: [
-        'Google Fonts: your browser downloads typefaces from Google’s servers, which means Google receives your IP address and browser details. We use it only to display the Site’s fonts.',
+        'Fonts: the typefaces (Geist and Geist Mono) are hosted on our own servers, so your browser does not contact a font provider.',
         'Vercel: our hosting provider serves the pages and records standard request logs.',
         'Supabase: contacted only when a member signs in or when the Site loads member-managed content such as news posts and testimonials.',
         'LinkedIn and news websites: opened only when you click a link, and governed by their own policies.',
@@ -259,7 +258,7 @@ export const COOKIES: LegalDoc = {
       heading: 'How to control storage',
       items: [
         'Clear the Site’s stored data in your browser settings, under site data or cookies and site data. This resets your theme and language and signs you out.',
-        'Block or restrict third-party requests with your browser’s privacy settings or an extension. The Site still works, but may fall back to your device’s default fonts.',
+        'Block or restrict third-party requests with your browser’s privacy settings or an extension. The Site still works.',
         'Most browsers have private windows that delete stored data when closed.',
       ],
     },

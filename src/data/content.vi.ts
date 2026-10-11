@@ -105,6 +105,8 @@ export const VI: DeepPartial<Content> = {
     { items: [{ title: 'Giải Nhất' }] },
   ],
   GALLERY_HEADING: 'Phía sau những chiến thắng',
+  STORY: { eyebrow: 'Phía sau sản phẩm', lead: 'Do sinh viên xây dựng,', main: 'ngay tại phòng làm việc.', intro: 'Những đêm thức khuya, ngày thi đấu và những người luôn có mặt.' },
+  CLOSING: { lead: 'Ý tưởng sinh viên.', main: 'Sản phẩm sẵn sàng ra thị trường.', cta: 'Liên hệ' },
   GALLERY: [
     { alt: 'Cả đội làm việc cùng nhau quanh những chiếc laptop', caption: 'Cùng xây dựng AquaGuard' },
     { alt: 'Cả đội cầm giấy chứng nhận EPICS', caption: 'Giấy chứng nhận EPICS' },

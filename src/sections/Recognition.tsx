@@ -4,7 +4,7 @@ import { useContent, useUi } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
 export function Recognition() {
-  const { RECOGNITION, RECOGNITION_HEADING, GALLERY, GALLERY_HEADING } = useContent()
+  const { RECOGNITION, RECOGNITION_HEADING } = useContent()
   const ui = useUi()
   const { solutionLogo } = useBrandAssets()
   const prizes = RECOGNITION.flatMap((group) => group.items.map((item) => ({ ...item, solutionId: group.solutionId, solutionName: group.solutionName })))
@@ -43,18 +43,6 @@ export function Recognition() {
               </li>
             )
           })}
-        </ul>
-
-        <h3 className="mission__subheading" data-reveal>
-          {GALLERY_HEADING}
-        </h3>
-        <ul className="gallery">
-          {GALLERY.map((photo) => (
-            <li key={photo.src} className="gallery__item" data-reveal>
-              <img src={photo.src} alt={photo.alt} loading="lazy" />
-              <span className="gallery__caption">{photo.caption}</span>
-            </li>
-          ))}
         </ul>
       </div>
     </section>
