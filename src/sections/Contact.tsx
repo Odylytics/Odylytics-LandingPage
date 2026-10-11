@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Button } from '../components/Button'
+import { SOCIALS } from '../data/content'
 import { useContent, useUi } from '../hooks/useContent'
 
 export function Contact() {
@@ -23,20 +24,39 @@ export function Contact() {
 
   return (
     <section id="contact" className="section contact" aria-labelledby="contact-title">
-      <div className="aurora" aria-hidden="true" />
-      <div className="container">
+      <div className="container contact__grid">
         <div className="contact__intro" data-reveal>
           <p className="eyebrow">{CONTACT.eyebrow}</p>
           <h2 id="contact-title" className="h2-serif">
             {CONTACT.lead} <em className="em">{CONTACT.main}</em>
           </h2>
           <p className="body-l">{CONTACT.subcopy}</p>
-          <p className="contact__email">
-            {ui.orEmail} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-          </p>
+
+          <dl className="contact__details">
+            <div>
+              <dt>{ui.email}</dt>
+              <dd>
+                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+              </dd>
+            </div>
+            {SOCIALS.map((social) => (
+              <div key={social.label}>
+                <dt>{social.label}</dt>
+                <dd>
+                  <a href={social.href} target="_blank" rel="noreferrer">
+                    odylytics
+                  </a>
+                </dd>
+              </div>
+            ))}
+            <div>
+              <dt>{ui.address}</dt>
+              <dd className="contact__soon">{CONTACT.address}</dd>
+            </div>
+          </dl>
         </div>
 
-        <form className="card form" onSubmit={onSubmit} data-reveal>
+        <form className="form" onSubmit={onSubmit} data-reveal>
           <div className="form__row">
             <label className="field">
               <span className="label">{ui.name}</span>

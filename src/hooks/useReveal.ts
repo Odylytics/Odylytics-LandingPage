@@ -1,15 +1,17 @@
 import { useEffect } from 'react'
 
-/** One shared IntersectionObserver that adds `is-visible` to every `[data-reveal]` element. */
-/** Pass the current route so elements of a newly mounted page are observed too. */
+/**
+ * One shared IntersectionObserver that adds `is-visible` to every `[data-reveal]` element.
+ * A MutationObserver picks up elements rendered later (filters, async content, route changes),
+ * which would otherwise stay invisible. Pass the route so the observer restarts per page.
+ */
 export function useReveal(route?: string) {
   useEffect(() => {
     const root = document.documentElement
     root.classList.add('reveal-ready')
 
-    const targets = document.querySelectorAll<HTMLElement>('[data-reveal]')
     if (!('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add('is-visible'))
+      document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => el.classList.add('is-visible'))
       return
     }
 
@@ -21,12 +23,23 @@ export function useReveal(route?: string) {
           observer.unobserve(entry.target)
         }
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
     )
 
-    targets.forEach((el) => observer.observe(el))
+    const watch = (node: ParentNode) => {
+      if (node instanceof HTMLElement && node.matches('[data-reveal]') && !node.classList.contains('is-visible')) observer.observe(node)
+      node.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-visible)').forEach((el) => observer.observe(el))
+    }
+
+    watch(document)
+    const mutations = new MutationObserver((records) => {
+      for (const record of records) record.addedNodes.forEach((node) => node instanceof HTMLElement && watch(node))
+    })
+    mutations.observe(document.getElementById('root') ?? document.body, { childList: true, subtree: true })
+
     return () => {
       observer.disconnect()
+      mutations.disconnect()
       root.classList.remove('reveal-ready')
     }
   }, [route])

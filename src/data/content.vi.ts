@@ -57,13 +57,13 @@ export const VI: DeepPartial<Content> = {
   SOLUTIONS: [
     { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
     { oneLiner: 'Lập trình kéo thả, rảnh tay cho người khuyết tật chi trên.', description: 'Webcam theo dõi đầu người học, cử chỉ đầu di chuyển và nhấp chuột. Chương trình được ghép từ các khối kéo thả, nên có thể lập trình mà không cần bàn phím hay chuột.', category: 'Giáo dục bao trùm' },
-    { oneLiner: 'Giám sát chất lượng không khí dễ tiếp cận cho đô thị khỏe mạnh hơn.', description: 'Cảm biến chi phí thấp và bảng điều khiển đơn giản biến số liệu không khí thô thành cảnh báo rõ ràng theo khu vực để người dân, trường học và đội quản lý đô thị hành động.', category: 'Môi trường' },
-    { oneLiner: 'Công cụ giúp tổ chức chào đón tất cả mọi người.', description: 'Nền tảng giúp tổ chức làm cho sự kiện, nơi làm việc và dịch vụ cởi mở với người có mọi khả năng, kèm danh sách kiểm tra và hướng dẫn thực tế.', category: 'Thiết kế bao trùm' },
-    { oneLiner: 'Ghép đôi thông minh, an toàn hơn cho cuộc sống chung.', description: 'Kết nối người với bạn cùng phòng và chỗ ở phù hợp dựa trên sở thích chung và tín hiệu tin cậy, để việc tìm nơi ở an toàn và dễ dàng hơn.', category: 'Cộng đồng' },
-    { oneLiner: 'Việc làm dễ tiếp cận cho người khiếm thính và nghe kém.', description: 'Kết nối người khiếm thính và nghe kém với nhà tuyển dụng, dùng phụ đề trực tiếp và công cụ giao tiếp bằng hình ảnh để phỏng vấn và công việc hằng ngày dễ tiếp cận.', category: 'Việc làm bao trùm' },
+    {},
+    {},
+    {},
+    {},
   ],
 
-  FEATURED_HEADING: { eyebrow: 'Giải pháp nổi bật', lead: 'Hai nền tảng.', main: 'Đã kiểm chứng thực tế.' },
+  FEATURED_HEADING: { eyebrow: 'Giải pháp nổi bật', lead: 'Ba giải pháp.', main: 'Xây để ra mắt.' },
   FEATURED: [
     {
       badge: 'Chủ lực',
@@ -91,6 +91,7 @@ export const VI: DeepPartial<Content> = {
       metrics: [{ label: 'Lập trình rảnh tay' }, { label: 'Fessior DevCamp 2026' }],
       cta: 'Tìm hiểu thêm',
     },
+    { badge: 'Sắp tới', cta: 'Tìm hiểu thêm' },
   ],
 
   RECOGNITION_HEADING: {
@@ -119,22 +120,23 @@ export const VI: DeepPartial<Content> = {
   PARTNERS: [{ type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Doanh nghiệp' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }],
   STATS: [{ label: 'Giải thưởng cuộc thi' }, { label: 'Giải pháp số' }, { label: 'Thành viên sinh viên' }, { label: 'Tổ chức đối tác' }],
 
-  TESTIMONIALS_HEADING: { eyebrow: 'Đánh giá', lead: 'Lời của họ.', main: 'Đối tác và người dùng nói gì.' },
+  TESTIMONIALS_HEADING: { eyebrow: 'Đánh giá', lead: 'Những người ngoài thực địa', main: 'đã tin vào AquaGuard.' },
 
   TEAM_HEADING: {
     eyebrow: 'Đội ngũ cốt lõi',
-    lead: 'Năm người xây dựng.',
+    lead: 'Năm nhà đồng sáng lập.',
     main: 'Những người đứng sau Odylytics.',
-    intro: 'Năm người làm việc trên các mảng AI, kỹ thuật, thiết kế và tác động cộng đồng.',
+    intro: 'Năm sinh viên cùng xây dựng sản phẩm, kỹ thuật, thiết kế và marketing.',
   },
   TEAM: [
     { role: 'Giám đốc điều hành (CEO)', shortRole: 'CEO', bio: 'Dẫn dắt tầm nhìn và chiến lược của Odylytics, xây dựng quan hệ đối tác để đưa giải pháp đến những cộng đồng cần nhất.', responsibilities: ['Đặt tầm nhìn, chiến lược và lộ trình công ty', 'Dẫn dắt hợp tác với trường đại học, chính quyền và nhà tài trợ', 'Đại diện Odylytics tại các cuộc thi, sự kiện và trên báo chí'] },
     { role: 'Giám đốc công nghệ (CTO)', shortRole: 'CTO', bio: 'Dẫn dắt công nghệ và lõi AI dùng chung, thiết kế các mô hình biến dữ liệu cảm biến và cộng đồng thành dự báo kịp thời.', responsibilities: ['Phụ trách lõi AI dùng chung và kiến trúc hệ thống', 'Huấn luyện và đánh giá mô hình cho lũ lụt, không khí và khả năng tiếp cận', 'Rà soát code, bảo mật và tuyển dụng kỹ thuật'] },
-    { role: 'Trưởng nhóm Sản phẩm & UX', shortRole: 'Sản phẩm', bio: 'Thiết kế trải nghiệm dễ tiếp cận, lấy con người làm trung tâm để mọi giải pháp vẫn đơn giản dù trong khủng hoảng.', responsibilities: ['Nghiên cứu người dùng với đội cứu hộ và người khuyết tật', 'Thiết kế giao diện và hệ thống thiết kế của Odylytics', 'Biến phản hồi thành danh sách việc cần làm'] },
+    { role: 'Giám đốc sản phẩm (CPO)', shortRole: 'CPO', bio: 'Thiết kế trải nghiệm dễ tiếp cận, lấy con người làm trung tâm để mọi giải pháp vẫn đơn giản dù trong khủng hoảng.', responsibilities: ['Phụ trách lộ trình sản phẩm của mọi giải pháp Odylytics', 'Nghiên cứu người dùng với đội cứu hộ và người khuyết tật', 'Dẫn dắt thiết kế giao diện và hệ thống thiết kế của Odylytics'] },
     { role: 'Trưởng nhóm Marketing', shortRole: 'Marketing', bio: 'Định hình cách Odylytics tiếp cận chính quyền, đối tác và cộng đồng, và kể câu chuyện đằng sau tác động của chúng tôi.', responsibilities: ['Phụ trách thương hiệu, website và mạng xã hội', 'Đưa câu chuyện đến báo chí và quản lý trang tin tức', 'Chuẩn bị hồ sơ dự thi và tài liệu cho đối tác'] },
     { role: 'Kỹ sư phần mềm', shortRole: 'Kỹ sư', bio: 'Xây dựng các nền tảng đằng sau giải pháp, từ luồng dữ liệu thời gian thực đến bảng điều khiển cho đội cứu hộ.', responsibilities: ['Xây ứng dụng web và di động cho AquaGuard và EnableCode', 'Duy trì luồng dữ liệu và bản đồ trực tiếp', 'Phát hành phiên bản và theo dõi hệ thống'] },
   ],
-  TEAM_TEASER: { eyebrow: 'Đội ngũ cốt lõi', lead: 'Năm người xây dựng.', main: 'Một sứ mệnh.', intro: 'Gặp những người đứng sau Odylytics, vai trò của từng người và cách họ làm việc cùng nhau.' },
+  TEAM_GROUPS: { cofounders: { heading: 'Đồng sáng lập', intro: 'Năm sinh viên đã sáng lập Odylytics.' }, advisors: { heading: 'Cố vấn', intro: 'Những người hướng dẫn và chuyên gia đồng hành cùng chúng tôi.' }, members: { heading: 'Thành viên', intro: 'Sinh viên và cộng sự cùng xây dựng với chúng tôi.' } },
+  TEAM_TEASER: { eyebrow: 'Đội ngũ cốt lõi', lead: 'Năm nhà đồng sáng lập.', main: 'Một sứ mệnh.', intro: 'Gặp những người đứng sau Odylytics, vai trò của từng người và cách họ làm việc cùng nhau.' },
 
   NEWS_HEADING: { eyebrow: 'Tin tức', lead: 'Mới nhất từ Odylytics.', main: 'Giải thưởng, báo chí và cột mốc.', intro: 'Kết quả cuộc thi, tin báo chí và cập nhật từ đội ngũ.' },
   POSTS: [

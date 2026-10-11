@@ -14,11 +14,13 @@ export function TeamTeaser() {
         <ul className="teaser" data-reveal>
           {TEAM.map((member, index) => (
             <li key={index} className="teaser__item">
+              <a className="teaser__link" href={`#/team/${member.slug}`}>
               <span className="teaser__photo">
                 {member.photo ? <img src={member.photo} alt={member.name} loading="lazy" /> : <img className="teaser__placeholder" src={brand.symbol} alt="" />}
               </span>
               <span className="teaser__name">{member.name}</span>
               <span className="teaser__role">{member.shortRole}</span>
+              </a>
             </li>
           ))}
         </ul>

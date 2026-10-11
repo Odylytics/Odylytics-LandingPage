@@ -1,9 +1,10 @@
 import { SectionHeading } from '../components/SectionHeading'
-import { useContent } from '../hooks/useContent'
+import { useContent, useUi } from '../hooks/useContent'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
 export function Solutions() {
   const { SOLUTIONS, SOLUTIONS_HEADING } = useContent()
+  const ui = useUi()
   const { solutionLogo } = useBrandAssets()
   return (
     <section id="solutions" className="section" aria-labelledby="solutions-title">
@@ -12,7 +13,7 @@ export function Solutions() {
 
         <ul className="sol-grid">
           {SOLUTIONS.map((solution, index) => (
-            <li key={solution.id} className="card card--hover sol-card" data-reveal>
+            <li key={solution.id} className="card card--hover sol-card" data-reveal="pop">
               <div className="sol-card__top">
                 <span className="logo-chip sol-card__logo">
                   {solution.logo ? (
@@ -25,10 +26,18 @@ export function Solutions() {
               </div>
               <div>
                 <h3 className="sol-card__name">{solution.name}</h3>
-                <p className="sol-card__cat">{solution.category}</p>
+                {solution.category && <p className="sol-card__cat">{solution.category}</p>}
               </div>
-              <p className="sol-card__tagline">{solution.oneLiner}</p>
-              <p className="sol-card__desc">{solution.description}</p>
+              {solution.oneLiner && <p className="sol-card__tagline">{solution.oneLiner}</p>}
+              {solution.soon ? (
+                <div className="soon-stack" aria-label={ui.updatingSoon}>
+                  <span className="soon-line" />
+                  <span className="soon-line soon-line--short" />
+                  <span className="soon-tag">{ui.updatingSoon}</span>
+                </div>
+              ) : (
+                <p className="sol-card__desc">{solution.description}</p>
+              )}
             </li>
           ))}
         </ul>

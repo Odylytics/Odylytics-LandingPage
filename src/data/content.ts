@@ -1,6 +1,8 @@
 export type NavItem = { label: string; href: string; description?: string }
 
 export type Solution = {
+  /** True while real copy is missing: the card shows an 'Updating soon' frame. */
+  soon?: boolean
   id: string
   name: string
   logo: string | null
@@ -15,6 +17,7 @@ export type Feature = { title: string; text: string }
 export type Metric = { value: string; label: string }
 
 export type FeaturedSolution = {
+  soon?: boolean
   id: string
   name: string
   logo: string
@@ -72,6 +75,8 @@ export type TeamMember = {
   bio: string
   photo: string | null
   linkedin: string | null
+  /** URL slug of the member's own profile page: #/team/<slug>. */
+  slug: string
   /** One-word title shown under the portrait, e.g. 'CEO'. */
   shortRole: string
   /** Concrete day-to-day responsibilities. */
@@ -218,9 +223,8 @@ export const SOLUTIONS: Solution[] = [
     name: 'AirGuard',
     logo: '/assets/solutions/airguard.png',
     oneLiner: 'Accessible air-quality monitoring for healthier cities.',
-    description:
-      // TODO(content): draft from the product name; confirm with the team.
-      'Low-cost sensors and a simple dashboard turn raw air-quality readings into clear, local alerts that residents, schools and city teams can act on.',
+    soon: true,
+    description: '',
     category: 'Environment',
     flagship: false,
   },
@@ -228,33 +232,30 @@ export const SOLUTIONS: Solution[] = [
     id: 'includio',
     name: 'Includio',
     logo: '/assets/solutions/includio.png',
-    oneLiner: 'Inclusion tools that help organisations welcome everyone.',
-    description:
-      // TODO(content): draft from the product name; confirm with the team.
-      'A platform that helps organisations make events, workplaces and services open to people of all abilities, with practical checklists and guidance.',
-    category: 'Inclusive design',
+    oneLiner: '',
+    soon: true,
+    description: '',
+    category: '',
     flagship: false,
   },
   {
     id: 'roomie',
     name: 'RooMie',
     logo: '/assets/solutions/roomie.png',
-    oneLiner: 'Safer, smarter matching for shared living.',
-    description:
-      // TODO(content): draft from the product name; confirm with the team.
-      'Matches people with compatible housemates and homes using shared preferences and trust signals, so finding a place to live feels safer and simpler.',
-    category: 'Community',
+    oneLiner: '',
+    soon: true,
+    description: '',
+    category: '',
     flagship: false,
   },
   {
     id: 'hearwork',
     name: 'HearWork',
     logo: '/assets/solutions/hearwork.png',
-    oneLiner: 'Accessible employment for deaf and hard-of-hearing people.',
-    description:
-      // TODO(content): draft from the product name; confirm with the team.
-      'Connects deaf and hard-of-hearing people with employers, using live captioning and visual communication tools to make interviews and daily work accessible.',
-    category: 'Inclusive employment',
+    oneLiner: '',
+    soon: true,
+    description: '',
+    category: '',
     flagship: false,
   },
 ]
@@ -263,8 +264,8 @@ export const SOLUTIONS: Solution[] = [
 
 export const FEATURED_HEADING = {
   eyebrow: 'Featured solutions',
-  lead: 'Two platforms.',
-  main: 'Proven in the field.',
+  lead: 'Three solutions.',
+  main: 'Built to ship.',
 }
 
 export const FEATURED: FeaturedSolution[] = [
@@ -307,6 +308,19 @@ export const FEATURED: FeaturedSolution[] = [
       { value: '100%', label: 'Hands-free coding' },
       { value: '1st', label: 'Fessior DevCamp 2026' },
     ],
+    cta: 'Learn more',
+  },
+  // TODO(content): fill in Includio when the product story is ready.
+  {
+    id: 'includio',
+    name: 'Includio',
+    logo: '/assets/solutions/includio.png',
+    badge: 'Next up',
+    soon: true,
+    tagline: '',
+    problem: '',
+    features: [],
+    metrics: [],
     cta: 'Learn more',
   },
 ]
@@ -395,47 +409,53 @@ export const STATS: Stat[] = [
 
 export const TESTIMONIALS_HEADING = {
   eyebrow: 'Testimonials',
-  lead: 'In their words.',
-  main: 'What our partners and users say.',
+  lead: 'People on the ground',
+  main: 'already believe in AquaGuard.',
 }
 
-// TODO(content): 4 approved quotes with name, role, photo and consent.
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 'seed-1',
+    id: 'ms-ni',
     quote:
-      'Placeholder testimonial from a government or institutional partner. This space holds a 40–80 word quote describing a specific, verifiable outcome they saw after working with Odylytics — for example, how a team made faster decisions with shared, reliable data. Replace it with the approved wording and confirm consent before publishing. Longer quotes like this one open in a dialog so the card stays compact.',
-    name: 'Name Surname',
-    role: 'Role, Government agency',
+      'Having experienced severe flooding in Huế, I know how difficult it is to find reliable information and timely help. AquaGuard can help people report their location, request assistance, and stay informed.',
+    name: 'Ms. Ni',
+    role: 'Flood survivor, Huế, Vietnam',
     avatar: null,
     solution: 'AquaGuard',
   },
   {
-    id: 'seed-2',
+    id: 'vo-thanh-hang',
     quote:
-      'Placeholder testimonial from a delivery partner. Replace with a 40–80 word quote about what you built together and the result it produced.',
-    name: 'Name Surname',
-    role: 'Role, Partner organisation',
-    avatar: null,
-    solution: 'AirGuard',
-  },
-  {
-    id: 'seed-3',
-    quote:
-      'Placeholder testimonial from an end user or community member. Replace with a 40–80 word quote about how the solution helped them in daily life.',
-    name: 'Name Surname',
-    role: 'Community member, Location',
+      'What makes AquaGuard unique is its community-centered approach. Citizens can report incidents, share real-time information, and connect with rescuers, building more resilient communities.',
+    name: 'Dr. Vo Thanh Hang',
+    role: 'Lecturer, Faculty of Environment, HCMUT',
     avatar: null,
     solution: 'AquaGuard',
   },
   {
-    id: 'seed-4',
-    quote:
-      'Placeholder testimonial from an expert or mentor. Replace with a 40–80 word quote on the team, the approach and the potential impact.',
-    name: 'Name Surname',
-    role: 'Mentor, Organisation',
+    id: 'dinh-nguyen',
+    quote: 'A highly valuable and practical solution that can significantly enhance flood rescue and emergency response, with strong potential well beyond Vietnam.',
+    name: 'Prof. Dinh N. Nguyen',
+    role: 'Professor Emeritus, Laval University, Canada',
     avatar: null,
-    solution: 'Odylytics',
+    solution: 'AquaGuard',
+  },
+  {
+    id: 'anna-b',
+    quote:
+      'By bringing citizens, rescuers, and local authorities together on one platform, AquaGuard could significantly strengthen flood emergency coordination in Vietnam.',
+    name: 'Anna B.',
+    role: 'Water rescue volunteer, WOPR, Warsaw',
+    avatar: null,
+    solution: 'AquaGuard',
+  },
+  {
+    id: 'thich-chon-nguyen',
+    quote: 'A practical solution that can support humanitarian relief efforts and help communities respond more effectively during flood emergencies.',
+    name: 'Most Ven. Thich Chon Nguyen',
+    role: 'Charity Committee, Van Hanh Zen Monastery',
+    avatar: null,
+    solution: 'AquaGuard',
   },
 ]
 
@@ -443,14 +463,24 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const TEAM_HEADING = {
   eyebrow: 'Core team',
-  lead: 'Five builders.',
+  lead: 'Five co-founders.',
   main: 'The people behind Odylytics.',
-  intro: 'Five builders working across AI, engineering, design and community impact.',
+  intro: 'Five students building across product, engineering, design and marketing.',
 }
+
+export const TEAM_GROUPS = {
+  cofounders: { heading: 'Co-founders', intro: 'The five students who started Odylytics.' },
+  advisors: { heading: 'Advisors', intro: 'Mentors and experts who guide our work.' },
+  members: { heading: 'Members', intro: 'Students and collaborators building with us.' },
+}
+
+// TODO(content): add advisors and members here (same shape as TEAM) when they are ready; empty groups show an 'Updating soon' frame.
+export const ADVISORS: TeamMember[] = []
+export const MEMBERS: TeamMember[] = []
 
 export const TEAM_TEASER = {
   eyebrow: 'Core team',
-  lead: 'Five builders.',
+  lead: 'Five co-founders.',
   main: 'One mission.',
   intro: 'Meet the people behind Odylytics, what each of them owns, and how they work together.',
 }
@@ -459,6 +489,7 @@ export const TEAM_TEASER = {
 export const TEAM: TeamMember[] = [
   {
     name: 'Quân',
+    slug: 'quan-ceo',
     role: 'Chief Executive Officer',
     shortRole: 'CEO',
     bio: 'Leads Odylytics’ vision and strategy, building partnerships that bring our solutions to the communities that need them.',
@@ -472,6 +503,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Nghĩa',
+    slug: 'nghia-cto',
     role: 'Chief Technology Officer',
     shortRole: 'CTO',
     bio: 'Leads our technology and shared AI core, designing the models that turn sensor and community data into timely predictions.',
@@ -486,19 +518,21 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Sơn',
-    role: 'Product & UX Lead',
-    shortRole: 'Product',
+    slug: 'son-cpo',
+    role: 'Chief Product Officer',
+    shortRole: 'CPO',
     bio: 'Designs accessible, human-centred experiences so every solution stays simple to use, even in a crisis.',
     photo: '/assets/team/son.png',
     linkedin: null,
     responsibilities: [
+      'Owns the product roadmap across every Odylytics solution',
       'Runs user research with rescue teams and people with disabilities',
-      'Designs interfaces and the Odylytics design system',
-      'Turns feedback into the product backlog',
+      'Leads interface design and the Odylytics design system',
     ],
   },
   {
     name: 'Quân',
+    slug: 'quan-marketing',
     role: 'Head of Marketing',
     shortRole: 'Marketing',
     bio: 'Shapes how Odylytics reaches governments, partners and communities, and tells the stories behind our impact.',
@@ -512,6 +546,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Khang',
+    slug: 'khang-engineer',
     role: 'Software Engineer',
     shortRole: 'Engineer',
     bio: 'Builds the platforms behind our solutions, from real-time data pipelines to the dashboards responders rely on.',
@@ -532,9 +567,9 @@ export const CONTACT = {
   lead: "Let's build what matters.",
   main: 'Together.',
   subcopy: "Partnerships, pilots or press — we'd love to hear from you.",
-  // TODO(content): confirm address, phone and email.
-  address: 'Street address, City, Country',
-  phone: '+00 000 000 000',
+  // TODO(content): add the office address and phone number.
+  address: 'Updating soon',
+  phone: '',
   email: 'odylytics@gmail.com',
 }
 

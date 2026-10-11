@@ -4,6 +4,7 @@ import { Admin } from './pages/Admin'
 import { Legal } from './pages/Legal'
 import { Login } from './pages/Login'
 import { TeamPage } from './pages/TeamPage'
+import { TeamProfile } from './pages/TeamProfile'
 import { COOKIES, PRIVACY, TERMS } from './data/legal'
 import { useUi } from './hooks/useContent'
 import { useRoute } from './hooks/useRoute'
@@ -42,6 +43,7 @@ function App() {
         {route === 'terms' && <Legal doc={TERMS} />}
         {route === 'cookies' && <Legal doc={COOKIES} />}
         {route === 'team' && <TeamPage />}
+        {route.startsWith('profile:') && <TeamProfile slug={route.slice(8)} />}
         {route === 'login' && <Login />}
         {route === 'admin' && <Admin />}
         {route === 'home' && (
