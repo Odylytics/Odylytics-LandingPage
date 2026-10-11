@@ -61,4 +61,6 @@ Production assets live under `public/assets/` and are referenced with root-relat
 - `team/<name>.png` — core team photos (transparent background) from `New/`.
 - Expected later: recognition issuer logos. Until then the UI renders bordered placeholder blocks at final sizes.
 
+`public/og-image.jpg` (1200×630) is the social share thumbnail, a screenshot of the dark hero as first loaded. It is referenced by the Open Graph / Twitter tags in `index.html` using absolute `https://odylytics.com/` URLs. Re-capture it when the hero changes, and update those URLs if the domain changes.
+
 `OdylyticsBrand/` holds the raw brand sources and the colour palette; don't reference it from code.
