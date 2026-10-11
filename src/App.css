@@ -724,7 +724,7 @@ a.icon-link:hover { background: var(--accent); border-color: var(--accent); colo
 .field select { width: 100%; padding: 13px 18px; border: 1px solid var(--border-strong); border-radius: var(--radius-chip); background: var(--surface-2); }
 .field--check { flex-direction: row; align-items: center; gap: 12px; }
 .field--check input { width: auto; }
-.field textarea { resize: vertical; min-height: 140px; border-radius: var(--radius-chip); }
+.field textarea { resize: none; min-height: 140px; max-height: 220px; border-radius: var(--radius-chip); }
 .field input:hover, .field textarea:hover { border-color: var(--border-hover); }
 .field input:focus, .field textarea:focus { border-color: var(--accent-soft); outline: none; }
 .form__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: 6px; }
@@ -822,7 +822,7 @@ a.icon-link:hover { background: var(--accent); border-color: var(--accent); colo
 
 .prize-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .prize { display: flex; flex-direction: column; overflow: hidden; }
-.prize__media { position: relative; aspect-ratio: 4 / 3; background: var(--surface-2); overflow: hidden; }
+.prize__media { position: relative; aspect-ratio: 3 / 2; background: var(--surface-2); overflow: hidden; }
 .prize__media img { width: 100%; height: 100%; object-fit: cover; }
 .prize__media .logo-placeholder { border: 0; border-radius: 0; }
 .prize__medal {
@@ -875,18 +875,12 @@ a.icon-link:hover { background: var(--accent); border-color: var(--accent); colo
 .reveal-ready [data-reveal='pop'].is-visible { transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal-ready [data-reveal='pop'] { transform: none; } }
 
-.stats { border-block: 1px solid var(--border); background: var(--surface); }
-.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.stats__item { display: flex; flex-direction: column; gap: 8px; padding: 44px 24px; text-align: center; }
-.stats__item + .stats__item { border-left: 1px solid var(--border); }
-.stats__item dd { font-size: clamp(44px, 5.4vw, 76px); letter-spacing: -0.04em; }
-.stats__item dt { font-size: 14px; color: var(--text-muted); }
-@media (max-width: 700px) {
-  .stats__grid { grid-template-columns: repeat(2, 1fr); }
-  .stats__item:nth-child(3) { border-left: 0; }
-  .stats__item:nth-child(n + 3) { border-top: 1px solid var(--border); }
-  .stats__item { padding: 32px 16px; }
-}
+.stats { padding-block: clamp(56px, 8vw, 104px) 0; }
+.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 48px); }
+.stats__item { display: flex; flex-direction: column; gap: 14px; padding-top: 18px; border-top: 1px solid var(--border-strong); }
+.stats__item dd { font-family: var(--font-display); font-size: clamp(64px, 9vw, 132px); font-weight: 300; line-height: 0.9; letter-spacing: -0.06em; }
+.stats__item dt { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+@media (max-width: 700px) { .stats__grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; } }
 
 .split { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
 .split__aside { position: sticky; top: calc(var(--nav-h) + 32px); display: flex; flex-direction: column; gap: 24px; }
@@ -1082,19 +1076,14 @@ a.team-card:hover .team-card__more { color: var(--accent-soft-hover); text-decor
   background: #000; color: var(--text); color-scheme: dark;
 }
 
-/* Story: one big rounded panel of photos with captions underneath */
-.story { display: flex; flex-direction: column; gap: 20px; }
-.story__panel { display: grid; grid-template-columns: 1fr 1.25fr 1fr; align-items: end; gap: clamp(12px, 2vw, 24px); padding: clamp(14px, 2.4vw, 28px); background: var(--surface-2); border-radius: 36px; }
-.story__item { overflow: hidden; border-radius: 22px; aspect-ratio: 3 / 4; }
-.story__item:nth-child(2) { aspect-ratio: 4 / 5; }
-.story__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out); }
-.story__item:hover img { transform: scale(1.04); }
-.story__captions { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: clamp(12px, 2vw, 24px); padding-inline: clamp(14px, 2.4vw, 28px); text-align: center; font-size: 14px; color: var(--text-muted); }
-@media (max-width: 760px) {
-  .story__panel { grid-template-columns: 1fr; border-radius: 26px; }
-  .story__item, .story__item:nth-child(2) { aspect-ratio: 4 / 3; }
-  .story__captions { display: none; }
-}
+/* Story: photos shown whole, one large and two stacked */
+.story { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: auto auto; gap: clamp(10px, 1.6vw, 20px); padding: clamp(12px, 1.8vw, 22px); background: var(--surface-2); border-radius: 36px; align-items: center; }
+.story__item { position: relative; overflow: hidden; border-radius: 22px; line-height: 0; }
+.story__item:first-child { grid-row: 1 / span 2; }
+.story__item img { width: 100%; height: auto; transition: transform 900ms var(--ease-out); }
+.story__item:hover img { transform: scale(1.03); }
+.story__caption { position: absolute; left: 12px; bottom: 12px; padding: 6px 14px; border-radius: var(--radius-pill); background: rgb(0 0 0 / 0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 13px; line-height: 1.3; color: #fff; }
+@media (max-width: 760px) { .story { grid-template-columns: 1fr; border-radius: 26px; } .story__item:first-child { grid-row: auto; } }
 
 /* Team teaser: large portraits */
 .teaser { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 2vw, 28px); }
@@ -1116,7 +1105,7 @@ a.team-card:hover .team-card__more { color: var(--accent-soft-hover); text-decor
 .closing__card img { width: 100%; height: 100%; object-fit: cover; }
 .closing__card--portrait { aspect-ratio: 3 / 4; }
 .closing__card--portrait img { object-position: top; }
-.closing__card--photo { aspect-ratio: 4 / 3; }
+.closing__card--photo { aspect-ratio: 3 / 2; }
 .closing__card--logo { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; padding: 14px; background: var(--surface); }
 .closing__card--logo img { object-fit: contain; }
 @keyframes drift { to { translate: 0 -14px; } }
