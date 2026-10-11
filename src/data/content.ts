@@ -52,7 +52,6 @@ export type RecognitionGroup = {
 export type Partner = {
   name: string
   type: string
-  description: string
   logo: string | null
 }
 
@@ -297,7 +296,7 @@ export const RECOGNITION_HEADING = {
   main: 'Recognised for impact.',
 }
 
-// TODO(content): award photos (`image`), press links (`href`) and issuer logos. Verify the `context` lines.
+// TODO(content): award photos (`image`), press links (`href`) and issuer logos.
 export const RECOGNITION: RecognitionGroup[] = [
   {
     solutionId: 'aquaguard',
@@ -305,17 +304,14 @@ export const RECOGNITION: RecognitionGroup[] = [
     items: [
       {
         type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'OISP Presentation Contest', year: '2025',
-        context: 'AquaGuard’s flood-rescue concept judged best in the presentation round.',
         issuerLogo: null, image: null, href: null,
       },
       {
         type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'EPICS 8th Competition',
-        context: 'Recognised for turning a community flood problem into a working system.',
         issuerLogo: null, image: null, href: null,
       },
       {
         type: 'AWARD', place: '2nd', title: '2nd Prize', issuer: 'Bach Khoa Innovation', year: '2026',
-        context: 'Runner-up among innovation projects at Ho Chi Minh City University of Technology.',
         issuerLogo: null, image: null, href: null,
       },
     ],
@@ -326,7 +322,6 @@ export const RECOGNITION: RecognitionGroup[] = [
     items: [
       {
         type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'Fessior DevCamp 2026 Prometheus', year: '2026',
-        context: 'First place for hands-free, head-gesture coding education.',
         issuerLogo: null, image: null, href: null,
       },
     ],
@@ -343,14 +338,13 @@ export const PARTNERS_HEADING = {
   intro: 'We work with public bodies, researchers and companies to turn reliable data into everyday safety.',
 }
 
-// TODO(content): drafts only. Confirm what each partnership actually covers.
 export const PARTNERS: Partner[] = [
-  { name: 'Arizona State University', type: 'Academic', description: 'Research and mentoring exchange on AI for community resilience.', logo: '/assets/partners/asu.png' },
-  { name: 'RMIT University', type: 'Academic', description: 'Collaboration on accessible technology and student innovation programmes.', logo: '/assets/partners/rmit.png' },
-  { name: 'Sorbonne Université', type: 'Academic', description: 'Academic partnership on data science and environmental monitoring.', logo: '/assets/partners/sorbonne.png' },
-  { name: 'University of Technology Sydney', type: 'Academic', description: 'Joint exploration of inclusive design and assistive technology.', logo: '/assets/partners/uts.png' },
-  { name: 'Université Laval', type: 'Academic', description: 'Exchange on disaster-risk research and cross-border project work.', logo: '/assets/partners/laval.png' },
-  { name: 'Dow', type: 'Corporate', description: 'Corporate support for sustainability and community-safety initiatives.', logo: '/assets/partners/dow.png' },
+  { name: 'Arizona State University', type: 'Academic', logo: '/assets/partners/asu.png' },
+  { name: 'RMIT University', type: 'Academic', logo: '/assets/partners/rmit.png' },
+  { name: 'Sorbonne Université', type: 'Academic', logo: '/assets/partners/sorbonne.png' },
+  { name: 'University of Technology Sydney', type: 'Academic', logo: '/assets/partners/uts.png' },
+  { name: 'Université Laval', type: 'Academic', logo: '/assets/partners/laval.png' },
+  { name: 'Dow', type: 'Corporate', logo: '/assets/partners/dow.png' },
 ]
 
 // ─── 6. Testimonials ────────────────────────────────────────────────────────
@@ -481,14 +475,12 @@ export const CONTACT = {
   // TODO(content): confirm address, phone and email.
   address: 'Street address, City, Country',
   phone: '+00 000 000 000',
-  email: 'hello@odylytics.com',
+  email: 'odylytics@gmail.com',
 }
 
-// TODO(content): real social profile URLs.
+// TODO(content): add Facebook / YouTube when the pages exist.
 export const SOCIALS: NavItem[] = [
-  { label: 'LinkedIn', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'YouTube', href: '#' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/odylytics' },
 ]
 
 export const COMPANY_LINKS: NavItem[] = [

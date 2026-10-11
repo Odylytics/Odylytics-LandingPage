@@ -21,7 +21,6 @@ export function Partners() {
               </div>
               <span className="partner__type">{partner.type}</span>
               <h3 className="partner__name">{partner.name}</h3>
-              <p className="partner__desc">{partner.description}</p>
             </li>
           ))}
         </ul>
