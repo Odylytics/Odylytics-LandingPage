@@ -28,10 +28,12 @@ export type RecognitionType = 'AWARD' | 'CERTIFICATION' | 'ACCELERATOR'
 
 export type Recognition = {
   type: RecognitionType
+  /** Competition placing shown in the medal badge when there is no issuer logo, e.g. '1st'. */
+  place?: string
   title: string
   issuer: string
-  year: string
-  context: string
+  year?: string
+  context?: string
   issuerLogo: string | null
 }
 
@@ -113,8 +115,16 @@ export const SOLUTIONS: Solution[] = [
     id: 'aquaguard',
     name: 'AquaGuard',
     logo: '/assets/solutions/aquaguard.png',
-    oneLiner: 'Real-time flood intelligence and coordinated rescue support.',
+    oneLiner: 'Real-time flood rescue coordination for victims, rescue teams and coordinators.',
     category: 'Disaster response',
+    flagship: true,
+  },
+  {
+    id: 'enablecode',
+    name: 'EnableCode',
+    logo: '/assets/solutions/enablecode.png',
+    oneLiner: 'Hands-free, drag-and-drop coding for people with upper-limb disabilities.',
+    category: 'Inclusive education',
     flagship: true,
   },
   {
@@ -123,7 +133,7 @@ export const SOLUTIONS: Solution[] = [
     logo: '/assets/solutions/airguard.png',
     oneLiner: 'Accessible air-quality monitoring for healthier cities.',
     category: 'Environment',
-    flagship: true,
+    flagship: false,
   },
   {
     id: 'includio',
@@ -149,14 +159,6 @@ export const SOLUTIONS: Solution[] = [
     category: 'Category', // TODO(content)
     flagship: false,
   },
-  {
-    id: 'enablecode',
-    name: 'EnableCode',
-    logo: '/assets/solutions/enablecode.png',
-    oneLiner: 'One-line description coming soon.', // TODO(content)
-    category: 'Category', // TODO(content)
-    flagship: false,
-  },
 ]
 
 // ─── 3. Featured Solutions ──────────────────────────────────────────────────
@@ -173,41 +175,39 @@ export const FEATURED: FeaturedSolution[] = [
     name: 'AquaGuard',
     logo: '/assets/solutions/aquaguard.png',
     badge: 'Flagship',
-    tagline: 'Real-time flood intelligence and coordinated rescue support.',
-    // TODO(content): problem statement, features and verified metrics.
+    tagline: 'A multi-platform flood rescue coordination system operating in Vietnam.',
     problem:
-      'When floods rise, residents, responders and local authorities often work from different, outdated pictures of the situation. Every minute spent reconciling them delays help.',
+      'When floods hit, victims, rescue teams and coordinators are often cut off from each other. AquaGuard connects all three in real time, across web and mobile.',
     features: [
-      { title: 'Live water-level monitoring', text: 'Sensor and report data combined into one current view.' },
-      { title: 'Early flood alerts', text: 'Timely warnings sent to the people and areas at risk.' },
-      { title: 'Rescue request mapping', text: 'Requests for help located, prioritised and tracked.' },
-      { title: 'Responder coordination', text: 'One shared picture for teams working in the field.' },
+      { title: 'SOS requests', text: 'Victims send a call for help that reaches rescuers instantly.' },
+      { title: 'Live flood maps', text: 'One current picture of flooded areas and requests for help.' },
+      { title: 'Rescue coordination', text: 'Coordinators and rescue teams work from the same live view.' },
+      { title: 'Safety guidance', text: 'Clear instructions for people in affected areas.' },
     ],
     metrics: [
-      { value: 'XX', label: 'Metric label' },
-      { value: 'XX', label: 'Metric label' },
-      { value: 'XX', label: 'Metric label' },
+      { value: '3', label: 'Competition awards' },
+      { value: '3', label: 'Groups connected' },
+      { value: '2', label: 'Platforms: web & mobile' },
     ],
     cta: 'Learn more',
   },
   {
-    id: 'airguard',
-    name: 'AirGuard',
-    logo: '/assets/solutions/airguard.png',
+    id: 'enablecode',
+    name: 'EnableCode',
+    logo: '/assets/solutions/enablecode.png',
     badge: 'Flagship',
-    tagline: 'Accessible air-quality monitoring for healthier cities.',
-    // TODO(content): problem statement, features and verified metrics.
+    tagline: 'A drag-and-drop coding education platform built for people with upper-limb disabilities.',
     problem:
-      'Air quality changes street by street, but most people only see a single city-wide number — too coarse to guide everyday decisions about health.',
+      'Learning to code assumes a keyboard and mouse, which shuts out people who cannot use their hands. EnableCode lets them write and run code completely hands-free.',
     features: [
-      { title: 'Affordable sensor network', text: 'Dense, low-cost monitoring across neighbourhoods.' },
-      { title: 'Live air-quality map', text: 'Readings shown clearly, block by block.' },
-      { title: 'Health advisories', text: 'Plain-language guidance when conditions change.' },
-      { title: 'Open data access', text: 'Datasets shared with researchers and city planners.' },
+      { title: 'AI face tracking', text: 'A webcam follows head movement in real time.' },
+      { title: 'Head-gesture cursor', text: 'Head gestures move and click the cursor.' },
+      { title: 'Drag-and-drop coding', text: 'Programs built from blocks instead of typed syntax.' },
+      { title: 'Hands-free execution', text: 'Write, run and test code without touching a device.' },
     ],
     metrics: [
-      { value: 'XX', label: 'Metric label' },
-      { value: 'XX', label: 'Metric label' },
+      { value: '100%', label: 'Hands-free coding' },
+      { value: '1st', label: 'Fessior DevCamp 2026' },
     ],
     cta: 'Learn more',
   },
@@ -221,50 +221,22 @@ export const RECOGNITION_HEADING = {
   main: 'Recognised for impact.',
 }
 
-// TODO(content): replace every recognition entry with verified titles, issuers, years and logos.
+// TODO(content): issuer logos (rendered in place of the medal badge when set).
 export const RECOGNITION: RecognitionGroup[] = [
   {
     solutionId: 'aquaguard',
     solutionName: 'AquaGuard',
     items: [
-      {
-        type: 'AWARD',
-        title: 'Award Title — 2025',
-        issuer: 'Issuing Organisation',
-        year: '2025',
-        context: 'One line of context, such as ranking or cohort size.',
-        issuerLogo: null,
-      },
-      {
-        type: 'ACCELERATOR',
-        title: 'Programme Title — 2025',
-        issuer: 'Organiser Name',
-        year: '2025',
-        context: 'One line of context, such as ranking or cohort size.',
-        issuerLogo: null,
-      },
+      { type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'OISP Presentation Contest', year: '2025', issuerLogo: null },
+      { type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'EPICS 8th Competition', issuerLogo: null },
+      { type: 'AWARD', place: '2nd', title: '2nd Prize', issuer: 'Bach Khoa Innovation', year: '2026', issuerLogo: null },
     ],
   },
   {
-    solutionId: 'airguard',
-    solutionName: 'AirGuard',
+    solutionId: 'enablecode',
+    solutionName: 'EnableCode',
     items: [
-      {
-        type: 'AWARD',
-        title: 'Award Title — 2025',
-        issuer: 'Issuing Organisation',
-        year: '2025',
-        context: 'One line of context, such as ranking or cohort size.',
-        issuerLogo: null,
-      },
-      {
-        type: 'CERTIFICATION',
-        title: 'Certification Title — 2025',
-        issuer: 'Certifying Body',
-        year: '2025',
-        context: 'One line on what the certification covers.',
-        issuerLogo: null,
-      },
+      { type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'Fessior DevCamp 2026 Prometheus', issuerLogo: null },
     ],
   },
 ]

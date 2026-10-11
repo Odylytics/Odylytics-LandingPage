@@ -35,6 +35,10 @@ export function Recognition() {
                       <div className="rec-card__logo">
                         {item.issuerLogo ? (
                           <img src={item.issuerLogo} alt={`${item.issuer} logo`} loading="lazy" />
+                        ) : item.place ? (
+                          <span className={`rec-card__medal${item.place === '1st' ? ' rec-card__medal--first' : ''}`} aria-hidden="true">
+                            {item.place}
+                          </span>
                         ) : (
                           <span className="logo-placeholder" aria-hidden="true">
                             Logo
@@ -45,9 +49,15 @@ export function Recognition() {
                         <span className={typeClass[item.type]}>{item.type}</span>
                         <h4 className="rec-card__title">{item.title}</h4>
                         <p className="rec-card__meta">
-                          {item.issuer} <span aria-hidden="true">·</span> {item.year}
+                          {item.issuer}
+                          {item.year && (
+                            <>
+                              {' '}
+                              <span aria-hidden="true">·</span> {item.year}
+                            </>
+                          )}
                         </p>
-                        <p className="rec-card__context">{item.context}</p>
+                        {item.context && <p className="rec-card__context">{item.context}</p>}
                       </div>
                     </li>
                   ))}

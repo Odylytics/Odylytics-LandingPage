@@ -524,7 +524,7 @@
 
 /* ─── Recognition ───────────────────────────────────────────────────────── */
 
-.rec-columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.rec-columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
 
 .rec-column { padding: 28px; }
 .rec-column__title { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
@@ -536,6 +536,15 @@
 .rec-card + .rec-card { border-top: 1px solid var(--border); }
 .rec-card__logo { width: 56px; height: 56px; }
 .rec-card__logo img { width: 100%; height: 100%; object-fit: contain; }
+.rec-card__medal {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  border: 1px solid var(--border-strong); border-radius: 50%;
+  background: var(--surface-2);
+  font-family: var(--font-display); font-style: italic; font-size: 21px; line-height: 1;
+  color: var(--text-muted);
+}
+.rec-card__medal--first { border-color: var(--tag-signal-border); background: var(--tag-signal-bg); color: var(--signal); }
 .rec-card__title { margin-top: 10px; font-size: 17px; font-weight: 600; line-height: 1.3; }
 .rec-card__meta { margin-top: 3px; font-size: 13.5px; color: var(--text-faint); }
 .rec-card__context { margin-top: 6px; font-size: 14px; line-height: 1.55; color: var(--text-muted); }
