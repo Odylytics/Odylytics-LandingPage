@@ -400,8 +400,8 @@ export const PARTNERS: Partner[] = [
 export type Stat = { value: number; suffix?: string; label: string }
 export const STATS: Stat[] = [
   { value: 4, label: 'Competition prizes' },
-  { value: 6, label: 'Digital solutions' },
   { value: 5, label: 'Student builders' },
+  { value: 6, label: 'Digital solutions' },
   { value: 7, label: 'Partner institutions' },
 ]
 
