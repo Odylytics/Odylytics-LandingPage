@@ -24,7 +24,6 @@ const en = {
   background: 'Background',
   highlights: 'Highlights',
   connect: 'Connect',
-  profileMissing: 'This profile does not exist.',
   viewAllNews: 'View all news ›',
   mission: 'Mission',
   vision: 'Vision',
@@ -51,6 +50,21 @@ const en = {
   categories: { All: 'All', Awards: 'Awards', Press: 'Press', Milestones: 'Milestones', Product: 'Product' } as Record<string, string>,
   teamCta: 'Meet the team ›',
   backHome: '‹ Back to home',
+  notFoundTitle: 'Page not found',
+  notFoundEyebrow: 'Error 404',
+  notFoundHeading: 'This page took a wrong turn.',
+  notFoundTail: 'The road ends here.',
+  notFoundText: 'The link may be broken, or the page may have moved. Head back home, or let us know what you were looking for.',
+  notFoundHome: 'Back to home',
+  notFoundContact: 'Contact us',
+  notFoundTry: 'Or try',
+  notFoundRequested: 'Requested',
+  notFoundLinks: [
+    { label: 'Solutions', href: '#solutions' },
+    { label: 'Prizes', href: '#recognition' },
+    { label: 'Team', href: '#/team' },
+    { label: 'News', href: '#/blog' },
+  ],
 }
 
 const vi: typeof en = {
@@ -77,7 +91,6 @@ const vi: typeof en = {
   background: 'Học vấn và kinh nghiệm',
   highlights: 'Điểm nổi bật',
   connect: 'Kết nối',
-  profileMissing: 'Hồ sơ này không tồn tại.',
   viewAllNews: 'Xem tất cả tin tức ›',
   mission: 'Sứ mệnh',
   vision: 'Tầm nhìn',
@@ -104,6 +117,21 @@ const vi: typeof en = {
   categories: { All: 'Tất cả', Awards: 'Giải thưởng', Press: 'Báo chí', Milestones: 'Cột mốc', Product: 'Sản phẩm' } as Record<string, string>,
   teamCta: 'Gặp đội ngũ ›',
   backHome: '‹ Về trang chủ',
+  notFoundTitle: 'Không tìm thấy trang',
+  notFoundEyebrow: 'Lỗi 404',
+  notFoundHeading: 'Trang này đã rẽ nhầm hướng.',
+  notFoundTail: 'Con đường kết thúc ở đây.',
+  notFoundText: 'Đường dẫn có thể bị hỏng hoặc trang đã được chuyển đi. Hãy quay về trang chủ, hoặc cho chúng tôi biết bạn đang tìm gì.',
+  notFoundHome: 'Về trang chủ',
+  notFoundContact: 'Liên hệ',
+  notFoundTry: 'Hoặc thử',
+  notFoundRequested: 'Đường dẫn',
+  notFoundLinks: [
+    { label: 'Giải pháp', href: '#solutions' },
+    { label: 'Giải thưởng', href: '#recognition' },
+    { label: 'Đội ngũ', href: '#/team' },
+    { label: 'Tin tức', href: '#/blog' },
+  ],
 }
 
 export type Ui = typeof en

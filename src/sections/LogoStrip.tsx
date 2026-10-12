@@ -1,33 +1,34 @@
-import { Marquee } from '../components/Marquee'
+import { useMemo } from 'react'
+import { LogoLoop } from '../components/LogoLoop'
+import type { LogoItem } from '../components/LogoLoop'
 import { SOLUTIONS } from '../data/content'
-import type { Solution } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 
-function StripItem({ solution }: { solution: Solution }) {
-  const { solutionLogo } = useBrandAssets()
-  if (!solution.logo) {
-    return <span className="strip-item strip-item--placeholder">{solution.name}</span>
-  }
-  return (
-    <span className="strip-item">
-      <img src={solutionLogo(solution.logo)} alt={solution.name} loading="lazy" />
-    </span>
-  )
-}
-
 export function LogoStrip() {
+  const { solutionLogo } = useBrandAssets()
+  const logos = useMemo<LogoItem[]>(
+    () =>
+      SOLUTIONS.map((solution) =>
+        solution.logo
+          ? { src: solutionLogo(solution.logo), alt: solution.name, title: solution.name }
+          : { node: <span className="strip-placeholder">{solution.name}</span>, ariaLabel: solution.name },
+      ),
+    [solutionLogo],
+  )
+
   return (
     <section className="logo-strip" aria-label="Odylytics solutions">
       <p className="logo-strip__label">Six solutions. One AI core.</p>
-      <Marquee
-        label="Odylytics solutions"
-        renderItems={() => SOLUTIONS.map((solution) => <StripItem key={solution.id} solution={solution} />)}
+      <LogoLoop
+        logos={logos}
+        speed={60}
+        logoHeight={56}
+        gap={56}
+        hoverSpeed={0}
+        scaleOnHover
+        fadeOut
+        ariaLabel="Odylytics solutions"
       />
-      <div className="strip-static" aria-hidden="true">
-        {SOLUTIONS.map((solution) => (
-          <StripItem key={solution.id} solution={solution} />
-        ))}
-      </div>
     </section>
   )
 }

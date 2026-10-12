@@ -3,6 +3,7 @@ import { Blog } from './pages/Blog'
 import { Admin } from './pages/Admin'
 import { Legal } from './pages/Legal'
 import { Login } from './pages/Login'
+import { NotFound } from './pages/NotFound'
 import { TeamPage } from './pages/TeamPage'
 import { TeamProfile } from './pages/TeamProfile'
 import { COOKIES, PRIVACY, TERMS } from './data/legal'
@@ -48,17 +49,18 @@ function App() {
         {route.startsWith('profile:') && <TeamProfile slug={route.slice(8)} />}
         {route === 'login' && <Login />}
         {route === 'admin' && <Admin />}
+        {route === 'notfound' && <NotFound />}
         {route === 'home' && (
           <>
             <Hero />
             <Stats />
+            <Partners />
             <Mission />
             <Story />
             <Solutions />
             <LogoStrip />
             <Featured />
             <Recognition />
-            <Partners />
             <Testimonials />
             <TeamTeaser />
             <News />

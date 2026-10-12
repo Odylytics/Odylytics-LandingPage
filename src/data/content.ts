@@ -55,8 +55,6 @@ export type RecognitionGroup = {
 export type Partner = {
   name: string
   type: string
-  /** UTS and HCMUT sit side by side in the centre of the partner row. */
-  featured?: boolean
   logo: string | null
 }
 
@@ -345,7 +343,7 @@ export const GALLERY: GalleryPhoto[] = [
   { src: '/assets/gallery/tech-planter.jpg', alt: 'The team in front of the Tech Planter banner', caption: 'Tech Planter' },
 ]
 
-// TODO(content): award photos (`image`), press links (`href`) and issuer logos.
+// TODO(content): press links (`href`) and issuer logos.
 export const RECOGNITION: RecognitionGroup[] = [
   {
     solutionId: 'aquaguard',
@@ -353,7 +351,7 @@ export const RECOGNITION: RecognitionGroup[] = [
     items: [
       {
         type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'OISP Presentation Contest', year: '2025',
-        issuerLogo: null, image: null, href: null,
+        issuerLogo: null, image: '/assets/gallery/oisp-presentation-contest.jpg', href: null,
       },
       {
         type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'EPICS 8th Competition (ASU & Dow Vietnam)', year: '2026',
@@ -361,7 +359,7 @@ export const RECOGNITION: RecognitionGroup[] = [
       },
       {
         type: 'AWARD', place: '2nd', title: '2nd Prize', issuer: 'Bach Khoa Innovation', year: '2026',
-        issuerLogo: null, image: null, href: null,
+        issuerLogo: null, image: '/assets/gallery/bach-khoa-innovation.jpg', href: null,
       },
     ],
   },
@@ -371,7 +369,7 @@ export const RECOGNITION: RecognitionGroup[] = [
     items: [
       {
         type: 'AWARD', place: '1st', title: '1st Prize', issuer: 'Fessior DevCamp 2026 Prometheus', year: '2026',
-        issuerLogo: null, image: null, href: null,
+        issuerLogo: null, image: '/assets/gallery/fessior-devcamp-prometheus.jpg', href: null,
       },
     ],
   },
@@ -387,14 +385,15 @@ export const PARTNERS_HEADING = {
 }
 
 export const PARTNERS: Partner[] = [
-  { name: 'Arizona State University', type: 'Academic', logo: '/assets/partners/row/asu.png' },
-  { name: 'RMIT University', type: 'Academic', logo: '/assets/partners/row/rmit.png' },
-  { name: 'Dow', type: 'Corporate', logo: '/assets/partners/row/dow.png' },
-  { name: 'University of Technology Sydney', type: 'Academic', logo: '/assets/partners/row/uts.png', featured: true },
-  // TODO(content): replace hcmut.svg with the official HCMUT logo file.
-  { name: 'Ho Chi Minh City University of Technology', type: 'Academic', logo: '/assets/partners/row/hcmut.svg', featured: true },
-  { name: 'Sorbonne Université', type: 'Academic', logo: '/assets/partners/row/sorbonne.png' },
-  { name: 'Université Laval', type: 'Academic', logo: '/assets/partners/row/laval.png' },
+  { name: 'University of Technology Sydney', type: 'Academic', logo: '/assets/partners/uts.png' },
+  { name: 'Ho Chi Minh City University of Technology', type: 'Academic', logo: '/assets/partners/hcmut.png' },
+  { name: 'Arizona State University', type: 'Academic', logo: '/assets/partners/asu.png' },
+  { name: 'RMIT University', type: 'Academic', logo: '/assets/partners/rmit.png' },
+  { name: 'Sorbonne Université', type: 'Academic', logo: '/assets/partners/sorbonne.png' },
+  { name: 'Université Laval', type: 'Academic', logo: '/assets/partners/laval.png' },
+  { name: 'Dow', type: 'Corporate', logo: '/assets/partners/dow.png' },
+  { name: 'Leave a Nest', type: 'Corporate', logo: '/assets/partners/leave-a-nest.png' },
+  { name: 'TechPlanter', type: 'Accelerator', logo: '/assets/partners/techplanter.png' },
 ]
 
 export type Stat = { value: number; suffix?: string; label: string }
@@ -402,7 +401,7 @@ export const STATS: Stat[] = [
   { value: 4, label: 'Competition prizes' },
   { value: 5, label: 'Student builders' },
   { value: 6, label: 'Digital solutions' },
-  { value: 7, label: 'Partner institutions' },
+  { value: 9, label: 'Partner institutions' },
 ]
 
 // ─── 6. Testimonials ────────────────────────────────────────────────────────

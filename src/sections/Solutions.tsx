@@ -17,7 +17,7 @@ export function Solutions() {
               <div className="sol-card__top">
                 <span className="logo-chip sol-card__logo">
                   {solution.logo ? (
-                    <img src={solutionLogo(solution.logo)} alt={`${solution.name} logo`} loading="lazy" />
+                    <img src={solutionLogo(solution.logo)} alt="" loading="lazy" />
                   ) : (
                     <span className="logo-placeholder">Logo</span>
                   )}
@@ -25,7 +25,7 @@ export function Solutions() {
                 {solution.flagship ? <span className="tag">Flagship</span> : <span className="label">{String(index + 1).padStart(2, '0')}</span>}
               </div>
               <div>
-                <h3 className="sol-card__name">{solution.name}</h3>
+                <h3 className={solution.logo ? 'sr-only' : 'sol-card__name'}>{solution.name}</h3>
                 {solution.category && <p className="sol-card__cat">{solution.category}</p>}
               </div>
               {solution.oneLiner && <p className="sol-card__tagline">{solution.oneLiner}</p>}

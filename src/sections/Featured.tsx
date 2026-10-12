@@ -18,12 +18,12 @@ export function Featured() {
             <article key={item.id} className="card feat-card" aria-labelledby={`feat-${item.id}`} data-reveal>
               <div className="feat-card__head">
                 <span className="logo-chip feat-card__logo">
-                  <img src={solutionLogo(item.logo)} alt={`${item.name} logo`} loading="lazy" />
+                  <img src={solutionLogo(item.logo)} alt="" loading="lazy" />
                 </span>
                 <span className="tag">{item.badge}</span>
               </div>
 
-              <h3 id={`feat-${item.id}`} className="feat-card__name">
+              <h3 id={`feat-${item.id}`} className={item.logo ? 'sr-only' : 'feat-card__name'}>
                 {item.name}
               </h3>
               {item.soon ? (

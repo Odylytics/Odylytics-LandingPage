@@ -119,7 +119,17 @@ export const VI: DeepPartial<Content> = {
     main: 'Xây cùng các trường đại học.',
     intro: 'Chúng tôi xây dựng cùng các trường đại học và doanh nghiệp ủng hộ đổi mới sáng tạo của sinh viên.',
   },
-  PARTNERS: [{ type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Doanh nghiệp' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }, { type: 'Học thuật' }],
+  PARTNERS: [
+    { type: 'Học thuật' },
+    { type: 'Học thuật' },
+    { type: 'Học thuật' },
+    { type: 'Học thuật' },
+    { type: 'Học thuật' },
+    { type: 'Học thuật' },
+    { type: 'Doanh nghiệp' },
+    { type: 'Doanh nghiệp' },
+    { type: 'Vườn ươm' },
+  ],
   STATS: [{ label: 'Giải thưởng cuộc thi' }, { label: 'Thành viên sinh viên' }, { label: 'Giải pháp số' }, { label: 'Tổ chức đối tác' }],
 
   TESTIMONIALS_HEADING: { eyebrow: 'Đánh giá', lead: 'Những người ngoài thực địa', main: 'đã tin vào AquaGuard.' },
