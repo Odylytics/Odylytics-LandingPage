@@ -19,7 +19,7 @@ const smoothstep = (value: number) => value * value * (3 - 2 * value)
  * road then accelerates (starting slightly before the fade ends), and finally cruises at
  * full boost long enough for the speed to register before the page moves on.
  */
-const INTRO = { fade: 0.5, ramp: 1.4, cruise: 1.6 }
+const INTRO = { fade: 0.5, ramp: 0.3, cruise: 1.0 }
 const RAMP_LEAD = 0.1
 const INTRO_TOTAL = INTRO.fade + INTRO.ramp + INTRO.cruise
 const FADE_END = INTRO.fade / INTRO_TOTAL
