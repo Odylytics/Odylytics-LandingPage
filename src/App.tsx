@@ -12,7 +12,6 @@ import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { Contact } from './sections/Contact'
-import { Featured } from './sections/Featured'
 import { Footer } from './sections/Footer'
 import { Hero } from './sections/Hero'
 import { LogoStrip } from './sections/LogoStrip'
@@ -59,7 +58,6 @@ function App() {
             <Story />
             <Solutions />
             <LogoStrip />
-            <Featured />
             <Recognition />
             <Testimonials />
             <TeamTeaser />
