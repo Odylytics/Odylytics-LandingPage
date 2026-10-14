@@ -112,12 +112,12 @@ export const NAV: NavGroup[] = [
       { label: 'Mission', href: '#mission', description: 'Why we exist and where we are heading' },
       { label: 'Partners', href: '#partners', description: 'Universities and companies we build with' },
       { label: 'Testimonials', href: '#testimonials', description: 'What partners and users say' },
-      { label: 'Team', href: '#/team', description: 'The five builders behind Odylytics' },
+      { label: 'Contact', href: '#contact', description: 'Partnerships, pilots and press' },
     ],
   },
   { label: 'Prizes', href: '#recognition' },
   { label: 'News', href: '#/blog' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Team', href: '#/team' },
 ]
 
 // ─── 1. Hero ────────────────────────────────────────────────────────────────
