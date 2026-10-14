@@ -54,6 +54,14 @@ export type Testimonial = {
   solution: string
 }
 
+export type Advisor = {
+  name: string
+  /** Advisory role, e.g. 'Strategic Advisor'. */
+  role: string
+  /** Position and institution. */
+  affiliation: string
+}
+
 export type TeamMember = {
   name: string
   role: string
@@ -391,8 +399,15 @@ export const TEAM_GROUPS = {
   members: { heading: 'Members', intro: 'Students and collaborators building with us.' },
 }
 
-// TODO(content): add advisors and members here (same shape as TEAM) when they are ready; empty groups show an 'Updating soon' frame.
-export const ADVISORS: TeamMember[] = []
+export const ADVISORS: Advisor[] = [
+  { name: 'Dr. Tobias Cibis', role: 'Strategic Advisor', affiliation: 'Lecturer, School of Computer Science, UTS' },
+  { name: 'Prof. Nguyen Ngoc Dinh', role: 'Community Advisor', affiliation: 'Director, Đất Lành Quebec Canada, Laval University' },
+  { name: 'Assoc. Prof. Nabin Sharma', role: 'Research Advisor', affiliation: 'Director, AI Intelligence Drone Lab, UTS' },
+  { name: 'Dr. Vo Thanh Hang', role: 'Product Advisor', affiliation: 'Faculty of Environment and Natural Resources, HCMUT' },
+  { name: 'MSc. Bui Xuan Giang', role: 'System Advisor', affiliation: 'Faculty of Computer Science and Engineering, HCMUT' },
+]
+
+// TODO(content): add members here (same shape as TEAM) when they are ready; an empty group shows an 'Updating soon' frame.
 export const MEMBERS: TeamMember[] = []
 
 export const TEAM_TEASER = {
@@ -402,10 +417,10 @@ export const TEAM_TEASER = {
   intro: 'Meet the people behind Odylytics, what each of them owns, and how they work together.',
 }
 
-// TODO(content): full names and LinkedIn URLs for all 5 members; confirm roles, bios and responsibilities.
+// TODO(content): the second Quân (Marketing) still needs his full name; add LinkedIn URLs for all 5 members and confirm roles, bios and responsibilities.
 export const TEAM: TeamMember[] = [
   {
-    name: 'Quân',
+    name: 'Nguyễn Minh Quân',
     slug: 'quan-ceo',
     role: 'Chief Executive Officer',
     shortRole: 'CEO',
@@ -419,7 +434,7 @@ export const TEAM: TeamMember[] = [
     ],
   },
   {
-    name: 'Nghĩa',
+    name: 'Trần Tuấn Nghĩa',
     slug: 'nghia-cto',
     role: 'Chief Technology Officer',
     shortRole: 'CTO',
@@ -434,7 +449,7 @@ export const TEAM: TeamMember[] = [
     
   },
   {
-    name: 'Sơn',
+    name: 'Nguyễn Trường Sơn',
     slug: 'son-cpo',
     role: 'Chief Product Officer',
     shortRole: 'CPO',
@@ -462,7 +477,7 @@ export const TEAM: TeamMember[] = [
     ],
   },
   {
-    name: 'Khang',
+    name: 'Trương Nguyễn Bảo Khang',
     slug: 'khang-engineer',
     role: 'Software Engineer',
     shortRole: 'Engineer',
