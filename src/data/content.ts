@@ -11,6 +11,8 @@ export type Solution = {
   description: string
   category: string
   flagship: boolean
+  /** Showcase cover photo; the logo on a plain surface is shown when missing. */
+  image?: string
 }
 
 
@@ -172,6 +174,12 @@ export const MISSION = {
 
 // ─── 2. Core Digital Solutions ──────────────────────────────────────────────
 
+export const SOLUTIONS_HEADING = {
+  eyebrow: 'Solutions',
+  lead: 'Six solutions.',
+  main: 'One AI core.',
+}
+
 export const SOLUTIONS: Solution[] = [
   {
     id: 'aquaguard',
@@ -182,6 +190,7 @@ export const SOLUTIONS: Solution[] = [
       'Victims send SOS requests, rescue teams see them on a live flood map, and coordinators dispatch help from one shared view. Built for web and mobile and tested in Vietnam’s flood season.',
     category: 'Disaster response',
     flagship: true,
+    image: '/assets/gallery/epics-first-place.jpg',
   },
   {
     id: 'enablecode',
@@ -192,6 +201,7 @@ export const SOLUTIONS: Solution[] = [
       'A webcam tracks the learner’s head, so gestures move the cursor and click blocks. Programs are assembled by drag and drop, which makes coding possible without a keyboard or mouse.',
     category: 'Inclusive education',
     flagship: true,
+    image: '/assets/gallery/fessior-devcamp-prometheus.jpg',
   },
   {
     id: 'airguard',
@@ -212,6 +222,7 @@ export const SOLUTIONS: Solution[] = [
       'Includio simulates job interviews with AI. It writes questions from the job description and the candidate’s profile, so candidates can practise as often as they like without a real HR interviewer.',
     category: 'Inclusive hiring',
     flagship: false,
+    image: '/assets/news/includio-rmit-hackathon.webp',
   },
   {
     id: 'roomie',

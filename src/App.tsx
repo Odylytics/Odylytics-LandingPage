@@ -23,6 +23,7 @@ import { Closing } from './sections/Closing'
 import { Story } from './sections/Story'
 import { Impact } from './sections/Impact'
 import { Partners } from './sections/Partners'
+import { Showcase } from './sections/Showcase'
 import { Recognition } from './sections/Recognition'
 import { TeamTeaser } from './sections/TeamTeaser'
 import { Testimonials } from './sections/Testimonials'
@@ -56,6 +57,7 @@ function App() {
             <Partners />
             <Mission />
             <Story />
+            <Showcase />
             <LogoStrip />
             <Recognition />
             <Testimonials />
