@@ -105,6 +105,13 @@ export const VI: DeepPartial<Content> = {
     { role: 'Trưởng nhóm Marketing', shortRole: 'Marketing', bio: 'Định hình cách Odylytics tiếp cận chính quyền, đối tác và cộng đồng, và kể câu chuyện đằng sau tác động của chúng tôi.', responsibilities: ['Phụ trách thương hiệu, website và mạng xã hội', 'Đưa câu chuyện đến báo chí và quản lý trang tin tức', 'Chuẩn bị hồ sơ dự thi và tài liệu cho đối tác'] },
     { role: 'Kỹ sư phần mềm', shortRole: 'Kỹ sư', bio: 'Xây dựng các nền tảng đằng sau giải pháp, từ luồng dữ liệu thời gian thực đến bảng điều khiển cho đội cứu hộ.', responsibilities: ['Xây ứng dụng web và di động cho AquaGuard và EnableCode', 'Duy trì luồng dữ liệu và bản đồ trực tiếp', 'Phát hành phiên bản và theo dõi hệ thống'] },
   ],
+  ADVISORS: [
+    { role: 'Cố vấn chiến lược', affiliation: 'Giảng viên, Khoa Khoa học Máy tính, UTS' },
+    { role: 'Cố vấn cộng đồng', affiliation: 'Giám đốc, Đất Lành Quebec Canada, Đại học Laval' },
+    { role: 'Cố vấn nghiên cứu', affiliation: 'Giám đốc, Phòng thí nghiệm Drone Trí tuệ nhân tạo, UTS' },
+    { role: 'Cố vấn sản phẩm', affiliation: 'Khoa Môi trường và Tài nguyên, ĐH Bách khoa TP.HCM' },
+    { role: 'Cố vấn hệ thống', affiliation: 'Khoa Khoa học và Kỹ thuật Máy tính, ĐH Bách khoa TP.HCM' },
+  ],
   TEAM_GROUPS: { cofounders: { heading: 'Đồng sáng lập', intro: 'Năm sinh viên đã sáng lập Odylytics.' }, advisors: { heading: 'Cố vấn', intro: 'Những người hướng dẫn và chuyên gia đồng hành cùng chúng tôi.' }, members: { heading: 'Thành viên', intro: 'Sinh viên và cộng sự cùng xây dựng với chúng tôi.' } },
   TEAM_TEASER: { eyebrow: 'Đội ngũ cốt lõi', lead: 'Năm nhà đồng sáng lập.', main: 'Một sứ mệnh.', intro: 'Gặp những người đứng sau Odylytics, vai trò của từng người và cách họ làm việc cùng nhau.' },
 
