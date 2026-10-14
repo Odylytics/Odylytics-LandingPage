@@ -860,48 +860,23 @@ a.team-card:hover .team-card__more { color: var(--accent-soft-hover); text-decor
 .impact__note { margin-top: 32px; color: var(--text-faint); }
 @media (max-width: 700px) { .impact__grid { grid-template-columns: 1fr; row-gap: 36px; } }
 
-/* ─── Showcase: pinned product corridor (cards slide sideways while you scroll) ─ */
+/* ─── Showcase: the six solutions as a static grid ─────────────────────── */
 
-.showcase { position: relative; padding-block: var(--section-y) 0; }
-.showcase__stage { display: flex; flex-direction: column; }
-.showcase .section-heading { margin-bottom: 40px; }
-.showcase__corridor { display: flex; gap: 16px; padding: 4px 16px 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.showcase__corridor::-webkit-scrollbar { display: none; }
-.showcase-card { flex: none; width: min(72vw, 300px); scroll-snap-align: center; display: flex; flex-direction: column; gap: 14px; }
+.showcase { padding-bottom: clamp(56px, 7vw, 88px); }
+.showcase__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 24px; }
 .showcase-card__media {
   position: relative; display: grid; place-items: center; aspect-ratio: 3 / 2; overflow: hidden;
   background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-media);
 }
 .showcase-card__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.showcase-card__logo { width: 56%; height: auto; }
+.showcase-card__logo { width: 52%; height: auto; }
 .showcase-card__chip {
   position: absolute; left: 12px; bottom: 12px; display: grid; place-items: center; height: 54px; padding-inline: 18px;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-pill);
 }
 .showcase-card__chip img { height: 28px; width: auto; max-width: 160px; object-fit: contain; }
-.showcase-card__name { font-family: var(--font-display); font-size: 19px; font-weight: var(--fw-semibold); letter-spacing: var(--tracking-heading); }
-.showcase-card__line { margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--text-muted); }
-
-.showcase__caption { display: none; }
-
-@media (min-width: 821px) {
-  .showcase.is-live { height: calc(100svh + var(--showcase-track, 300svh)); padding-block: 0; }
-  .showcase.is-live .showcase__stage { position: sticky; top: 0; height: 100svh; padding-top: clamp(84px, 11svh, 120px); overflow: clip; }
-  .showcase.is-live .section-heading { margin-bottom: 0; }
-  .showcase.is-live .section-heading .h2-serif { font-size: clamp(30px, 3.6vw, 52px); }
-  .showcase.is-live .showcase__corridor {
-    position: relative; flex: 1; display: block; padding: 0; overflow: visible; perspective: 1150px; perspective-origin: 50% 50%;
-  }
-  .showcase.is-live .showcase-card {
-    --card-w: clamp(300px, 31vw, 500px); position: absolute; left: 50%; top: 44%; width: var(--card-w); margin: calc(var(--card-w) * -0.3333) 0 0 calc(var(--card-w) * -0.5);
-    will-change: transform, opacity; transform-origin: 50% 50%;
-  }
-  .showcase.is-live .showcase-card__body { display: none; }
-  .showcase.is-live .showcase__caption {
-    position: absolute; left: 50%; bottom: clamp(24px, 6svh, 64px); z-index: 200; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 8px; width: min(440px, 90%); text-align: center;
-  }
-  .showcase__count { font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: var(--tracking-label); color: var(--signal); }
-  .showcase__name { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 34px); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-heading); line-height: 1.1; }
-  .showcase__line { margin-bottom: 8px; font-size: 16px; line-height: 1.5; color: var(--text-muted); }
-}
+.showcase-card__name { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 18px; font-family: var(--font-display); font-size: 22px; font-weight: var(--fw-semibold); letter-spacing: var(--tracking-heading); line-height: 1.2; }
+.showcase-card__cat { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: var(--fw-regular); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-faint); }
+.showcase-card__line { margin-top: 6px; font-size: 16px; line-height: 1.5; color: var(--text-muted); }
+@media (max-width: 1024px) { .showcase__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .showcase__grid { grid-template-columns: 1fr; } }
