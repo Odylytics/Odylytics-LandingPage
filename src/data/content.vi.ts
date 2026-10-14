@@ -63,37 +63,6 @@ export const VI: DeepPartial<Content> = {
     {},
   ],
 
-  FEATURED_HEADING: { eyebrow: 'Giải pháp nổi bật', lead: 'Ba giải pháp.', main: 'Xây để ra mắt.' },
-  FEATURED: [
-    {
-      badge: 'Chủ lực',
-      tagline: 'Hệ thống điều phối cứu hộ lũ lụt đa nền tảng đang vận hành tại Việt Nam.',
-      problem: 'Khi lũ về, nạn nhân, đội cứu hộ và điều phối viên thường bị cắt đứt liên lạc. AquaGuard kết nối cả ba theo thời gian thực, trên web lẫn di động.',
-      features: [
-        { title: 'Yêu cầu SOS', text: 'Người dân gửi lời cầu cứu đến tay đội cứu hộ ngay lập tức.' },
-        { title: 'Bản đồ lũ trực tiếp', text: 'Một bức tranh cập nhật về vùng ngập và các yêu cầu cứu trợ.' },
-        { title: 'Điều phối cứu hộ', text: 'Điều phối viên và đội cứu hộ làm việc trên cùng một màn hình trực tiếp.' },
-        { title: 'Hướng dẫn an toàn', text: 'Chỉ dẫn rõ ràng cho người dân trong vùng bị ảnh hưởng.' },
-      ],
-      metrics: [{ label: 'Giải thưởng cuộc thi' }, { label: 'Nhóm đối tượng được kết nối' }, { label: 'Nền tảng: web & di động' }],
-      cta: 'Tìm hiểu thêm',
-    },
-    {
-      badge: 'Chủ lực',
-      tagline: 'Nền tảng dạy lập trình kéo thả dành cho người khuyết tật chi trên.',
-      problem: 'Học lập trình thường giả định có bàn phím và chuột, khiến người không dùng được tay bị bỏ lại. EnableCode cho phép họ viết và chạy code hoàn toàn rảnh tay.',
-      features: [
-        { title: 'Nhận diện khuôn mặt bằng AI', text: 'Webcam theo dõi chuyển động đầu theo thời gian thực.' },
-        { title: 'Con trỏ bằng cử chỉ đầu', text: 'Cử chỉ đầu di chuyển và nhấp con trỏ.' },
-        { title: 'Lập trình kéo thả', text: 'Chương trình ghép từ các khối thay vì gõ cú pháp.' },
-        { title: 'Chạy code rảnh tay', text: 'Viết, chạy và kiểm thử code mà không chạm vào thiết bị.' },
-      ],
-      metrics: [{ label: 'Lập trình rảnh tay' }, { label: 'Fessior DevCamp 2026' }],
-      cta: 'Tìm hiểu thêm',
-    },
-    { badge: 'Sắp tới', cta: 'Tìm hiểu thêm' },
-  ],
-
   RECOGNITION_HEADING: {
     eyebrow: 'Giải thưởng',
     lead: 'Được công nhận độc lập.',

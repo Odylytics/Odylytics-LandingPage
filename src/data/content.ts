@@ -13,21 +13,6 @@ export type Solution = {
   flagship: boolean
 }
 
-export type Feature = { title: string; text: string }
-export type Metric = { value: string; label: string }
-
-export type FeaturedSolution = {
-  soon?: boolean
-  id: string
-  name: string
-  logo: string
-  badge: string
-  tagline: string
-  problem: string
-  features: Feature[]
-  metrics: Metric[]
-  cta: string
-}
 
 export type RecognitionType = 'AWARD' | 'CERTIFICATION' | 'ACCELERATOR'
 
@@ -115,8 +100,8 @@ export const NAV: NavGroup[] = [
     label: 'Solutions',
     items: [
       { label: 'All solutions', href: '#solutions', description: 'Six digital products built by students' },
-      { label: 'AquaGuard', href: '#featured', description: 'Flood rescue coordination' },
-      { label: 'EnableCode', href: '#featured', description: 'Hands-free coding education' },
+      { label: 'AquaGuard', href: '#solutions', description: 'Flood rescue coordination' },
+      { label: 'EnableCode', href: '#solutions', description: 'Hands-free coding education' },
     ],
   },
   {
@@ -255,71 +240,6 @@ export const SOLUTIONS: Solution[] = [
     description: '',
     category: '',
     flagship: false,
-  },
-]
-
-// ─── 3. Featured Solutions ──────────────────────────────────────────────────
-
-export const FEATURED_HEADING = {
-  eyebrow: 'Featured solutions',
-  lead: 'Three solutions.',
-  main: 'Built to ship.',
-}
-
-export const FEATURED: FeaturedSolution[] = [
-  {
-    id: 'aquaguard',
-    name: 'AquaGuard',
-    logo: '/assets/solutions/aquaguard.png',
-    badge: 'Flagship',
-    tagline: 'A multi-platform flood rescue coordination system operating in Vietnam.',
-    problem:
-      'When floods hit, victims, rescue teams and coordinators are often cut off from each other. AquaGuard connects all three in real time, across web and mobile.',
-    features: [
-      { title: 'SOS requests', text: 'Victims send a call for help that reaches rescuers instantly.' },
-      { title: 'Live flood maps', text: 'One current picture of flooded areas and requests for help.' },
-      { title: 'Rescue coordination', text: 'Coordinators and rescue teams work from the same live view.' },
-      { title: 'Safety guidance', text: 'Clear instructions for people in affected areas.' },
-    ],
-    metrics: [
-      { value: '3', label: 'Competition awards' },
-      { value: '3', label: 'Groups connected' },
-      { value: '2', label: 'Platforms: web & mobile' },
-    ],
-    cta: 'Learn more',
-  },
-  {
-    id: 'enablecode',
-    name: 'EnableCode',
-    logo: '/assets/solutions/enablecode.png',
-    badge: 'Flagship',
-    tagline: 'A drag-and-drop coding education platform built for people with upper-limb disabilities.',
-    problem:
-      'Learning to code assumes a keyboard and mouse, which shuts out people who cannot use their hands. EnableCode lets them write and run code completely hands-free.',
-    features: [
-      { title: 'AI face tracking', text: 'A webcam follows head movement in real time.' },
-      { title: 'Head-gesture cursor', text: 'Head gestures move and click the cursor.' },
-      { title: 'Drag-and-drop coding', text: 'Programs built from blocks instead of typed syntax.' },
-      { title: 'Hands-free execution', text: 'Write, run and test code without touching a device.' },
-    ],
-    metrics: [
-      { value: '100%', label: 'Hands-free coding' },
-      { value: '1st', label: 'Fessior DevCamp 2026' },
-    ],
-    cta: 'Learn more',
-  },
-  // TODO(content): fill in Includio when the product story is ready.
-  {
-    id: 'includio',
-    name: 'Includio',
-    logo: '/assets/solutions/includio.png',
-    badge: 'Next up',
-    soon: true,
-    tagline: '',
-    problem: '',
-    features: [],
-    metrics: [],
-    cta: 'Learn more',
   },
 ]
 
@@ -671,8 +591,8 @@ export const FOOTER_GROUPS: { heading: string; links: NavItem[] }[] = [
   {
     heading: 'Solutions',
     links: [
-      { label: 'AquaGuard', href: '#featured' },
-      { label: 'EnableCode', href: '#featured' },
+      { label: 'AquaGuard', href: '#solutions' },
+      { label: 'EnableCode', href: '#solutions' },
       { label: 'AirGuard', href: '#solutions' },
       { label: 'Includio', href: '#solutions' },
       { label: 'RooMie', href: '#solutions' },
