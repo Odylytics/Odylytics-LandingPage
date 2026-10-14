@@ -548,6 +548,7 @@ export const POSTS: Post[] = [
     excerpt: 'Our team built Includio, an AI interview-practice platform for autistic candidates, into a working MVP at RMIT ADC Hackathon 2026.',
     category: 'Product',
     date: '2026',
+    image: '/assets/news/includio-rmit-hackathon.webp',
   },
   {
     id: 'aquaguard-epics-first-prize',
