@@ -21,12 +21,12 @@ export const VI: DeepPartial<Content> = {
   HERO: {
     eyebrow: 'Công ty AI · giải pháp số',
     headlineTop: 'Giải pháp AI',
-    headlineBottom: 'thay lao động bằng',
-    rotatingWords: ['logic', 'tốc độ', 'quy mô', 'hiểu biết'],
-    srHeadline: 'Giải pháp AI thay lao động bằng logic, tốc độ, quy mô và hiểu biết.',
+    headlineBottom: 'kiến tạo',
+    rotatingWords: ['đổi mới', 'tác động', 'tiến bộ', 'tăng trưởng'],
+    srHeadline: 'Giải pháp AI kiến tạo đổi mới, tác động, tiến bộ và tăng trưởng.',
     note: 'Một công ty AI. Sáu giải pháp.',
     subheadline:
-      'Odylytics là một công ty AI. Chúng tôi thiết kế và đưa ra thị trường các giải pháp số giúp nâng cao năng suất bằng cách thay lao động thủ công, lặp đi lặp lại bằng logic, từ cứu hộ lũ lụt đến giáo dục bao trùm.',
+      'Odylytics là công ty AI. Chúng tôi kiến tạo đổi mới bằng các giải pháp số, giúp tổ chức và cộng đồng chuyển đổi số cách vận hành, từ cứu hộ lũ lụt đến giáo dục bao trùm.',
     scrollCue: 'Cuộn để khám phá',
     marquee: ['Phân tích AI', 'Giám sát IoT', 'Cảnh báo sớm', 'Nền tảng dữ liệu', 'Hỗ trợ quyết định', 'Thiết kế bao trùm'],
   },
@@ -36,13 +36,13 @@ export const VI: DeepPartial<Content> = {
     lead: 'Một công ty AI.',
     main: 'Nhiều giải pháp.',
     mission:
-      'Odylytics là công ty AI thiết kế, xây dựng và đưa ra thị trường các giải pháp số. Chúng tôi thay lao động thủ công, lặp đi lặp lại bằng logic để con người dành thời gian cho phán đoán và sự quan tâm.',
+      'Odylytics là công ty AI thiết kế, xây dựng và đưa ra thị trường các giải pháp số. Chúng tôi kiến tạo đổi mới và thúc đẩy chuyển đổi số để cộng đồng và tổ chức làm việc thông minh, an toàn hơn.',
     vision:
-      'Một thế giới nơi công việc thường nhật do AI được thiết kế tốt đảm nhận, và con người được tự do làm điều chỉ con người làm được.',
+      'Một thế giới nơi công nghệ được thiết kế vì con người, và mọi cộng đồng đều hưởng lợi từ đổi mới số.',
     pillarsHeading: 'Định hướng của chúng tôi',
     pillars: [
       { title: 'Giải quyết vấn đề thật', text: 'Chọn những vấn đề quan trọng, từ lũ lụt đến khả năng tiếp cận, và biến mỗi vấn đề thành giải pháp người ta dùng hằng ngày.' },
-      { title: 'Thay lao động bằng logic', text: 'Xây sản phẩm tự động hóa công việc lặp lại, từ điều phối đội cứu hộ đến dạy lập trình, để con người dành thời gian cho phán đoán và sự quan tâm.' },
+      { title: 'Thúc đẩy chuyển đổi số', text: 'Xây giải pháp số hóa cách công việc được thực hiện, từ điều phối đội cứu hộ đến dạy lập trình, để con người tập trung vào phán đoán và sự quan tâm.' },
       { title: 'Xây một nền tảng dùng chung', text: 'Giữ một nền tảng kỹ thuật duy nhất đằng sau mọi sản phẩm, để mỗi giải pháp mới ra mắt nhanh hơn và học được từ các giải pháp khác.' },
       { title: 'Lớn lên cùng đối tác', text: 'Hợp tác với trường đại học, cơ quan nhà nước và doanh nghiệp trong nước lẫn quốc tế để thử nghiệm, tài trợ và phân phối sản phẩm.' },
     ],

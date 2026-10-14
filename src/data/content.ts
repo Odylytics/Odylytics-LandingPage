@@ -126,13 +126,13 @@ export const HERO = {
   //   B. Intelligent solutions for safer, smarter communities.
   //   C. We build AI that works when it matters most.
   headlineTop: 'AI solutions',
-  headlineBottom: 'that replace labour with',
-  rotatingWords: ['logic', 'speed', 'scale', 'insight'],
-  srHeadline: 'AI solutions that replace labour with logic, speed, scale and insight.',
+  headlineBottom: 'that drive',
+  rotatingWords: ['innovation', 'impact', 'progress', 'growth'],
+  srHeadline: 'AI solutions that drive innovation, impact, progress and growth.',
   note: 'One AI firm. Six solutions.',
   // TODO(content): confirm what Odylytics provides and to whom.
   subheadline:
-    'Odylytics is an AI firm. We design and ship digital solutions that raise productivity by replacing manual, repetitive labour with logic, from flood rescue to inclusive education.',
+    'Odylytics is an AI firm. We create innovation through digital solutions, helping organisations and communities digitalise how they work, from flood rescue to inclusive education.',
   scrollCue: 'Scroll to find out',
   // TODO(content): confirm marquee keywords.
   marquee: ['AI analytics', 'IoT monitoring', 'Early warning', 'Data platforms', 'Decision support', 'Inclusive design'],
@@ -146,9 +146,9 @@ export const MISSION = {
   main: 'Many solutions.',
   // TODO(content): confirm wording of the mission and vision with the founders.
   mission:
-    'Odylytics is an AI firm that designs, builds and ships digital solutions. We replace manual, repetitive labour with logic, so people can spend their time on judgement and care.',
+    'Odylytics is an AI firm that designs, builds and ships digital solutions. We create innovation and drive digital transformation, so communities and organisations can work smarter and safer.',
   vision:
-    'A world where routine work is done by well-designed AI, and people are free to do what only they can do.',
+    'A world where technology is designed for people, and every community can benefit from digital innovation.',
   pillarsHeading: 'Where we are heading',
   pillars: [
     {
@@ -156,8 +156,8 @@ export const MISSION = {
       text: 'Pick problems that matter, from floods to accessibility, and turn each one into a solution people use every day.',
     },
     {
-      title: 'Replace labour with logic',
-      text: 'Build products that automate repetitive work, from coordinating rescue teams to teaching code, so people spend time on judgement and care.',
+      title: 'Drive digital transformation',
+      text: 'Build solutions that digitalise how work gets done, from coordinating rescue teams to teaching code, so people can focus on judgement and care.',
     },
     {
       title: 'Build one shared core',
