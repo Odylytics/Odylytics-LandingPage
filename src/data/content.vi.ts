@@ -48,7 +48,7 @@ export const VI: DeepPartial<Content> = {
     ],
   },
 
-  SOLUTIONS_HEADING: { eyebrow: 'Giải pháp', lead: 'Sáu giải pháp.', main: 'Một lõi AI.' },
+  SOLUTIONS_HEADING: { eyebrow: 'Giải pháp', lead: 'Sáu giải pháp.', main: 'Một lõi AI.', intro: 'Từ cứu hộ lũ lụt đến giáo dục bao trùm, mỗi giải pháp đều xây trên cùng một nền tảng AI và được định hình từ vấn đề có thật.' },
   SOLUTIONS: [
     { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
     {},

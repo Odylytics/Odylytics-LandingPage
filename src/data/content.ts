@@ -178,6 +178,7 @@ export const SOLUTIONS_HEADING = {
   eyebrow: 'Solutions',
   lead: 'Six solutions.',
   main: 'One AI core.',
+  intro: 'From flood rescue to inclusive education, every solution is built on the same AI foundation and shaped by real problems.',
 }
 
 export const SOLUTIONS: Solution[] = [

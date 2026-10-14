@@ -50,7 +50,7 @@ Pills for buttons, chips, inputs and the nav. Four corner sizes for everything e
 - **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces.
 - **Placeholders**: any missing content is a grey skeleton frame plus a dashed mono tag "Updating soon" (`.soon-line`, `.soon-tag`). Never invent copy to fill a gap.
 - **Impact**: three figures right under the hero, no boxes: hairline above with a short brand-gradient tick that grows on hover, mono index, semibold numerals (600, tabular, up to 84px) whose `+` uses the brand gradient as text fill, mono uppercase caption, a mono note crediting the source. The gradient is allowed as text fill and hairline only, never as a background.
-- **Showcase**: pinned corridor of product cards. Vertical scroll slides them sideways: centre cards are small and flat, edge cards large and angled inward, and a centre caption follows the nearest product. Narrow screens and reduced motion get a plain snap-scrolling row. The logo marquee follows directly below.
+- **Showcase**: the six solutions as a static three-column grid. Each card is a 3:2 media (whole photo with a logo pill, or the logo on a plain surface), then name, category label and one line. The logo marquee follows directly below.
 - **Footer**: black. A dim giant wordmark sits behind a rounded `--surface` panel that covers its lower part; the panel holds tagline, primary CTA, mono contact block and four bracketed link columns, then a hairline, the disclaimer, copyright and socials.
 - **FAQ**: centred heading, narrow (760px) list of native `<details>` rows between hairlines, circular plus icon that turns purple and becomes a minus when open.
 
@@ -60,7 +60,7 @@ Impact figures after the hero · partner row · sticky split (heading left, card
 
 ## 7. Motion
 
-Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers (grouped by language), sticky product showcase, Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
+Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers (grouped by language), Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
 
 ## 8. Voice
 
