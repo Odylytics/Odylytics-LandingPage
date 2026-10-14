@@ -51,10 +51,10 @@ function App() {
         {route === 'home' && (
           <>
             <Hero />
+            <Impact />
             <Partners />
             <Mission />
             <Story />
-            <Impact />
             <LogoStrip />
             <Recognition />
             <Testimonials />

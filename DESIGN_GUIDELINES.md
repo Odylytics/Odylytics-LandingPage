@@ -49,12 +49,12 @@ Pills for buttons, chips, inputs and the nav. Four corner sizes for everything e
 - **Tags**: mono pill; purple for categories, neutral for meta, orange for status.
 - **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces.
 - **Placeholders**: any missing content is a grey skeleton frame plus a dashed mono tag "Updating soon" (`.soon-line`, `.soon-tag`). Never invent copy to fill a gap.
-- **Impact cards**: one lead card (full width, `--radius-panel`) plus two supporting cards (`--radius-card`). Large semibold numerals (600, tabular), mono uppercase caption, outline icon in a `--surface-2` circle. No gradient, no shadow.
+- **Impact**: three figures right under the hero, no boxes: hairline above, semibold numerals (600, tabular, up to 80px), mono uppercase caption, a mono note crediting the source.
 - **Footer**: black, tagline plus primary CTA, 2×2 bracketed link groups, giant white wordmark, mono contact block.
 
 ## 6. Layout patterns
 
-Partner row after the hero · sticky split (heading left, cards pop up right) · photo story panel · impact cards (AquaGuard results presented as Odylytics impact) · slim solutions logo strip (`#solutions`) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · scattered-card closing CTA · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
+Impact figures after the hero · partner row · sticky split (heading left, cards pop up right) · photo story panel · slim solutions logo strip (`#solutions`) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · scattered-card closing CTA · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
 
 ## 7. Motion
 
