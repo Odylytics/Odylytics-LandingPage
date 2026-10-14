@@ -172,14 +172,6 @@ export const MISSION = {
 
 // ─── 2. Core Digital Solutions ──────────────────────────────────────────────
 
-export const SOLUTIONS_HEADING = {
-  eyebrow: 'Core digital solutions',
-  lead: 'Six solutions.',
-  main: 'One intelligence layer.',
-  // TODO(content): confirm intro sentence.
-  intro: 'Every Odylytics solution starts from a real problem and is shaped into a product people can use and pay for.',
-}
-
 export const SOLUTIONS: Solution[] = [
   {
     id: 'aquaguard',
@@ -316,13 +308,23 @@ export const PARTNERS: Partner[] = [
   { name: 'TechPlanter', type: 'Accelerator', logo: '/assets/partners/techplanter.png' },
 ]
 
-export type Stat = { value: number; suffix?: string; label: string }
-export const STATS: Stat[] = [
-  { value: 4, label: 'Competition prizes' },
-  { value: 5, label: 'Student builders' },
-  { value: 6, label: 'Digital solutions' },
-  { value: 9, label: 'Partner institutions' },
+export type ImpactStat = { value: number; suffix?: string; label: string; icon: 'reach' | 'users' | 'endorse' }
+
+export const IMPACT_HEADING = {
+  eyebrow: 'Our impact so far',
+  lead: 'Built for real emergencies.',
+  main: 'Measured in people reached.',
+  intro: 'Our approach is proven first in the field. These are the results of AquaGuard, our flood rescue platform, and the standard every Odylytics solution is built to meet.',
+}
+
+// TODO(content): confirm the figures and how each one is counted before shipping.
+export const IMPACT: ImpactStat[] = [
+  { value: 1000000, suffix: '+', label: 'Social media reached', icon: 'reach' },
+  { value: 600, suffix: '+', label: 'Active users across platforms', icon: 'users' },
+  { value: 5, suffix: '+', label: 'Organizations endorsed', icon: 'endorse' },
 ]
+
+export const IMPACT_NOTE = 'Results from AquaGuard, our flood rescue platform.'
 
 // ─── 6. Testimonials ────────────────────────────────────────────────────────
 

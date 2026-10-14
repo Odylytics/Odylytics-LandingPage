@@ -3,9 +3,11 @@ import { LogoLoop } from '../components/LogoLoop'
 import type { LogoItem } from '../components/LogoLoop'
 import { SOLUTIONS } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
+import { useUi } from '../hooks/useContent'
 
 export function LogoStrip() {
   const { solutionLogo } = useBrandAssets()
+  const ui = useUi()
   const logos = useMemo<LogoItem[]>(
     () =>
       SOLUTIONS.map((solution) =>
@@ -17,8 +19,8 @@ export function LogoStrip() {
   )
 
   return (
-    <section className="logo-strip" aria-label="Odylytics solutions">
-      <p className="logo-strip__label">Six solutions. One AI core.</p>
+    <section id="solutions" className="logo-strip" aria-label="Odylytics solutions">
+      <p className="logo-strip__label">{ui.solutionsLabel}</p>
       <LogoLoop
         logos={logos}
         speed={60}

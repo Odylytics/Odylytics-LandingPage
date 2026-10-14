@@ -20,10 +20,9 @@ import { News } from './sections/News'
 import { Nav } from './sections/Nav'
 import { Closing } from './sections/Closing'
 import { Story } from './sections/Story'
-import { Stats } from './sections/Stats'
+import { Impact } from './sections/Impact'
 import { Partners } from './sections/Partners'
 import { Recognition } from './sections/Recognition'
-import { Solutions } from './sections/Solutions'
 import { TeamTeaser } from './sections/TeamTeaser'
 import { Testimonials } from './sections/Testimonials'
 
@@ -52,11 +51,10 @@ function App() {
         {route === 'home' && (
           <>
             <Hero />
-            <Stats />
             <Partners />
             <Mission />
             <Story />
-            <Solutions />
+            <Impact />
             <LogoStrip />
             <Recognition />
             <Testimonials />

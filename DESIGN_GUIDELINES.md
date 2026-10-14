@@ -2,7 +2,7 @@
 
 One system for the whole site: **Geist + Geist Mono, orange and purple on black and white**. If a style is not listed here, do not invent one; add it here first.
 
-Tagline: **Student ideas. Market-ready products.**
+Tagline: **One AI firm. Six solutions.**
 
 ---
 
@@ -49,16 +49,16 @@ Pills for buttons, chips, inputs and the nav. Four corner sizes for everything e
 - **Tags**: mono pill; purple for categories, neutral for meta, orange for status.
 - **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces.
 - **Placeholders**: any missing content is a grey skeleton frame plus a dashed mono tag "Updating soon" (`.soon-line`, `.soon-tag`). Never invent copy to fill a gap.
-- **Stats**: large light numerals (300), hairline above, mono caption below. No boxes.
+- **Impact cards**: one lead card (full width, `--radius-panel`) plus two supporting cards (`--radius-card`). Large light numerals (300, tabular), mono uppercase caption, outline icon in a `--surface-2` circle, two flat drifting wave layers (`--wave-a`, `--wave-b`, purple at low alpha) rising from the bottom. No gradient, no shadow. Waves stop under reduced motion.
 - **Footer**: black, tagline plus primary CTA, 2×2 bracketed link groups, giant white wordmark, mono contact block.
 
 ## 6. Layout patterns
 
-Stats band after the hero · sticky split (heading left, cards pop up right) · photo story panel · solutions grid · stacked featured cards (sticky) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · scattered-card closing CTA · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
+Partner row after the hero · sticky split (heading left, cards pop up right) · photo story panel · impact cards (AquaGuard results presented as Odylytics impact) · slim solutions logo strip (`#solutions`) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · scattered-card closing CTA · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
 
 ## 7. Motion
 
-Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers, sticky stacking, drifting closing cards, Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
+Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers (grouped by language), drifting impact waves, sticky stacking, drifting closing cards, Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
 
 ## 8. Voice
 

@@ -48,12 +48,6 @@ export const VI: DeepPartial<Content> = {
     ],
   },
 
-  SOLUTIONS_HEADING: {
-    eyebrow: 'Giải pháp số cốt lõi',
-    lead: 'Sáu giải pháp.',
-    main: 'Một tầng trí tuệ.',
-    intro: 'Mỗi giải pháp của Odylytics bắt đầu từ một vấn đề có thật, rồi được hoàn thiện thành sản phẩm người ta có thể dùng và trả tiền.',
-  },
   SOLUTIONS: [
     { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
     { oneLiner: 'Lập trình kéo thả, rảnh tay cho người khuyết tật chi trên.', description: 'Webcam theo dõi đầu người học, cử chỉ đầu di chuyển và nhấp chuột. Chương trình được ghép từ các khối kéo thả, nên có thể lập trình mà không cần bàn phím hay chuột.', category: 'Giáo dục bao trùm' },
@@ -99,7 +93,14 @@ export const VI: DeepPartial<Content> = {
     { type: 'Doanh nghiệp' },
     { type: 'Vườn ươm' },
   ],
-  STATS: [{ label: 'Giải thưởng cuộc thi' }, { label: 'Thành viên sinh viên' }, { label: 'Giải pháp số' }, { label: 'Tổ chức đối tác' }],
+  IMPACT_HEADING: {
+    eyebrow: 'Tác động đến nay',
+    lead: 'Xây cho tình huống khẩn cấp thật.',
+    main: 'Đo bằng số người được tiếp cận.',
+    intro: 'Cách làm của chúng tôi được kiểm chứng ngoài thực địa trước tiên. Đây là kết quả của AquaGuard, nền tảng điều phối cứu hộ lũ lụt, và là chuẩn mà mọi giải pháp của Odylytics hướng tới.',
+  },
+  IMPACT: [{ label: 'Lượt tiếp cận trên mạng xã hội' }, { label: 'Người dùng hoạt động trên các nền tảng' }, { label: 'Tổ chức ủng hộ' }],
+  IMPACT_NOTE: 'Kết quả từ AquaGuard, nền tảng điều phối cứu hộ lũ lụt của chúng tôi.',
 
   TESTIMONIALS_HEADING: { eyebrow: 'Đánh giá', lead: 'Những người ngoài thực địa', main: 'đã tin vào AquaGuard.' },
 
