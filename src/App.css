@@ -711,7 +711,7 @@ a.icon-link:hover { background: var(--accent); border-color: var(--accent); colo
 
 /* Footer: black, bracketed mono labels, giant wordmark */
 .footer { padding-top: clamp(40px, 6vw, 88px); font-size: 14px; }
-.footer__wordmark { display: block; margin-bottom: -9%; opacity: 0.16; transition: opacity 300ms ease; }
+.footer__wordmark { display: block; margin-bottom: clamp(24px, 3vw, 40px); opacity: 0.16; transition: opacity 300ms ease; }
 .footer__wordmark:hover { opacity: 0.28; }
 .footer__wordmark img { width: 100%; height: auto; }
 .footer__panel {
