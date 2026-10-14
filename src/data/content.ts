@@ -417,7 +417,7 @@ export const TEAM_TEASER = {
   intro: 'Meet the people behind Odylytics, what each of them owns, and how they work together.',
 }
 
-// TODO(content): the second Quân (Marketing) still needs his full name; add LinkedIn URLs for all 5 members and confirm roles, bios and responsibilities.
+// TODO(content): add LinkedIn URLs for all 5 members and confirm roles, bios and responsibilities.
 export const TEAM: TeamMember[] = [
   {
     name: 'Nguyễn Minh Quân',
@@ -463,7 +463,7 @@ export const TEAM: TeamMember[] = [
     ],
   },
   {
-    name: 'Quân',
+    name: 'Nguyễn Minh Quân',
     slug: 'quan-marketing',
     role: 'Head of Marketing',
     shortRole: 'Marketing',
