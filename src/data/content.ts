@@ -523,7 +523,7 @@ export const POSTS: Post[] = [
     excerpt: 'The scholarship backs the next stage of Odylytics, from product research to bringing our solutions to more communities.',
     category: 'Milestones',
     featured: true,
-    image: '/assets/news/mentor-session-1.webp',
+    image: '/assets/news/quantum-scholarship.webp',
   },
   {
     id: 'thanh-nien-feature',
