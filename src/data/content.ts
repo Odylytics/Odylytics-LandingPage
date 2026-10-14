@@ -217,7 +217,7 @@ export const SOLUTIONS: Solution[] = [
     logo: '/assets/solutions/includio.png',
     oneLiner: 'AI interview practice for autistic candidates.',
     description:
-      'Includio simulates job interviews with AI. It writes questions from the job description and the candidate’s profile, so candidates can practise as often as they like without a real HR interviewer. Built as a working MVP in three days at RMIT ADC Hackathon 2026.',
+      'Includio simulates job interviews with AI. It writes questions from the job description and the candidate’s profile, so candidates can practise as often as they like without a real HR interviewer.',
     category: 'Inclusive hiring',
     flagship: false,
   },

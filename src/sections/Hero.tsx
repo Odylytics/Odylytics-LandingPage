@@ -130,8 +130,8 @@ export function Hero() {
           </h1>
           <div className="display hero__headline" aria-hidden="true">
             <span className="hero__line">{HERO.headlineTop}</span>
+            <span className="hero__line">{HERO.headlineBottom}</span>
             <span className="hero__line">
-              {HERO.headlineBottom}{' '}
               <span className="rotator" aria-live="off">
                 {HERO.rotatingWords.map((word, index) => (
                   <span
