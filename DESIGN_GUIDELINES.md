@@ -56,11 +56,11 @@ Pills for buttons, chips, inputs and the nav. Four corner sizes for everything e
 
 ## 6. Layout patterns
 
-Impact figures after the hero · partner row · sticky split (heading left, cards pop up right) · photo story panel · slim solutions logo strip (`#solutions`) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · scattered-card closing CTA · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
+Impact figures after the hero · partner row · sticky split (heading left, cards pop up right) · slim solutions logo strip (`#solutions`) · prize grid · partner row (one line of equal logos, UTS and HCMUT centred) · quote carousel · team teaser with large portraits · news grid · contact (two columns) · black footer. Section rhythm: `--section-y` padding, headings left-aligned for content sections and centred for visual ones (story, team, partners, testimonials, closing).
 
 ## 7. Motion
 
-Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers (grouped by language), sticky stacking, drifting closing cards, Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
+Reveal on scroll (`data-reveal`, `data-reveal="pop"` for cards), count-up numbers (grouped by language), sticky product showcase, Lenis smooth scroll, theme change as a single page cross-fade (View Transitions). Everything respects `prefers-reduced-motion`.
 
 ## 8. Voice
 

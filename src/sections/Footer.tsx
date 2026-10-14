@@ -4,9 +4,8 @@ import { useContent, useUi } from '../hooks/useContent'
 
 /** Always dark, whichever theme is chosen: a dim giant wordmark half-covered by a rounded panel with the links. */
 export function Footer() {
-  const { FOOTER_GROUPS, FOOTER_NOTE, LEGAL_LINKS, HERO, CLOSING } = useContent()
+  const { FOOTER_GROUPS, FOOTER_NOTE, LEGAL_LINKS, HERO } = useContent()
   const ui = useUi()
-  const groups = [...FOOTER_GROUPS.slice(0, 3), { heading: ui.legal, links: LEGAL_LINKS }]
   return (
     <footer className="footer scope-dark">
       <div className="container">
@@ -20,7 +19,7 @@ export function Footer() {
           <div className="footer__lead">
             <p className="footer__tagline">{HERO.note}</p>
             <Button href="#contact" variant="primary" arrow>
-              {CLOSING.cta}
+              {ui.getInTouch}
             </Button>
             <dl className="footer__contact">
               <div>
@@ -43,7 +42,7 @@ export function Footer() {
           </div>
 
           <div className="footer__groups">
-            {groups.map((group) => (
+            {FOOTER_GROUPS.map((group) => (
               <nav key={group.heading} className="footer__group" aria-label={group.heading}>
                 <h2 className="footer__label">{group.heading}</h2>
                 <ul>
@@ -61,15 +60,22 @@ export function Footer() {
         <div className="container footer__bar">
           <p className="footer__note">{FOOTER_NOTE}</p>
           <div className="footer__bar-row">
-            <p className="footer__copy">
-              {ui.rights} / <a href="#/cookies">{ui.cookieSettings}</a>
-            </p>
-            <ul className="footer__social">
-              {SOCIALS.map((social) => (
-                <li key={social.label}>
-                  <a href={social.href} target="_blank" rel="noreferrer">
-                    {social.label}
-                  </a>
+            <div className="footer__bar-left">
+              <p className="footer__copy">{ui.rights}</p>
+              <ul className="footer__social">
+                {SOCIALS.map((social) => (
+                  <li key={social.label}>
+                    <a href={social.href} target="_blank" rel="noreferrer">
+                      {social.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ul className="footer__legal" aria-label={ui.legal}>
+              {LEGAL_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>

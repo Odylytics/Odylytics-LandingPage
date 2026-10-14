@@ -19,8 +19,6 @@ import { LogoStrip } from './sections/LogoStrip'
 import { Mission } from './sections/Mission'
 import { News } from './sections/News'
 import { Nav } from './sections/Nav'
-import { Closing } from './sections/Closing'
-import { Story } from './sections/Story'
 import { Impact } from './sections/Impact'
 import { Partners } from './sections/Partners'
 import { Showcase } from './sections/Showcase'
@@ -56,7 +54,6 @@ function App() {
             <Impact />
             <Partners />
             <Mission />
-            <Story />
             <Showcase />
             <LogoStrip />
             <Recognition />
@@ -64,7 +61,6 @@ function App() {
             <TeamTeaser />
             <News />
             <Faq />
-            <Closing />
             <Contact />
           </>
         )}
