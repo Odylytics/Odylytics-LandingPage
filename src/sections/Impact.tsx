@@ -1,7 +1,6 @@
 import { CountUp } from '../components/CountUp'
 import { ImpactIcon } from '../components/Icons'
 import { SectionHeading } from '../components/SectionHeading'
-import { Waves } from '../components/Waves'
 import { useContent } from '../hooks/useContent'
 
 export function Impact() {
@@ -22,7 +21,6 @@ export function Impact() {
                 {item.suffix}
               </dd>
               <dt className="impact-card__label">{item.label}</dt>
-              <Waves />
             </div>
           ))}
         </dl>

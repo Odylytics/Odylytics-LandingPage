@@ -854,18 +854,15 @@ a.team-card:hover .team-card__more { color: var(--accent-soft-hover); text-decor
 .footer__label::after { content: ']'; }
 .soon-tag, .prize__medal { font-size: 11.5px; }
 
-/* ─── Impact: one lead number, two supporting numbers, water rising in each card ─ */
+/* ─── Impact: one lead number, two supporting numbers ──────────────────── */
 
 .impact__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .impact-card {
-  position: relative; isolation: isolate; overflow: hidden;
   display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
   min-height: clamp(280px, 26vw, 340px); padding: clamp(24px, 3vw, 40px);
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
-  --water: 40%;
 }
-.impact-card--lead { grid-column: 1 / -1; min-height: clamp(340px, 36vw, 480px); border-radius: var(--radius-panel); --water: 46%; }
-.impact-card > * { position: relative; z-index: 1; }
+.impact-card--lead { grid-column: 1 / -1; min-height: clamp(300px, 30vw, 400px); border-radius: var(--radius-panel); }
 .impact-card__icon {
   display: grid; place-items: center; width: 56px; height: 56px;
   background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-pill);
@@ -876,13 +873,6 @@ a.team-card:hover .team-card__more { color: var(--accent-soft-hover); text-decor
 .impact-card__label { margin-top: 14px; color: var(--text-muted); }
 .impact-card--lead .impact-card__label { text-align: center; }
 .impact__note { margin-top: 24px; text-align: center; color: var(--text-faint); }
-
-.waves { position: absolute; inset: auto 0 0 0; height: var(--water); z-index: 0; overflow: hidden; pointer-events: none; }
-.waves__layer { position: absolute; left: 0; bottom: 0; width: 200%; height: 100%; }
-.waves__layer--a { fill: var(--wave-a); animation: wave-drift 11s linear infinite; }
-.waves__layer--b { fill: var(--wave-b); animation: wave-drift 7s linear infinite reverse; }
-@keyframes wave-drift { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .waves__layer { animation: none; } }
 
 @media (max-width: 700px) {
   .impact__grid { grid-template-columns: 1fr; }
