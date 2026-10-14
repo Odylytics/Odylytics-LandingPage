@@ -603,6 +603,7 @@ export const POSTS: Post[] = [
     excerpt: 'The scholarship backs the next stage of Odylytics, from product research to bringing our solutions to more communities.',
     category: 'Milestones',
     featured: true,
+    image: '/assets/news/mentor-session-1.webp',
   },
   {
     id: 'thanh-nien-feature',
@@ -610,6 +611,8 @@ export const POSTS: Post[] = [
     excerpt: 'Vietnam’s national daily tells the story of a student team building AI for floods and accessibility.',
     category: 'Press',
     source: 'Thanh Niên',
+    image: '/assets/news/mentor-session-2.webp',
+    href: 'https://www.vietnam.vn/en/sinh-vien-lam-he-thong-canh-bao-lu-ho-tro-cuu-ho-tren-nen-tang-di-dong',
   },
   {
     id: 'aquaguard-oisp-first-prize',
@@ -617,12 +620,14 @@ export const POSTS: Post[] = [
     excerpt: 'Our flood rescue coordination platform took first place in the 2025 presentation round.',
     category: 'Awards',
     date: '2025',
+    image: '/assets/gallery/oisp-presentation-contest.jpg',
   },
   {
     id: 'aquaguard-epics-first-prize',
     title: 'AquaGuard takes 1st prize at the EPICS 8th Competition',
     excerpt: 'Judges recognised how the system connects victims, rescue teams and coordinators in real time.',
     category: 'Awards',
+    image: '/assets/gallery/epics-first-place.jpg',
   },
   {
     id: 'aquaguard-bach-khoa-second-prize',
@@ -630,6 +635,7 @@ export const POSTS: Post[] = [
     excerpt: 'A runner-up finish among innovation projects at Ho Chi Minh City University of Technology.',
     category: 'Awards',
     date: '2026',
+    image: '/assets/gallery/bach-khoa-innovation.jpg',
   },
   {
     id: 'enablecode-devcamp-first-prize',
@@ -637,12 +643,14 @@ export const POSTS: Post[] = [
     excerpt: 'Our hands-free coding platform for people with upper-limb disabilities won first place.',
     category: 'Awards',
     date: '2026',
+    image: '/assets/gallery/fessior-devcamp-prometheus.jpg',
   },
   {
     id: 'team-wins',
     title: 'Our team brings home four prizes in a year',
     excerpt: 'A look back at the competitions, late nights and mentors behind this year’s results.',
     category: 'Milestones',
+    image: '/assets/news/mentor-session-3.webp',
   },
 ]
 
