@@ -50,7 +50,7 @@ export function Showcase() {
       const total = section.offsetHeight - window.innerHeight
       const progress = total > 0 ? clamp(-section.getBoundingClientRect().top / total, 0, 1) : 0
       const centre = -LEAD_IN + progress * (count - 1 + LEAD_IN + LEAD_OUT)
-      const step = Math.min(window.innerWidth * 0.125, 240)
+      const step = Math.min(window.innerWidth * 0.13, 250)
 
       cards.forEach((card, index) => {
         if (!card) return
