@@ -544,11 +544,19 @@ export const POSTS: Post[] = [
   },
   {
     id: 'includio-rmit-adc-hackathon',
-    title: 'Includio goes from problem to MVP in 3 days at RMIT ADC Hackathon',
+    title: 'From problem to MVP: Includio at RMIT ADC Hackathon',
     excerpt: 'Our team built Includio, an AI interview-practice platform for autistic candidates, into a working MVP at RMIT ADC Hackathon 2026.',
     category: 'Product',
     date: '2026',
     image: '/assets/news/includio-rmit-hackathon.webp',
+  },
+  {
+    id: 'tech-planter-demo-day',
+    title: 'AquaGuard on stage at TECH PLANTER Vietnam 2026 Demo Day',
+    excerpt: 'Our team gave a Lightning Talk on AquaGuard at the Demo Day organised by Leave a Nest Group, and met fellow deep-tech startups, researchers and industry experts.',
+    category: 'Milestones',
+    date: '2026',
+    image: '/assets/news/tech-planter-demo-day.webp',
   },
   {
     id: 'aquaguard-epics-first-prize',
