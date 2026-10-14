@@ -50,16 +50,16 @@ export function Showcase() {
       const total = section.offsetHeight - window.innerHeight
       const progress = total > 0 ? clamp(-section.getBoundingClientRect().top / total, 0, 1) : 0
       const centre = -LEAD_IN + progress * (count - 1 + LEAD_IN + LEAD_OUT)
-      const step = Math.min(window.innerWidth * 0.155, 280)
+      const step = Math.min(window.innerWidth * 0.125, 240)
 
       cards.forEach((card, index) => {
         if (!card) return
         const offset = index - centre
         const distance = Math.abs(offset)
         const side = Math.sign(offset)
-        const x = side * Math.pow(distance, 1.14) * step
-        const turn = -side * Math.min(distance * 34, 64)
-        const scale = 0.5 + Math.min(distance, 3.2) * 0.17
+        const x = side * Math.pow(distance, 1.12) * step
+        const turn = -side * Math.min(distance * 38, 68)
+        const scale = 0.4 + Math.min(distance, 3.2) * 0.2
         card.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0) rotateY(${turn.toFixed(1)}deg) scale(${scale.toFixed(3)})`
         card.style.opacity = String(clamp(1 - (distance - 3) * 0.6, 0, 1))
         card.style.zIndex = String(Math.round(distance * 10))
@@ -102,9 +102,11 @@ export function Showcase() {
                 {solution.image ? (
                   <>
                     <img className="showcase-card__photo" src={solution.image} alt="" loading="lazy" />
-                    <span className="showcase-card__chip">
-                      {solution.logo && <img src={solutionLogo(solution.logo)} alt={solution.name} />}
-                    </span>
+                    {solution.logo && (
+                      <span className="showcase-card__chip">
+                        <img src={solutionLogo(solution.logo)} alt={solution.name} />
+                      </span>
+                    )}
                   </>
                 ) : (
                   solution.logo && <img className="showcase-card__logo" src={solutionLogo(solution.logo)} alt={solution.name} />

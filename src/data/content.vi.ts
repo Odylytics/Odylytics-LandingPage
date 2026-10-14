@@ -51,10 +51,10 @@ export const VI: DeepPartial<Content> = {
   SOLUTIONS_HEADING: { eyebrow: 'Giải pháp', lead: 'Sáu giải pháp.', main: 'Một lõi AI.' },
   SOLUTIONS: [
     { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
+    {},
     { oneLiner: 'Lập trình kéo thả, rảnh tay cho người khuyết tật chi trên.', description: 'Webcam theo dõi đầu người học, cử chỉ đầu di chuyển và nhấp chuột. Chương trình được ghép từ các khối kéo thả, nên có thể lập trình mà không cần bàn phím hay chuột.', category: 'Giáo dục bao trùm' },
     {},
     { oneLiner: 'Luyện phỏng vấn bằng AI cho ứng viên tự kỷ.', description: 'Includio mô phỏng buổi phỏng vấn xin việc bằng AI. Hệ thống viết câu hỏi từ mô tả công việc và hồ sơ ứng viên, để ứng viên luyện tập bao nhiêu lần tùy ý mà không cần người phỏng vấn thật.', category: 'Tuyển dụng bao trùm' },
-    {},
     {},
   ],
 
@@ -67,14 +67,6 @@ export const VI: DeepPartial<Content> = {
   RECOGNITION: [
     { items: [{ title: 'Giải Nhất' }, { title: 'Giải Nhất' }, { title: 'Giải Nhì' }] },
     { items: [{ title: 'Giải Nhất' }] },
-  ],
-  GALLERY_HEADING: 'Phía sau những chiến thắng',
-  STORY: { eyebrow: 'Phía sau sản phẩm', lead: 'Do đội ngũ xây dựng,', main: 'ngay tại phòng làm việc.', intro: 'Những đêm thức khuya, ngày thi đấu và những người luôn có mặt.' },
-  CLOSING: { lead: 'Vấn đề thật.', main: 'Giải pháp hoạt động được.', cta: 'Liên hệ' },
-  GALLERY: [
-    { alt: 'Cả đội làm việc cùng nhau quanh những chiếc laptop', caption: 'Cùng xây dựng AquaGuard' },
-    { alt: 'Cả đội cầm giấy chứng nhận EPICS', caption: 'Giấy chứng nhận EPICS' },
-    { alt: 'Cả đội chụp trước banner Tech Planter', caption: 'Tech Planter' },
   ],
 
   PARTNERS_HEADING: {
@@ -154,5 +146,5 @@ export const VI: DeepPartial<Content> = {
     { heading: 'Tin tức', links: [{ label: 'Tất cả tin tức' }, { label: 'Giải thưởng' }, { label: 'Báo chí' }, { label: 'Cột mốc' }] },
     { heading: 'Liên hệ', links: [{ label: 'Hợp tác' }, { label: 'Thí điểm' }, { label: 'Báo chí' }] },
   ],
-  LEGAL_LINKS: [{ label: 'Chính sách bảo mật' }, { label: 'Điều khoản sử dụng' }, { label: 'Chính sách cookie' }, { label: 'Sơ đồ trang' }, { label: 'Đăng nhập thành viên' }],
+  LEGAL_LINKS: [{ label: 'Chính sách bảo mật' }, { label: 'Điều khoản sử dụng' }, { label: 'Chính sách cookie' }, { label: 'Đăng nhập thành viên' }],
 }

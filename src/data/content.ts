@@ -193,6 +193,16 @@ export const SOLUTIONS: Solution[] = [
     image: '/assets/gallery/epics-first-place.jpg',
   },
   {
+    id: 'airguard',
+    name: 'AirGuard',
+    logo: '/assets/solutions/airguard.png',
+    oneLiner: 'Accessible air-quality monitoring for healthier cities.',
+    soon: true,
+    description: '',
+    category: 'Environment',
+    flagship: false,
+  },
+  {
     id: 'enablecode',
     name: 'EnableCode',
     logo: '/assets/solutions/enablecode.png',
@@ -204,13 +214,13 @@ export const SOLUTIONS: Solution[] = [
     image: '/assets/gallery/fessior-devcamp-prometheus.jpg',
   },
   {
-    id: 'airguard',
-    name: 'AirGuard',
-    logo: '/assets/solutions/airguard.png',
-    oneLiner: 'Accessible air-quality monitoring for healthier cities.',
+    id: 'roomie',
+    name: 'RooMie',
+    logo: '/assets/solutions/roomie.png',
+    oneLiner: '',
     soon: true,
     description: '',
-    category: 'Environment',
+    category: '',
     flagship: false,
   },
   {
@@ -223,16 +233,6 @@ export const SOLUTIONS: Solution[] = [
     category: 'Inclusive hiring',
     flagship: false,
     image: '/assets/news/includio-rmit-hackathon.webp',
-  },
-  {
-    id: 'roomie',
-    name: 'RooMie',
-    logo: '/assets/solutions/roomie.png',
-    oneLiner: '',
-    soon: true,
-    description: '',
-    category: '',
-    flagship: false,
   },
   {
     id: 'hearwork',
@@ -254,17 +254,6 @@ export const RECOGNITION_HEADING = {
   main: 'Recognised for impact.',
   intro: 'Four prizes across competitions in Vietnam, won by one team.',
 }
-
-export type GalleryPhoto = { src: string; alt: string; caption: string }
-
-export const GALLERY_HEADING = 'Behind the wins'
-
-// TODO(content): confirm the captions and add more photos as they come in.
-export const GALLERY: GalleryPhoto[] = [
-  { src: '/assets/gallery/team-working.jpg', alt: 'The team working together around laptops', caption: 'Building AquaGuard together' },
-  { src: '/assets/gallery/epics-certificate.jpg', alt: 'The team holding the EPICS certificate of achievement', caption: 'EPICS certificate of achievement' },
-  { src: '/assets/gallery/tech-planter.jpg', alt: 'The team in front of the Tech Planter banner', caption: 'Tech Planter' },
-]
 
 // TODO(content): press links (`href`) and issuer logos.
 export const RECOGNITION: RecognitionGroup[] = [
@@ -643,7 +632,6 @@ export const LEGAL_LINKS: NavItem[] = [
   { label: 'Privacy Policy', href: '#/privacy' },
   { label: 'Terms of Use', href: '#/terms' },
   { label: 'Cookie Policy', href: '#/cookies' },
-  { label: 'Sitemap', href: '#home' },
   { label: 'Member login', href: '#/login' },
 ]
 
@@ -686,18 +674,3 @@ export const FOOTER_GROUPS: { heading: string; links: NavItem[] }[] = [
     ],
   },
 ]
-
-// ─── 11. Story panel and closing call to action ─────────────────────────────
-
-export const STORY = {
-  eyebrow: 'Behind the product',
-  lead: 'Built by our team,',
-  main: 'in the room.',
-  intro: 'Late nights, competition days and the people who showed up.',
-}
-
-export const CLOSING = {
-  lead: 'Real problems.',
-  main: 'Working solutions.',
-  cta: 'Get in touch',
-}
