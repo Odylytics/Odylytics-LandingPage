@@ -10,12 +10,12 @@ export const VI: DeepPartial<Content> = {
         { label: 'Sứ mệnh', description: 'Vì sao chúng tôi tồn tại và hướng đi' },
         { label: 'Đối tác', description: 'Trường đại học và doanh nghiệp đồng hành' },
         { label: 'Đánh giá', description: 'Đối tác và người dùng nói gì' },
-        { label: 'Đội ngũ', description: 'Năm người đứng sau Odylytics' },
+        { label: 'Liên hệ', description: 'Hợp tác, thí điểm và báo chí' },
       ],
     },
     { label: 'Giải thưởng' },
     { label: 'Tin tức' },
-    { label: 'Liên hệ' },
+    { label: 'Đội ngũ' },
   ],
 
   HERO: {
