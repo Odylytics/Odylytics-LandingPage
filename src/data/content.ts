@@ -551,6 +551,14 @@ export const POSTS: Post[] = [
     image: '/assets/news/includio-rmit-hackathon.webp',
   },
   {
+    id: 'tech-planter-demo-day',
+    title: 'AquaGuard on stage at TECH PLANTER Vietnam 2026 Demo Day',
+    excerpt: 'Our team gave a Lightning Talk on AquaGuard at the Demo Day organised by Leave a Nest Group, and met fellow deep-tech startups, researchers and industry experts.',
+    category: 'Milestones',
+    date: '2026',
+    image: '/assets/news/tech-planter-demo-day.webp',
+  },
+  {
     id: 'aquaguard-epics-first-prize',
     title: 'AquaGuard takes 1st prize at the EPICS 8th Competition',
     excerpt: 'Judges recognised how the system connects victims, rescue teams and coordinators in real time.',
