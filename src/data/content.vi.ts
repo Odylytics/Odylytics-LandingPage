@@ -93,12 +93,7 @@ export const VI: DeepPartial<Content> = {
     { type: 'Doanh nghiệp' },
     { type: 'Vườn ươm' },
   ],
-  IMPACT_HEADING: {
-    eyebrow: 'Tác động đến nay',
-    lead: 'Xây cho tình huống khẩn cấp thật.',
-    main: 'Đo bằng số người được tiếp cận.',
-    intro: 'Cách làm của chúng tôi được kiểm chứng ngoài thực địa trước tiên. Đây là kết quả của AquaGuard, nền tảng điều phối cứu hộ lũ lụt, và là chuẩn mà mọi giải pháp của Odylytics hướng tới.',
-  },
+  IMPACT_HEADING: { eyebrow: 'Tác động đến nay' },
   IMPACT: [{ label: 'Lượt tiếp cận trên mạng xã hội' }, { label: 'Người dùng hoạt động trên các nền tảng' }, { label: 'Tổ chức ủng hộ' }],
   IMPACT_NOTE: 'Kết quả từ AquaGuard, nền tảng điều phối cứu hộ lũ lụt của chúng tôi.',
 

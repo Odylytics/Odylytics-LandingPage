@@ -107,17 +107,3 @@ export function ChevronDownIcon() {
     </svg>
   )
 }
-
-const IMPACT_PATHS = {
-  reach: 'M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm12 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8.6 13.5l6.8 4m0-11l-6.8 4',
-  users: 'M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20m9.5-11a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM21 20v-1.5a4 4 0 0 0-3-3.9M15.5 5.2a3.5 3.5 0 0 1 0 6.6',
-  endorse: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Zm-3 9l2.2 2.2L15.5 10',
-} as const
-
-export function ImpactIcon({ name }: { name: keyof typeof IMPACT_PATHS }) {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-      <path d={IMPACT_PATHS[name]} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
