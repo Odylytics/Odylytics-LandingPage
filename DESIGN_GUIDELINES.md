@@ -50,7 +50,8 @@ Pills for buttons, chips, inputs and the nav. Four corner sizes for everything e
 - **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces.
 - **Placeholders**: any missing content is a grey skeleton frame plus a dashed mono tag "Updating soon" (`.soon-line`, `.soon-tag`). Never invent copy to fill a gap.
 - **Impact**: three figures right under the hero, no boxes: hairline above, semibold numerals (600, tabular, up to 80px), mono uppercase caption, a mono note crediting the source.
-- **Footer**: black, tagline plus primary CTA, 2×2 bracketed link groups, giant white wordmark, mono contact block.
+- **Footer**: black. A dim giant wordmark sits behind a rounded `--surface` panel that covers its lower part; the panel holds tagline, primary CTA, mono contact block and four bracketed link columns, then a hairline, the disclaimer, copyright and socials.
+- **FAQ**: centred heading, narrow (760px) list of native `<details>` rows between hairlines, circular plus icon that turns purple and becomes a minus when open.
 
 ## 6. Layout patterns
 

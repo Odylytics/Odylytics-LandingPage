@@ -13,6 +13,7 @@ import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { Contact } from './sections/Contact'
 import { Footer } from './sections/Footer'
+import { Faq } from './sections/Faq'
 import { Hero } from './sections/Hero'
 import { LogoStrip } from './sections/LogoStrip'
 import { Mission } from './sections/Mission'
@@ -60,6 +61,7 @@ function App() {
             <Testimonials />
             <TeamTeaser />
             <News />
+            <Faq />
             <Closing />
             <Contact />
           </>

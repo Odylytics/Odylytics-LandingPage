@@ -128,6 +128,16 @@ export const VI: DeepPartial<Content> = {
     { title: 'Đội ngũ mang về bốn giải thưởng trong một năm', excerpt: 'Nhìn lại các cuộc thi, những đêm thức khuya và người cố vấn đứng sau kết quả năm nay.', category: 'Milestones' },
   ],
 
+  FAQ_HEADING: { eyebrow: 'Hỏi đáp', lead: 'Câu hỏi', main: 'thường gặp.' },
+  FAQ: [
+    { q: 'Odylytics là gì?', a: 'Odylytics là công ty AI thiết kế, xây dựng và đưa ra thị trường các giải pháp số. Chúng tôi kiến tạo đổi mới và thúc đẩy chuyển đổi số, từ cứu hộ lũ lụt đến giáo dục bao trùm.' },
+    { q: 'Các bạn xây dựng những giải pháp nào?', a: 'Hiện có sáu: AquaGuard điều phối cứu hộ lũ lụt, EnableCode dạy lập trình rảnh tay, Includio luyện phỏng vấn bằng AI, cùng AirGuard, RooMie và HearWork sắp ra mắt.' },
+    { q: 'AquaGuard là gì?', a: 'AquaGuard là nền tảng điều phối cứu hộ lũ lụt của chúng tôi. Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. AquaGuard đã giành giải Nhất cuộc thi thuyết trình OISP và cuộc thi EPICS lần thứ 8, giải Nhì Bách Khoa Innovation.' },
+    { q: 'Ai đứng sau Odylytics?', a: 'Năm sinh viên đồng sáng lập, cùng các cố vấn và trường đại học đối tác. Bạn có thể gặp mọi người ở trang Đội ngũ.' },
+    { q: 'Các bạn hợp tác với ai?', a: 'Các trường đại học và doanh nghiệp ủng hộ đổi mới sáng tạo, gồm UTS, HCMUT, ASU, RMIT, Sorbonne Université, Université Laval, Dow, Leave a Nest và TechPlanter.' },
+    { q: 'Làm sao để hợp tác với các bạn?', a: 'Chúng tôi luôn chào đón hợp tác, thí điểm và liên hệ báo chí. Hãy gửi lời nhắn qua biểu mẫu liên hệ hoặc email odylytics@gmail.com.' },
+  ],
+
   CONTACT: {
     eyebrow: 'Liên hệ',
     lead: 'Cùng xây điều có ý nghĩa.',
