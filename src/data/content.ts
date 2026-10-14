@@ -99,7 +99,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Solutions',
     items: [
-      { label: 'All solutions', href: '#solutions', description: 'Six digital products built by students' },
+      { label: 'All solutions', href: '#solutions', description: 'Six AI-powered digital solutions' },
       { label: 'AquaGuard', href: '#solutions', description: 'Flood rescue coordination' },
       { label: 'EnableCode', href: '#solutions', description: 'Hands-free coding education' },
     ],
@@ -121,18 +121,18 @@ export const NAV: NavGroup[] = [
 // ─── 1. Hero ────────────────────────────────────────────────────────────────
 
 export const HERO = {
-  eyebrow: 'Student-built digital solutions',
+  eyebrow: 'AI firm · digital solutions',
   // Option A (selected). Alternatives from CONTENT_OUTLINE.md §1:
   //   B. Intelligent solutions for safer, smarter communities.
   //   C. We build AI that works when it matters most.
-  headlineTop: 'Student-built software',
-  headlineBottom: 'that replaces labour with',
+  headlineTop: 'AI solutions',
+  headlineBottom: 'that replace labour with',
   rotatingWords: ['logic', 'speed', 'scale', 'insight'],
-  srHeadline: 'Student-built software that replaces labour with logic, speed, scale and insight.',
-  note: 'Student ideas. Market-ready products.',
+  srHeadline: 'AI solutions that replace labour with logic, speed, scale and insight.',
+  note: 'One AI firm. Six solutions.',
   // TODO(content): confirm what Odylytics provides and to whom.
   subheadline:
-    'Odylytics takes solutions built by students to market: digital products that raise productivity by replacing manual, repetitive labour with logic.',
+    'Odylytics is an AI firm. We design and ship digital solutions that raise productivity by replacing manual, repetitive labour with logic, from flood rescue to inclusive education.',
   scrollCue: 'Scroll to find out',
   // TODO(content): confirm marquee keywords.
   marquee: ['AI analytics', 'IoT monitoring', 'Early warning', 'Data platforms', 'Decision support', 'Inclusive design'],
@@ -142,18 +142,18 @@ export const HERO = {
 
 export const MISSION = {
   eyebrow: 'Our mission',
-  lead: 'From student idea.',
-  main: 'To market.',
+  lead: 'One AI firm.',
+  main: 'Many solutions.',
   // TODO(content): confirm wording of the mission and vision with the founders.
   mission:
-    'We help students turn their digital solutions into products that go to market. We build software that raises productivity by replacing manual, repetitive labour with logic.',
+    'Odylytics is an AI firm that designs, builds and ships digital solutions. We replace manual, repetitive labour with logic, so people can spend their time on judgement and care.',
   vision:
-    'A world where a good idea from a student becomes a real product used by real people, and where routine work is done by well-designed logic so people can focus on what only they can do.',
+    'A world where routine work is done by well-designed AI, and people are free to do what only they can do.',
   pillarsHeading: 'Where we are heading',
   pillars: [
     {
-      title: 'Take student work to market',
-      text: 'Give student-built solutions the product, design and business support they need to reach real customers, not stay in a classroom.',
+      title: 'Solve real problems',
+      text: 'Pick problems that matter, from floods to accessibility, and turn each one into a solution people use every day.',
     },
     {
       title: 'Replace labour with logic',
@@ -177,7 +177,7 @@ export const SOLUTIONS_HEADING = {
   lead: 'Six solutions.',
   main: 'One intelligence layer.',
   // TODO(content): confirm intro sentence.
-  intro: 'Every Odylytics product starts as a student solution to a real problem and is shaped into something people can use and pay for.',
+  intro: 'Every Odylytics solution starts from a real problem and is shaped into a product people can use and pay for.',
 }
 
 export const SOLUTIONS: Solution[] = [
@@ -215,10 +215,10 @@ export const SOLUTIONS: Solution[] = [
     id: 'includio',
     name: 'Includio',
     logo: '/assets/solutions/includio.png',
-    oneLiner: '',
-    soon: true,
-    description: '',
-    category: '',
+    oneLiner: 'AI interview practice for autistic candidates.',
+    description:
+      'Includio simulates job interviews with AI. It writes questions from the job description and the candidate’s profile, so candidates can practise as often as they like without a real HR interviewer. Built as a working MVP in three days at RMIT ADC Hackathon 2026.',
+    category: 'Inclusive hiring',
     flagship: false,
   },
   {
@@ -543,6 +543,14 @@ export const POSTS: Post[] = [
     image: '/assets/gallery/oisp-presentation-contest.jpg',
   },
   {
+    id: 'includio-rmit-adc-hackathon',
+    title: 'Includio goes from problem to MVP in 3 days at RMIT ADC Hackathon',
+    excerpt: 'Our team built Includio, an AI interview-practice platform for autistic candidates, into a working MVP at RMIT ADC Hackathon 2026.',
+    category: 'Product',
+    date: '2026',
+    image: '/assets/news/includio-rmit-hackathon.webp',
+  },
+  {
     id: 'aquaguard-epics-first-prize',
     title: 'AquaGuard takes 1st prize at the EPICS 8th Competition',
     excerpt: 'Judges recognised how the system connects victims, rescue teams and coordinators in real time.',
@@ -631,13 +639,13 @@ export const FOOTER_GROUPS: { heading: string; links: NavItem[] }[] = [
 
 export const STORY = {
   eyebrow: 'Behind the product',
-  lead: 'Built by students,',
+  lead: 'Built by our team,',
   main: 'in the room.',
   intro: 'Late nights, competition days and the people who showed up.',
 }
 
 export const CLOSING = {
-  lead: 'Student ideas.',
-  main: 'Market-ready products.',
+  lead: 'Real problems.',
+  main: 'Working solutions.',
   cta: 'Get in touch',
 }

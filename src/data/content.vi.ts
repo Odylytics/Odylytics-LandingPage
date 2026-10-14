@@ -3,7 +3,7 @@ import type { Content, DeepPartial } from '../hooks/useContent'
 /** Vietnamese copy. Keys mirror content.ts; arrays are matched by position. Anything missing stays English. */
 export const VI: DeepPartial<Content> = {
   NAV: [
-    { label: 'Giải pháp', items: [{ label: 'Tất cả giải pháp', description: 'Sáu sản phẩm số do sinh viên xây dựng' }, { description: 'Điều phối cứu hộ lũ lụt' }, { description: 'Dạy lập trình rảnh tay' }] },
+    { label: 'Giải pháp', items: [{ label: 'Tất cả giải pháp', description: 'Sáu giải pháp số ứng dụng AI' }, { description: 'Điều phối cứu hộ lũ lụt' }, { description: 'Dạy lập trình rảnh tay' }] },
     {
       label: 'Công ty',
       items: [
@@ -19,29 +19,29 @@ export const VI: DeepPartial<Content> = {
   ],
 
   HERO: {
-    eyebrow: 'Giải pháp số do sinh viên xây dựng',
-    headlineTop: 'Phần mềm của sinh viên',
+    eyebrow: 'Công ty AI · giải pháp số',
+    headlineTop: 'Giải pháp AI',
     headlineBottom: 'thay lao động bằng',
     rotatingWords: ['logic', 'tốc độ', 'quy mô', 'hiểu biết'],
-    srHeadline: 'Phần mềm của sinh viên thay lao động bằng logic, tốc độ, quy mô và hiểu biết.',
-    note: 'Ý tưởng sinh viên. Sản phẩm sẵn sàng ra thị trường.',
+    srHeadline: 'Giải pháp AI thay lao động bằng logic, tốc độ, quy mô và hiểu biết.',
+    note: 'Một công ty AI. Sáu giải pháp.',
     subheadline:
-      'Odylytics đưa các giải pháp do sinh viên xây dựng ra thị trường: sản phẩm số giúp nâng cao năng suất bằng cách thay lao động thủ công, lặp đi lặp lại bằng logic.',
+      'Odylytics là một công ty AI. Chúng tôi thiết kế và đưa ra thị trường các giải pháp số giúp nâng cao năng suất bằng cách thay lao động thủ công, lặp đi lặp lại bằng logic, từ cứu hộ lũ lụt đến giáo dục bao trùm.',
     scrollCue: 'Cuộn để khám phá',
     marquee: ['Phân tích AI', 'Giám sát IoT', 'Cảnh báo sớm', 'Nền tảng dữ liệu', 'Hỗ trợ quyết định', 'Thiết kế bao trùm'],
   },
 
   MISSION: {
     eyebrow: 'Sứ mệnh',
-    lead: 'Từ ý tưởng sinh viên.',
-    main: 'Ra thị trường.',
+    lead: 'Một công ty AI.',
+    main: 'Nhiều giải pháp.',
     mission:
-      'Chúng tôi giúp sinh viên đưa giải pháp số của mình thành sản phẩm ra thị trường. Chúng tôi xây phần mềm nâng cao năng suất bằng cách thay lao động thủ công, lặp đi lặp lại bằng logic.',
+      'Odylytics là công ty AI thiết kế, xây dựng và đưa ra thị trường các giải pháp số. Chúng tôi thay lao động thủ công, lặp đi lặp lại bằng logic để con người dành thời gian cho phán đoán và sự quan tâm.',
     vision:
-      'Một thế giới nơi ý tưởng hay của sinh viên trở thành sản phẩm thật được người thật sử dụng, và công việc thường nhật do logic được thiết kế tốt đảm nhận để con người tập trung vào điều chỉ con người làm được.',
+      'Một thế giới nơi công việc thường nhật do AI được thiết kế tốt đảm nhận, và con người được tự do làm điều chỉ con người làm được.',
     pillarsHeading: 'Định hướng của chúng tôi',
     pillars: [
-      { title: 'Đưa sản phẩm sinh viên ra thị trường', text: 'Cho các giải pháp do sinh viên xây dựng sự hỗ trợ về sản phẩm, thiết kế và kinh doanh để đến được khách hàng thật, thay vì dừng lại ở giảng đường.' },
+      { title: 'Giải quyết vấn đề thật', text: 'Chọn những vấn đề quan trọng, từ lũ lụt đến khả năng tiếp cận, và biến mỗi vấn đề thành giải pháp người ta dùng hằng ngày.' },
       { title: 'Thay lao động bằng logic', text: 'Xây sản phẩm tự động hóa công việc lặp lại, từ điều phối đội cứu hộ đến dạy lập trình, để con người dành thời gian cho phán đoán và sự quan tâm.' },
       { title: 'Xây một nền tảng dùng chung', text: 'Giữ một nền tảng kỹ thuật duy nhất đằng sau mọi sản phẩm, để mỗi giải pháp mới ra mắt nhanh hơn và học được từ các giải pháp khác.' },
       { title: 'Lớn lên cùng đối tác', text: 'Hợp tác với trường đại học, cơ quan nhà nước và doanh nghiệp trong nước lẫn quốc tế để thử nghiệm, tài trợ và phân phối sản phẩm.' },
@@ -52,13 +52,13 @@ export const VI: DeepPartial<Content> = {
     eyebrow: 'Giải pháp số cốt lõi',
     lead: 'Sáu giải pháp.',
     main: 'Một tầng trí tuệ.',
-    intro: 'Mỗi sản phẩm của Odylytics bắt đầu từ một giải pháp của sinh viên cho vấn đề có thật, rồi được hoàn thiện thành thứ người ta có thể dùng và trả tiền.',
+    intro: 'Mỗi giải pháp của Odylytics bắt đầu từ một vấn đề có thật, rồi được hoàn thiện thành sản phẩm người ta có thể dùng và trả tiền.',
   },
   SOLUTIONS: [
     { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
     { oneLiner: 'Lập trình kéo thả, rảnh tay cho người khuyết tật chi trên.', description: 'Webcam theo dõi đầu người học, cử chỉ đầu di chuyển và nhấp chuột. Chương trình được ghép từ các khối kéo thả, nên có thể lập trình mà không cần bàn phím hay chuột.', category: 'Giáo dục bao trùm' },
     {},
-    {},
+    { oneLiner: 'Luyện phỏng vấn bằng AI cho ứng viên tự kỷ.', description: 'Includio mô phỏng buổi phỏng vấn xin việc bằng AI. Hệ thống viết câu hỏi từ mô tả công việc và hồ sơ ứng viên, để ứng viên luyện tập bao nhiêu lần tùy ý mà không cần người phỏng vấn thật. Hoàn thành bản MVP hoạt động trong ba ngày tại RMIT ADC Hackathon 2026.', category: 'Tuyển dụng bao trùm' },
     {},
     {},
   ],
@@ -74,8 +74,8 @@ export const VI: DeepPartial<Content> = {
     { items: [{ title: 'Giải Nhất' }] },
   ],
   GALLERY_HEADING: 'Phía sau những chiến thắng',
-  STORY: { eyebrow: 'Phía sau sản phẩm', lead: 'Do sinh viên xây dựng,', main: 'ngay tại phòng làm việc.', intro: 'Những đêm thức khuya, ngày thi đấu và những người luôn có mặt.' },
-  CLOSING: { lead: 'Ý tưởng sinh viên.', main: 'Sản phẩm sẵn sàng ra thị trường.', cta: 'Liên hệ' },
+  STORY: { eyebrow: 'Phía sau sản phẩm', lead: 'Do đội ngũ xây dựng,', main: 'ngay tại phòng làm việc.', intro: 'Những đêm thức khuya, ngày thi đấu và những người luôn có mặt.' },
+  CLOSING: { lead: 'Vấn đề thật.', main: 'Giải pháp hoạt động được.', cta: 'Liên hệ' },
   GALLERY: [
     { alt: 'Cả đội làm việc cùng nhau quanh những chiếc laptop', caption: 'Cùng xây dựng AquaGuard' },
     { alt: 'Cả đội cầm giấy chứng nhận EPICS', caption: 'Giấy chứng nhận EPICS' },
@@ -124,6 +124,7 @@ export const VI: DeepPartial<Content> = {
     { title: 'Nhà sáng lập của chúng tôi nhận học bổng Quantum', excerpt: 'Học bổng hỗ trợ giai đoạn tiếp theo của Odylytics, từ nghiên cứu sản phẩm đến đưa giải pháp đến nhiều cộng đồng hơn.', category: 'Milestones' },
     { title: 'Odylytics lên báo Thanh Niên', excerpt: 'Nhật báo quốc gia kể câu chuyện về một nhóm sinh viên xây dựng AI cho lũ lụt và khả năng tiếp cận.', category: 'Press' },
     { title: 'AquaGuard đoạt giải Nhất cuộc thi thuyết trình OISP', excerpt: 'Nền tảng điều phối cứu hộ lũ lụt của chúng tôi giành giải nhất vòng thuyết trình năm 2025.', category: 'Awards' },
+    { title: 'Includio từ vấn đề đến MVP trong 3 ngày tại RMIT ADC Hackathon', excerpt: 'Đội ngũ xây dựng Includio, nền tảng AI luyện phỏng vấn cho ứng viên tự kỷ, thành bản MVP hoạt động tại RMIT ADC Hackathon 2026.', category: 'Product' },
     { title: 'AquaGuard đoạt giải Nhất cuộc thi EPICS lần thứ 8', excerpt: 'Ban giám khảo ghi nhận cách hệ thống kết nối nạn nhân, đội cứu hộ và điều phối viên theo thời gian thực.', category: 'Awards' },
     { title: 'AquaGuard giành giải Nhì Bách Khoa Innovation', excerpt: 'Về nhì trong các dự án đổi mới sáng tạo tại Trường Đại học Bách Khoa TP.HCM.', category: 'Awards' },
     { title: 'EnableCode vô địch Fessior DevCamp 2026 Prometheus', excerpt: 'Nền tảng lập trình rảnh tay cho người khuyết tật chi trên của chúng tôi giành giải nhất.', category: 'Awards' },
