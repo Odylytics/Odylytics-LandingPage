@@ -48,6 +48,7 @@ export const VI: DeepPartial<Content> = {
     ],
   },
 
+  SOLUTIONS_HEADING: { eyebrow: 'Giải pháp', lead: 'Sáu giải pháp.', main: 'Một lõi AI.' },
   SOLUTIONS: [
     { oneLiner: 'Điều phối cứu hộ lũ lụt theo thời gian thực cho người dân, đội cứu hộ và điều phối viên.', description: 'Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. Có cả web và di động, đã thử nghiệm trong mùa lũ ở Việt Nam.', category: 'Ứng phó thiên tai' },
     { oneLiner: 'Lập trình kéo thả, rảnh tay cho người khuyết tật chi trên.', description: 'Webcam theo dõi đầu người học, cử chỉ đầu di chuyển và nhấp chuột. Chương trình được ghép từ các khối kéo thả, nên có thể lập trình mà không cần bàn phím hay chuột.', category: 'Giáo dục bao trùm' },
@@ -126,6 +127,16 @@ export const VI: DeepPartial<Content> = {
     { title: 'AquaGuard giành giải Nhì Bách Khoa Innovation', excerpt: 'Về nhì trong các dự án đổi mới sáng tạo tại Trường Đại học Bách Khoa TP.HCM.', category: 'Awards' },
     { title: 'EnableCode vô địch Fessior DevCamp 2026 Prometheus', excerpt: 'Nền tảng lập trình rảnh tay cho người khuyết tật chi trên của chúng tôi giành giải nhất.', category: 'Awards' },
     { title: 'Đội ngũ mang về bốn giải thưởng trong một năm', excerpt: 'Nhìn lại các cuộc thi, những đêm thức khuya và người cố vấn đứng sau kết quả năm nay.', category: 'Milestones' },
+  ],
+
+  FAQ_HEADING: { eyebrow: 'Hỏi đáp', lead: 'Câu hỏi', main: 'thường gặp.' },
+  FAQ: [
+    { q: 'Odylytics là gì?', a: 'Odylytics là công ty AI thiết kế, xây dựng và đưa ra thị trường các giải pháp số. Chúng tôi kiến tạo đổi mới và thúc đẩy chuyển đổi số, từ cứu hộ lũ lụt đến giáo dục bao trùm.' },
+    { q: 'Các bạn xây dựng những giải pháp nào?', a: 'Hiện có sáu: AquaGuard điều phối cứu hộ lũ lụt, EnableCode dạy lập trình rảnh tay, Includio luyện phỏng vấn bằng AI, cùng AirGuard, RooMie và HearWork sắp ra mắt.' },
+    { q: 'AquaGuard là gì?', a: 'AquaGuard là nền tảng điều phối cứu hộ lũ lụt của chúng tôi. Người dân gửi yêu cầu SOS, đội cứu hộ thấy ngay trên bản đồ ngập lụt trực tiếp, và điều phối viên cử lực lượng từ một màn hình chung. AquaGuard đã giành giải Nhất cuộc thi thuyết trình OISP và cuộc thi EPICS lần thứ 8, giải Nhì Bách Khoa Innovation.' },
+    { q: 'Ai đứng sau Odylytics?', a: 'Năm sinh viên đồng sáng lập, cùng các cố vấn và trường đại học đối tác. Bạn có thể gặp mọi người ở trang Đội ngũ.' },
+    { q: 'Các bạn hợp tác với ai?', a: 'Các trường đại học và doanh nghiệp ủng hộ đổi mới sáng tạo, gồm UTS, HCMUT, ASU, RMIT, Sorbonne Université, Université Laval, Dow, Leave a Nest và TechPlanter.' },
+    { q: 'Làm sao để hợp tác với các bạn?', a: 'Chúng tôi luôn chào đón hợp tác, thí điểm và liên hệ báo chí. Hãy gửi lời nhắn qua biểu mẫu liên hệ hoặc email odylytics@gmail.com.' },
   ],
 
   CONTACT: {

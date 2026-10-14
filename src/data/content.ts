@@ -11,6 +11,8 @@ export type Solution = {
   description: string
   category: string
   flagship: boolean
+  /** Showcase cover photo; the logo on a plain surface is shown when missing. */
+  image?: string
 }
 
 
@@ -172,6 +174,12 @@ export const MISSION = {
 
 // ─── 2. Core Digital Solutions ──────────────────────────────────────────────
 
+export const SOLUTIONS_HEADING = {
+  eyebrow: 'Solutions',
+  lead: 'Six solutions.',
+  main: 'One AI core.',
+}
+
 export const SOLUTIONS: Solution[] = [
   {
     id: 'aquaguard',
@@ -182,6 +190,7 @@ export const SOLUTIONS: Solution[] = [
       'Victims send SOS requests, rescue teams see them on a live flood map, and coordinators dispatch help from one shared view. Built for web and mobile and tested in Vietnam’s flood season.',
     category: 'Disaster response',
     flagship: true,
+    image: '/assets/gallery/epics-first-place.jpg',
   },
   {
     id: 'enablecode',
@@ -192,6 +201,7 @@ export const SOLUTIONS: Solution[] = [
       'A webcam tracks the learner’s head, so gestures move the cursor and click blocks. Programs are assembled by drag and drop, which makes coding possible without a keyboard or mouse.',
     category: 'Inclusive education',
     flagship: true,
+    image: '/assets/gallery/fessior-devcamp-prometheus.jpg',
   },
   {
     id: 'airguard',
@@ -212,6 +222,7 @@ export const SOLUTIONS: Solution[] = [
       'Includio simulates job interviews with AI. It writes questions from the job description and the candidate’s profile, so candidates can practise as often as they like without a real HR interviewer.',
     category: 'Inclusive hiring',
     flagship: false,
+    image: '/assets/news/includio-rmit-hackathon.webp',
   },
   {
     id: 'roomie',
@@ -584,6 +595,42 @@ export const POSTS: Post[] = [
     excerpt: 'A look back at the competitions, late nights and mentors behind this year’s results.',
     category: 'Milestones',
     image: '/assets/news/mentor-session-3.webp',
+  },
+]
+
+// ─── 9b. FAQ ────────────────────────────────────────────────────────────────
+
+export const FAQ_HEADING = {
+  eyebrow: 'FAQ',
+  lead: 'Frequently',
+  main: 'asked questions.',
+}
+
+// TODO(content): confirm each answer with the founders before shipping.
+export const FAQ: { q: string; a: string }[] = [
+  {
+    q: 'What is Odylytics?',
+    a: 'Odylytics is an AI firm that designs, builds and ships digital solutions. We create innovation and drive digital transformation, from flood rescue to inclusive education.',
+  },
+  {
+    q: 'What solutions do you build?',
+    a: 'Six so far: AquaGuard for flood rescue coordination, EnableCode for hands-free coding education, Includio for AI interview practice, and AirGuard, RooMie and HearWork, which are on the way.',
+  },
+  {
+    q: 'What is AquaGuard?',
+    a: 'AquaGuard is our flood rescue coordination platform. Victims send SOS requests, rescue teams see them on a live flood map, and coordinators dispatch help from one shared view. It has won first prize at the OISP Presentation Contest and the EPICS 8th Competition, and second prize at Bach Khoa Innovation.',
+  },
+  {
+    q: 'Who is behind Odylytics?',
+    a: 'Five student co-founders, supported by advisors and partner universities. You can meet everyone on the Team page.',
+  },
+  {
+    q: 'Who do you work with?',
+    a: 'Universities and companies that back innovation, including UTS, HCMUT, ASU, RMIT, Sorbonne Université, Université Laval, Dow, Leave a Nest and TechPlanter.',
+  },
+  {
+    q: 'How can we work together?',
+    a: 'Partnerships, pilots and press enquiries are all welcome. Send us a message through the contact form or email odylytics@gmail.com.',
   },
 ]
 

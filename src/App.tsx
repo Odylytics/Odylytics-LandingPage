@@ -13,6 +13,7 @@ import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { Contact } from './sections/Contact'
 import { Footer } from './sections/Footer'
+import { Faq } from './sections/Faq'
 import { Hero } from './sections/Hero'
 import { LogoStrip } from './sections/LogoStrip'
 import { Mission } from './sections/Mission'
@@ -22,6 +23,7 @@ import { Closing } from './sections/Closing'
 import { Story } from './sections/Story'
 import { Impact } from './sections/Impact'
 import { Partners } from './sections/Partners'
+import { Showcase } from './sections/Showcase'
 import { Recognition } from './sections/Recognition'
 import { TeamTeaser } from './sections/TeamTeaser'
 import { Testimonials } from './sections/Testimonials'
@@ -55,11 +57,13 @@ function App() {
             <Partners />
             <Mission />
             <Story />
+            <Showcase />
             <LogoStrip />
             <Recognition />
             <Testimonials />
             <TeamTeaser />
             <News />
+            <Faq />
             <Closing />
             <Contact />
           </>

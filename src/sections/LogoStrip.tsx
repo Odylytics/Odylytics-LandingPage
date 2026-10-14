@@ -19,7 +19,7 @@ export function LogoStrip() {
   )
 
   return (
-    <section id="solutions" className="logo-strip" aria-label="Odylytics solutions">
+    <section className="logo-strip" aria-label="Odylytics solutions">
       <p className="logo-strip__label">{ui.solutionsLabel}</p>
       <LogoLoop
         logos={logos}
