@@ -862,7 +862,7 @@ a.team-card:hover .team-card__more { color: var(--accent-soft-hover); text-decor
 
 /* ─── Showcase: the six solutions as a static grid ─────────────────────── */
 
-.showcase { padding-bottom: 0; }
+.showcase { padding-bottom: clamp(56px, 7vw, 88px); }
 .showcase__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 24px; }
 .showcase-card__media {
   position: relative; display: grid; place-items: center; aspect-ratio: 3 / 2; overflow: hidden;
