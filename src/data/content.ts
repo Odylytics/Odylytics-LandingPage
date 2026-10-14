@@ -544,7 +544,7 @@ export const POSTS: Post[] = [
   },
   {
     id: 'includio-rmit-adc-hackathon',
-    title: 'Includio goes from problem to MVP in 3 days at RMIT ADC Hackathon',
+    title: 'From problem to MVP: Includio at RMIT ADC Hackathon',
     excerpt: 'Our team built Includio, an AI interview-practice platform for autistic candidates, into a working MVP at RMIT ADC Hackathon 2026.',
     category: 'Product',
     date: '2026',
