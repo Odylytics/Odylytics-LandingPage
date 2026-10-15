@@ -37,13 +37,17 @@
   --tracking-heading: -0.03em;
   --tracking-label: 0.06em;
 
-  /* Shape: pills for controls, then four fixed corner sizes */
+  /* Shape: pills for controls, four corner sizes for everything else. The pixel styles
+     (solution media frames, prize & news cards, primary buttons) clip to the stepped
+     polygons below — everything else stays rounded. */
   --radius-pill: 999px;
   --radius-panel: 36px;
   --radius-card: 28px;
   --radius-media: 20px;
   --radius-popover: 20px;
   --radius-chip: 14px;
+  --pixel-clip: polygon(8px 0, calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px), 0 8px, 4px 8px, 4px 4px, 8px 4px);
+  --pixel-clip-sm: polygon(4px 0, calc(100% - 4px) 0, calc(100% - 4px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 2px) calc(100% - 4px), calc(100% - 2px) calc(100% - 2px), calc(100% - 4px) calc(100% - 2px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 2px), 2px calc(100% - 2px), 2px calc(100% - 4px), 0 calc(100% - 4px), 0 4px, 2px 4px, 2px 2px, 4px 2px);
 
   /* Layout */
   --nav-h: 68px;
@@ -307,7 +311,7 @@ img { display: block; max-width: 100%; height: auto; }
 .tag--neutral { border-color: var(--border-strong); background: var(--wash); color: var(--text-muted); }
 .tag--signal { border-color: var(--tag-signal-border); background: var(--tag-signal-bg); color: var(--signal); }
 
-/* Buttons */
+/* Buttons — rounded pills; the purple primary CTA is the one pixel-cornered shape */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   padding: 13px 26px;
@@ -320,7 +324,7 @@ img { display: block; max-width: 100%; height: auto; }
 .btn:hover .btn__arrow, .btn:focus-visible .btn__arrow { transform: translateX(3px); }
 .btn--sm { padding: 10px 20px; font-size: 14px; }
 
-.btn--primary { background: var(--accent); color: var(--white); }
+.btn--primary { position: relative; isolation: isolate; background: var(--accent); color: var(--white); clip-path: var(--pixel-clip); }
 .btn--primary:hover { background: var(--accent-hover); }
 .btn--inverse { background: var(--inverse-bg); color: var(--inverse-text); }
 .btn--inverse:hover { background: var(--inverse-bg-hover); }
@@ -338,7 +342,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .text-btn:hover { color: var(--accent-soft-hover); }
 
-/* Cards */
+/* Cards — rounded; the pixel two-layer frame is scoped to prize and news cards below */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -346,6 +350,23 @@ img { display: block; max-width: 100%; height: auto; }
   transition: background-color 200ms ease, border-color 200ms ease;
 }
 .card--hover:hover { background: var(--surface-2); border-color: var(--border-strong); }
+
+/* Pixel-corner frames (8-bit): border colour as the element background, an inset
+   same-clipped fill layer above it — a real border would be clipped at the steps.
+   border-radius must be 0 here: these cards also set overflow:hidden (photo crop),
+   and a non-zero radius would clip the fill/photos to a rounded rect over the steps. */
+.card.prize, .card.post-card {
+  position: relative; isolation: isolate;
+  border: 0; border-radius: 0;
+  background: var(--border); clip-path: var(--pixel-clip);
+}
+.card.prize::before, .card.post-card::before {
+  content: ''; position: absolute; inset: 1px; z-index: -1;
+  clip-path: var(--pixel-clip); background: var(--surface);
+  transition: background-color 200ms ease;
+}
+.card--hover.prize:hover, .card--hover.post-card:hover { background: var(--border-strong); }
+.card.prize:hover::before, .card.post-card:hover::before { background: var(--surface-2); }
 
 /* Box sizing a transparent solution logo; logos are shown as-is, no backdrop */
 .logo-chip {
@@ -410,4 +431,11 @@ img { display: block; max-width: 100%; height: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal] { transform: none; transition: opacity 400ms linear; }
+}
+
+/* Clipped pixel shapes (primary buttons, prize & news cards) cut the focus outline
+   off — use a glow ring instead. Everything rounded keeps the global outline. */
+.btn--primary:focus-visible, .card.prize:focus-visible, .card.post-card:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 5px var(--accent-soft));
 }

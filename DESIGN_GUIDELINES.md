@@ -20,7 +20,7 @@ Brand ramps live in `index.css` (`--purple-*`, `--orange-*`, `--neutral-*`). Com
 | **Purple = action** | `--accent` `#AE0BFF`, soft text `--accent-soft` | Primary buttons, links, focus, category tags, active states |
 | **Orange = signal** | `--signal` `#FF8C00` (dark) / `--orange-500` (light) | Mono eyebrows and labels, role titles, status highlights |
 
-- One primary CTA style everywhere: purple pill, white text.
+- One primary CTA style everywhere: purple pixel-corner button, white text.
 - Orange text only on dark backgrounds, or the darker `--orange-500` in light mode. On an orange fill use dark text.
 - Footer is always black (`.scope-dark`), whichever theme is chosen.
 - Never hard-code a colour in component CSS; add a token with both theme values.
@@ -40,17 +40,17 @@ Scale (tokens in `index.css`): display `--fs-display` 44–84px · h2 `--fs-h2` 
 
 ## 4. Shape
 
-Pills for buttons, chips, inputs and the nav. Four corner sizes for everything else: `--radius-panel` 36px (big photo panels, login shell) · `--radius-card` 28px (cards) · `--radius-media` 20px (images inside panels, popovers) · `--radius-chip` 14px (small boxes). No shadows; separation comes from 1px `--border` hairlines and surface steps.
+Rounded everywhere by default: pills for controls, four corner tokens (`--radius-panel` / `-card` / `-media` / `-popover` / `-chip`) for the rest. The 8-bit pixel treatment is scoped to exactly four groups: solution media frames (`.showcase-card__media`), prize cards (`.card.prize`), news cards (`.card.post-card`) and the purple primary buttons (`.btn--primary`). Those clip to the stepped `clip-path` polygon in `--pixel-clip` (8px deep, 4px steps; small shapes may use `--pixel-clip-sm`). Bordered pixel shapes paint the border colour as the element background and inset a same-clipped fill layer by 1px (`::before`, `z-index: -1`) — a real CSS border would be clipped away at the steps. Clipped shapes cut the focus outline off, so `:focus-visible` uses a `drop-shadow` glow ring instead. No shadows; separation comes from 1px `--border` hairlines and surface steps.
 
 ## 5. Components
 
-- **Buttons**: pill, Geist 500 15px. `primary` (purple), `outline`, `inverse` (only for segmented/active states), `signal` (rare). Sizes `md` / `sm`.
+- **Buttons**: pill, Geist 500 15px — except `primary`, which keeps the pixel-corner frame. `primary` (purple), `outline`, `inverse` (only for segmented/active states), `signal` (rare). Sizes `md` / `sm`.
 - **Nav**: floating glass capsule, centred links, dropdowns with title and one-line description, Settings (theme, language), member login, purple CTA.
 - **Tags**: mono pill; purple for categories, neutral for meta, orange for status.
-- **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces.
+- **Cards**: `--surface`, 1px border, `--radius-card`; photo cards show the picture whole, never cropped faces. Exceptions with the pixel-corner frame: prize cards (`.prize`) and news cards (`.post-card`).
 - **Placeholders**: any missing content is a grey skeleton frame plus a dashed mono tag "Updating soon" (`.soon-line`, `.soon-tag`). Never invent copy to fill a gap.
 - **Impact**: three figures right under the hero, no boxes: hairline above with a short brand-gradient tick that grows on hover, mono index, semibold numerals (600, tabular, up to 84px) whose `+` uses the brand gradient as text fill, mono uppercase caption, a mono note crediting the source. The gradient is allowed as text fill and hairline only, never as a background.
-- **Showcase**: the six solutions as a static three-column grid. Each card is a 3:2 media (whole photo with a logo pill, or the logo on a plain surface), then name, category label and one line. The logo marquee follows directly below.
+- **Showcase**: the six solutions as a static three-column grid. Each card is a 3:2 pixel-cornered media frame (whole photo with a logo pill, or the logo on a plain surface), then name, category label and one line. The logo marquee follows directly below.
 - **Footer**: black. A dim giant wordmark sits fully visible above a rounded `--surface` panel; the panel holds tagline, primary CTA, mono contact block and four bracketed link columns, then a hairline, the disclaimer, copyright and socials.
 - **FAQ**: centred heading, narrow (760px) list of native `<details>` rows between hairlines, circular plus icon that turns purple and becomes a minus when open.
 
