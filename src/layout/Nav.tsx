@@ -1,26 +1,34 @@
 import { useEffect, useRef, useState } from 'react'
-import { Button } from '../components/Button'
 import { ChevronDownIcon, CloseIcon, MenuIcon } from '../components/Icons'
 import { SettingsMenu, SettingsPanel } from '../components/SettingsMenu'
-import { BRAND } from '../data/content'
-import { useContent, useUi } from '../hooks/useContent'
+import { NAV } from '../data/site'
+import { useBrandAssets } from '../hooks/useBrandAssets'
 import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
 import { useAuth } from '../lib/auth'
+import { useT } from '../lib/lang'
 
-export function Nav() {
+export function Nav({ route }: { route: string }) {
   const [scrolled, setScrolled] = useState(false)
+  const [seen, setSeen] = useState(route)
   const [open, setOpen] = useState(false)
   const [dropdown, setDropdown] = useState<number | null>(null)
+  // Close menus when the route changes (derived during render, not in an effect).
+  if (seen !== route) {
+    setSeen(route)
+    setDropdown(null)
+    setOpen(false)
+  }
   const menuRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const linksRef = useRef<HTMLElement>(null)
-  const { NAV } = useContent()
-  const ui = useUi()
   const { member } = useAuth()
+  const brand = useBrandAssets()
+  const t = useT()
   const memberHref = member ? '#/admin' : '#/login'
+  const memberLabel = t(member ? 'Dashboard' : 'Login')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -44,14 +52,9 @@ export function Nav() {
     if (!open) return
     const toggle = toggleRef.current
     lockScroll()
-    menuRef.current?.querySelector<HTMLAnchorElement>('a')?.focus()
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
-    }
-    const desktop = window.matchMedia('(min-width: 821px)')
+    const onKeyDown = (event: KeyboardEvent) => event.key === 'Escape' && setOpen(false)
+    const desktop = window.matchMedia('(min-width: 961px)')
     const onResize = () => desktop.matches && setOpen(false)
-
     window.addEventListener('keydown', onKeyDown)
     desktop.addEventListener('change', onResize)
     return () => {
@@ -62,14 +65,14 @@ export function Nav() {
     }
   }, [open])
 
+  const current = (href?: string) => (href && route === href.slice(1) ? 'page' : undefined)
+  const groupActive = (items?: { href: string }[]) => items?.some((item) => route === item.href.slice(1))
+
   return (
-    <header className={`nav${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}`}>
+    <header className={`nav${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}${route === '/' && !scrolled && !open ? ' is-clear' : ''}`}>
       <div className="nav__inner">
-        <a className="nav__brand" href="#home" aria-label="Odylytics, back to top">
-          {/* The zone morph (see index.css / useZoneFade) crossfades the white wordmark
-              to the black-text one — both files directly, independent of the theme. */}
-          <img className="nav__brand-img" src={BRAND.wordmarkDark} alt="" width="1826" height="565" />
-          <img className="nav__brand-img nav__brand-img--light" src={BRAND.wordmark} alt="" width="1826" height="565" />
+        <a className="nav__brand" href="#/" aria-label="Odylytics, home">
+          <img src={brand.wordmark} alt="" width="1826" height="565" />
         </a>
 
         <nav className="nav__links" aria-label="Primary" ref={linksRef}>
@@ -78,17 +81,17 @@ export function Nav() {
               <li key={group.label} className="nav__item" onMouseEnter={() => group.items && setDropdown(index)} onMouseLeave={() => setDropdown(null)}>
                 {group.items ? (
                   <>
-                    <button type="button" className="nav__trigger" aria-expanded={dropdown === index} aria-haspopup="true" onClick={() => setDropdown(dropdown === index ? null : index)}>
-                      {group.label}
+                    <button type="button" className={`nav__trigger${groupActive(group.items) ? ' is-current' : ''}`} aria-expanded={dropdown === index} aria-haspopup="true" onClick={() => setDropdown(dropdown === index ? null : index)}>
+                      {t(group.label)}
                       <ChevronDownIcon />
                     </button>
                     {dropdown === index && (
                       <ul className="nav__dropdown">
                         {group.items.map((item) => (
                           <li key={item.label}>
-                            <a href={item.href} onClick={() => setDropdown(null)}>
-                              <span className="nav__dd-title">{item.label}</span>
-                              {item.description && <span className="nav__dd-desc">{item.description}</span>}
+                            <a href={item.href} aria-current={current(item.href)} onClick={() => setDropdown(null)}>
+                              <span className="nav__dd-title">{t(item.label)}</span>
+                              {item.description && <span className="nav__dd-desc">{t(item.description)}</span>}
                             </a>
                           </li>
                         ))}
@@ -96,7 +99,9 @@ export function Nav() {
                     )}
                   </>
                 ) : (
-                  <a href={group.href}>{group.label}</a>
+                  <a className={`nav__trigger${route === group.href?.slice(1) ? ' is-current' : ''}`} href={group.href} aria-current={current(group.href)}>
+                    {t(group.label)}
+                  </a>
                 )}
               </li>
             ))}
@@ -104,22 +109,14 @@ export function Nav() {
         </nav>
 
         <div className="nav__actions">
-          <a className="nav__member" href={memberHref}>
-            {member ? ui.dashboard : ui.memberLogin}
+          <a className="nav__login" href={memberHref}>
+            {memberLabel}
           </a>
           <SettingsMenu />
-          <Button href="#contact" variant="primary" size="sm" arrow={false} className="nav__cta">
-            {ui.getInTouch}
-          </Button>
-          <button
-            ref={toggleRef}
-            type="button"
-            className="nav__toggle"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={ui.menu}
-            onClick={() => setOpen((value) => !value)}
-          >
+          <a className="btn btn--accent btn--sm nav__cta" href="#/contact">
+            {t('Get in touch')}
+          </a>
+          <button ref={toggleRef} type="button" className="nav__toggle" aria-expanded={open} aria-controls="mobile-menu" aria-label="Menu" onClick={() => setOpen((value) => !value)}>
             {open ? <CloseIcon /> : <MenuIcon />}
           </button>
         </div>
@@ -132,12 +129,12 @@ export function Nav() {
               <li key={group.label}>
                 {group.items ? (
                   <>
-                    <span className="nav__menu-heading">{group.label}</span>
+                    <span className="nav__menu-heading">{t(group.label)}</span>
                     <ul>
                       {group.items.map((item) => (
                         <li key={item.label}>
                           <a href={item.href} onClick={() => setOpen(false)}>
-                            {item.label}
+                            {t(item.label)}
                           </a>
                         </li>
                       ))}
@@ -145,7 +142,7 @@ export function Nav() {
                   </>
                 ) : (
                   <a className="nav__menu-top" href={group.href} onClick={() => setOpen(false)}>
-                    {group.label}
+                    {t(group.label)}
                   </a>
                 )}
               </li>
@@ -153,12 +150,14 @@ export function Nav() {
           </ul>
         </nav>
         <SettingsPanel />
-        <a className="nav__menu-member" href={memberHref} onClick={() => setOpen(false)}>
-          {member ? ui.dashboard : ui.memberLogin}
-        </a>
-        <Button href="#contact" variant="primary" arrow={false} onClick={() => setOpen(false)}>
-          {ui.getInTouch}
-        </Button>
+        <div className="nav__menu-foot">
+          <a className="btn btn--outline" href={memberHref} onClick={() => setOpen(false)}>
+            {memberLabel}
+          </a>
+          <a className="btn btn--accent" href="#/contact" onClick={() => setOpen(false)}>
+            {t('Get in touch')}
+          </a>
+        </div>
       </div>
     </header>
   )
