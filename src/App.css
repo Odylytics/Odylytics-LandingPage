@@ -41,8 +41,13 @@
   height: 100%; max-width: calc(var(--container) + 2 * var(--pad)); margin-inline: auto; padding-inline: 22px 10px;
 }
 
-.nav__brand { display: block; justify-self: start; }
-.nav__brand img { height: 30px; width: auto; }
+.nav__brand { display: grid; justify-self: start; }
+/* Both wordmark variants stacked and crossfaded by the zone mix: the nav background
+   morphs light over the solutions band, so the dark wordmark must hand over to the light one. */
+.nav__brand-img { grid-area: 1 / 1; height: 30px; width: auto; opacity: calc(1 - var(--zone-mix)); }
+.nav__brand-img--light { opacity: var(--zone-mix); }
+:root[data-theme="light"] .nav__brand-img { opacity: 0; }
+:root[data-theme="light"] .nav__brand-img--light { opacity: 1; }
 
 .nav__links { justify-self: center; }
 .nav__links > ul { display: flex; gap: 4px; }
@@ -784,7 +789,15 @@ a.icon-link:hover { background: var(--accent); border-color: var(--accent); colo
 
 /* ─── Impact: three numbers right under the hero ───────────────────────── */
 
-.impact { padding-block: clamp(56px, 7vw, 96px) 0; }
+/* Entrance fade tied to scrolling out of the hero; --reveal (0→1) is set by useScrollFadeIn. */
+.impact { --reveal: 1; padding-block: clamp(56px, 7vw, 96px) 0; }
+.impact .container {
+  opacity: var(--reveal);
+  transform: translateY(calc((1 - var(--reveal)) * 40px));
+}
+@media (prefers-reduced-motion: reduce) {
+  .impact .container { opacity: 1; transform: none; }
+}
 .impact .eyebrow { margin-bottom: 32px; }
 .impact__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: clamp(20px, 3vw, 48px); }
 .impact__item { position: relative; display: flex; flex-direction: column; gap: 14px; padding-top: 20px; border-top: 1px solid var(--border-strong); }

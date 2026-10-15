@@ -11,6 +11,7 @@ import { useUi } from './hooks/useContent'
 import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
+import { useZoneFade } from './hooks/useZoneFade'
 import { Contact } from './sections/Contact'
 import { Footer } from './sections/Footer'
 import { Faq } from './sections/Faq'
@@ -31,6 +32,7 @@ function App() {
   const ui = useUi()
   useReveal(route)
   useSmoothScroll()
+  useZoneFade(route)
 
   return (
     <>

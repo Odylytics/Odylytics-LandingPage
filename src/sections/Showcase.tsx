@@ -1,12 +1,10 @@
 import { SectionHeading } from '../components/SectionHeading'
-import { useBrandAssets } from '../hooks/useBrandAssets'
 import { useContent, useUi } from '../hooks/useContent'
 
 /** The six solutions as a plain static grid: a whole photo (or the logo on a plain surface), then name and one line. */
 export function Showcase() {
   const { SOLUTIONS_HEADING, SOLUTIONS } = useContent()
   const ui = useUi()
-  const { solutionLogo } = useBrandAssets()
   const { intro, ...heading } = SOLUTIONS_HEADING
 
   return (
@@ -22,10 +20,10 @@ export function Showcase() {
                 {solution.logo &&
                   (solution.image ? (
                     <span className="showcase-card__chip">
-                      <img src={solutionLogo(solution.logo)} alt={solution.name} />
+                      <img src={solution.logo} alt={solution.name} />
                     </span>
                   ) : (
-                    <img className="showcase-card__logo" src={solutionLogo(solution.logo)} alt={solution.name} />
+                    <img className="showcase-card__logo" src={solution.logo} alt={solution.name} />
                   ))}
               </div>
               <h3 className="showcase-card__name">

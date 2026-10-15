@@ -2,20 +2,19 @@ import { useMemo } from 'react'
 import { LogoLoop } from '../components/LogoLoop'
 import type { LogoItem } from '../components/LogoLoop'
 import { SOLUTIONS } from '../data/content'
-import { useBrandAssets } from '../hooks/useBrandAssets'
 import { useUi } from '../hooks/useContent'
 
 export function LogoStrip() {
-  const { solutionLogo } = useBrandAssets()
   const ui = useUi()
+  // Light logo variants: the strip lives in the light band between Showcase and Team teaser.
   const logos = useMemo<LogoItem[]>(
     () =>
       SOLUTIONS.map((solution) =>
         solution.logo
-          ? { src: solutionLogo(solution.logo), alt: solution.name, title: solution.name }
+          ? { src: solution.logo, alt: solution.name, title: solution.name }
           : { node: <span className="strip-placeholder">{solution.name}</span>, ariaLabel: solution.name },
       ),
-    [solutionLogo],
+    [],
   )
 
   return (
