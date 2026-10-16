@@ -120,6 +120,12 @@
 .hero__tl { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
 .hero__br { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; text-align: right; }
 .hero__line { display: block; font-family: var(--font-display); font-size: clamp(30px, 6.2vw, 100px); font-weight: 700; font-stretch: 108%; text-transform: uppercase; letter-spacing: -0.03em; word-spacing: 0.1em; line-height: 0.95; white-space: nowrap; }
+.rotor { display: inline-grid; justify-items: end; margin-left: 0.22em; overflow: clip; vertical-align: bottom; color: var(--signal); }
+.rotor__word { grid-area: 1 / 1; transform: translateY(115%); transition: none; white-space: nowrap; }
+.rotor__word.is-active,
+.rotor__word.is-prev { transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1); }
+.rotor__word.is-active { transform: none; }
+.rotor__word.is-prev { transform: translateY(-115%); }
 .hero__lead { font-size: clamp(14px, 1.5vw, 20px); color: var(--text-2); white-space: nowrap; }
 .ghost { visibility: hidden; }
 .caret { display: inline-block; width: 0.07em; height: 0.82em; margin-left: 0.04em; vertical-align: -0.04em; background: var(--signal); animation: caret 0.9s steps(1) infinite; }
@@ -201,9 +207,8 @@
 .productcard:hover { transform: translateY(-3px); }
 .productcard__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
 .productcard__title { font-size: clamp(26px, 2.6vw, 34px); max-width: 18ch; }
-.productcard__logos { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
-.productcard__logos li { width: 140px; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 0; background: var(--bg); }
-.productcard__logos img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
+.productcard__media { width: 100%; margin-top: auto; overflow: hidden; border: 1px solid var(--border-strong); background: var(--bg); box-shadow: var(--shadow-media); }
+.productcard__media video { display: block; width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 @media (max-width: 960px) { .productgrid { grid-template-columns: 1fr; } .productcard { min-height: 0; padding: 28px; } }
 
 /* ─── Dark impact band ──────────────────────────────────────────────────── */
@@ -736,7 +741,6 @@ a.post-card:hover { transform: translateY(-3px); }
 
   /* Product and band */
   .productcard { padding: 24px; gap: 16px; }
-  .productcard__logos li { width: calc(50% - 6px); }
   .band { padding-top: 56px; }
 
   /* Prizes and quotes become swipeable rows */
