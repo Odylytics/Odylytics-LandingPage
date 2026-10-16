@@ -50,9 +50,9 @@ export function HeroArt() {
       ))}
 
       <g transform="translate(250 180)">
-        <image href="/assets/brand/odylytics-symbol-dark.svg" x="26" y="30" width="48" height="48" className="heroart__symbol" />
-        <image href="/assets/brand/odylytics-symbol.svg" x="26" y="30" width="48" height="48" className="heroart__symbol heroart__symbol--light" />
-        <text x="50" y="102" textAnchor="middle" className="heroart__text heroart__text--core">
+        <image href="/assets/brand/odylytics-symbol-dark.svg" x="14" y="20" width="72" height="72" className="heroart__symbol" />
+        <image href="/assets/brand/odylytics-symbol.svg" x="14" y="20" width="72" height="72" className="heroart__symbol heroart__symbol--light" />
+        <text x="50" y="116" textAnchor="middle" className="heroart__text heroart__text--core">
           AI CORE
         </text>
       </g>
