@@ -68,33 +68,6 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--tight">
-        <div className="container">
-          <SectionHead label="Product" title="Solutions built on one shared AI core." action={{ href: '#/product/incoming', text: 'See what is incoming' }} />
-          <div className="productgrid">
-            {[climate, access].map((group) => (
-              <a key={group.id} className="productcard" href={`#/product/${group.id}`} data-reveal>
-                <p className="productcard__label">{t(group.label.replace('Product · ', ''))}</p>
-                <h3 className="productcard__title">{t(group.title)}</h3>
-                <ul className="productcard__logos">
-                  {group.solutions.map((id) => {
-                    const solution = live(id)
-                    return solution?.logo ? (
-                      <li key={id}>
-                        <img src={solutionLogo(solution.logo)} alt={solution.name} />
-                      </li>
-                    ) : null
-                  })}
-                </ul>
-                <span className="link-arrow">
-                  {t('Explore')} <span aria-hidden="true">→</span>
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="band scope-dark" aria-labelledby="band-title">
         <Contours />
         <div className="container band__inner">
@@ -121,6 +94,33 @@ export function Home() {
             ))}
           </dl>
           <p className="band__note">{t(IMPACT_NOTE)}</p>
+        </div>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container">
+          <SectionHead label="Product" title="Solutions built on one shared AI core." action={{ href: '#/product/incoming', text: 'See what is incoming' }} />
+          <div className="productgrid">
+            {[climate, access].map((group) => (
+              <a key={group.id} className="productcard" href={`#/product/${group.id}`} data-reveal>
+                <p className="productcard__label">{t(group.label.replace('Product · ', ''))}</p>
+                <h3 className="productcard__title">{t(group.title)}</h3>
+                <ul className="productcard__logos">
+                  {group.solutions.map((id) => {
+                    const solution = live(id)
+                    return solution?.logo ? (
+                      <li key={id}>
+                        <img src={solutionLogo(solution.logo)} alt={solution.name} />
+                      </li>
+                    ) : null
+                  })}
+                </ul>
+                <span className="link-arrow">
+                  {t('Explore')} <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
