@@ -59,6 +59,62 @@
   text-rendering: optimizeLegibility;
 }
 
+/* ─── Scroll morph (home) ─────────────────────────────────────────────────
+   useZoneFade scrubs --zone-mix (0→1) on <html> while scrolling the home page:
+   0 is the dark end — the old site's near-black purple — and 1 the light end.
+   Every colour token becomes a blend of the two palettes, so the page melts
+   dark → light → dark as you scroll. The block only applies under .zone-on
+   (set on the home route) and an explicit dark theme pins the page dark. */
+:root {
+  --zone-mix: 0;
+  /* Dark end: the original site's palette */
+  --d-bg: #0B0A0E;
+  --d-surface: #141318;
+  --d-surface-2: #1C1B21;
+  --d-panel: #141318;
+  --d-border: rgb(255 255 255 / 0.08);
+  --d-border-strong: rgb(255 255 255 / 0.16);
+  --d-text: #FAFAFA;
+  --d-text-2: #97949B;
+  --d-text-3: #736F78;
+  --d-accent-ink: #BF72FF;
+  --d-signal-ink: #FF8C00;
+  --d-btn-bg: #FFFFFF;
+  --d-btn-text: #0A0A0A;
+  --d-media-bg: #1C1B21;
+  /* Light end: the same cool-white neutrals the old site used */
+  --l-bg: #FAFAFB;
+  --l-surface: #FFFFFF;
+  --l-surface-2: #F3F2F5;
+  --l-panel: #141413;
+  --l-border: rgb(17 16 19 / 0.09);
+  --l-border-strong: rgb(17 16 19 / 0.16);
+  --l-text: #111013;
+  --l-text-2: #504D53;
+  --l-text-3: #736F78;
+  --l-accent-ink: #7B00B7;
+  --l-signal-ink: #944F00;
+  --l-btn-bg: #111013;
+  --l-btn-text: #FFFFFF;
+  --l-media-bg: #F3F2F5;
+}
+:root.zone-on:not([data-theme='dark']) {
+  --bg: color-mix(in srgb, var(--d-bg), var(--l-bg) calc(var(--zone-mix) * 100%));
+  --surface: color-mix(in srgb, var(--d-surface), var(--l-surface) calc(var(--zone-mix) * 100%));
+  --surface-2: color-mix(in srgb, var(--d-surface-2), var(--l-surface-2) calc(var(--zone-mix) * 100%));
+  --panel: color-mix(in srgb, var(--d-panel), var(--l-panel) calc(var(--zone-mix) * 100%));
+  --border: color-mix(in srgb, var(--d-border), var(--l-border) calc(var(--zone-mix) * 100%));
+  --border-strong: color-mix(in srgb, var(--d-border-strong), var(--l-border-strong) calc(var(--zone-mix) * 100%));
+  --text: color-mix(in srgb, var(--d-text), var(--l-text) calc(var(--zone-mix) * 100%));
+  --text-2: color-mix(in srgb, var(--d-text-2), var(--l-text-2) calc(var(--zone-mix) * 100%));
+  --text-3: color-mix(in srgb, var(--d-text-3), var(--l-text-3) calc(var(--zone-mix) * 100%));
+  --accent-ink: color-mix(in srgb, var(--d-accent-ink), var(--l-accent-ink) calc(var(--zone-mix) * 100%));
+  --signal-ink: color-mix(in srgb, var(--d-signal-ink), var(--l-signal-ink) calc(var(--zone-mix) * 100%));
+  --btn-bg: color-mix(in srgb, var(--d-btn-bg), var(--l-btn-bg) calc(var(--zone-mix) * 100%));
+  --btn-text: color-mix(in srgb, var(--d-btn-text), var(--l-btn-text) calc(var(--zone-mix) * 100%));
+  --media-bg: color-mix(in srgb, var(--d-media-bg), var(--l-media-bg) calc(var(--zone-mix) * 100%));
+}
+
 :root[data-theme='dark'],
 .scope-dark {
   --bg: #141413;

@@ -6,7 +6,8 @@ export type Theme = 'dark' | 'light'
 export type ThemePref = Theme | 'system'
 
 const STORAGE_KEY = 'odylytics-theme'
-const THEME_COLOR: Record<Theme, string> = { dark: '#141413', light: '#F3F2EE' }
+/** Browser-bar colours matching each theme; useZoneFade reuses them when the morph ends. */
+export const THEME_COLOR: Record<Theme, string> = { dark: '#141413', light: '#F3F2EE' }
 const listeners = new Set<() => void>()
 const dark = () => window.matchMedia('(prefers-color-scheme: dark)')
 

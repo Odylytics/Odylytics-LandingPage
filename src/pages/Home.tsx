@@ -54,7 +54,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--tight">
+      <section id="how" className="section section--tight">
         <div className="container how">
           <div className="how__copy" data-reveal>
             <Label>{t('How it works')}</Label>
@@ -176,7 +176,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--tight">
+      <section id="blog" className="section section--tight">
         <div className="container">
           <SectionHead label="Blog" title="Latest from Odylytics." action={{ href: '#/blog', text: 'All posts' }} />
           <div className="post-grid">

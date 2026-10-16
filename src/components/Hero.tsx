@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import { ArrowDownIcon } from './Icons'
 import { HOME_HERO } from '../data/site'
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
-import { useTheme } from '../hooks/useTheme'
 import { useT } from '../lib/lang'
 
 const Hyperspeed = lazy(() => import('./Hyperspeed'))
@@ -78,11 +77,11 @@ function supportsWebgl() {
 
 /** Pinned scroll intro: a big headline over a light-trail road; scrolling fades the copy and sends the road to full speed. */
 export function Hero() {
-  const theme = useTheme()
   const t = useT()
   const reducedMotion = usePrefersReducedMotion()
   const [webgl] = useState(supportsWebgl)
-  const dark = theme === 'dark'
+  // The hero sits at zone-mix 0 — the dark end of the home background morph —
+  // so the road always renders in its dark styling (see useZoneFade / index.css).
   const ref = useRef<HTMLElement>(null)
   const boost = useRef(0)
   const label = t(HOME_HERO.eyebrow)
@@ -132,7 +131,7 @@ export function Hero() {
           <Suspense fallback={null}>
             <Hyperspeed
               className="hero__road"
-              theme={dark ? 'dark' : 'light'}
+              theme="dark"
               curve="gentle"
               curvature={0.55}
               speed={reducedMotion ? 0 : 1.05}
@@ -156,8 +155,8 @@ export function Hero() {
               poleColors={POLE_COLORS}
               interactive={!reducedMotion}
               boostRef={boost}
-              roadColor={dark ? '#0E0E0D' : undefined}
-              lineColor={dark ? '#2d2d2d' : undefined}
+              roadColor="#0E0E0D"
+              lineColor="#2d2d2d"
             />
           </Suspense>
         ) : (

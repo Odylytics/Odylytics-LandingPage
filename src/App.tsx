@@ -8,6 +8,7 @@ import { PageTransition } from './layout/PageTransition'
 import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
+import { useZoneFade } from './hooks/useZoneFade'
 import { Admin } from './pages/Admin'
 import { Blog } from './pages/Blog'
 import { Contact } from './pages/Contact'
@@ -68,6 +69,7 @@ function App() {
   const route = useRoute()
   useReveal(route)
   useSmoothScroll()
+  useZoneFade(route)
 
   return (
     <>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon, CloseIcon, MenuIcon } from '../components/Icons'
 import { SettingsMenu, SettingsPanel } from '../components/SettingsMenu'
 import { NAV } from '../data/site'
+import { BRAND } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
 import { useAuth } from '../lib/auth'
@@ -72,7 +73,15 @@ export function Nav({ route }: { route: string }) {
     <header className={`nav${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}${route === '/' && !scrolled && !open ? ' is-clear' : ''}`}>
       <div className="nav__inner">
         <a className="nav__brand" href="#/" aria-label="Odylytics, home">
-          <img src={brand.wordmark} alt="" width="1826" height="565" />
+          {route === '/' ? (
+            <>
+              {/* Home morph: both wordmarks stacked; --zone-mix crossfades white ↔ black (see App.css). */}
+              <img className="nav__brand-img" src={BRAND.wordmarkDark} alt="" width="1826" height="565" />
+              <img className="nav__brand-img nav__brand-img--light" src={BRAND.wordmark} alt="" width="1826" height="565" />
+            </>
+          ) : (
+            <img src={brand.wordmark} alt="" width="1826" height="565" />
+          )}
         </a>
 
         <nav className="nav__links" aria-label="Primary" ref={linksRef}>
