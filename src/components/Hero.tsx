@@ -3,7 +3,8 @@ import type { ReactNode } from 'react'
 import { ArrowDownIcon } from './Icons'
 import { HOME_HERO } from '../data/site'
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
-import { useT } from '../lib/lang'
+import { useRotatingWord } from '../hooks/useRotatingWord'
+import { useLang, useT } from '../lib/lang'
 
 const Hyperspeed = lazy(() => import('./Hyperspeed'))
 
@@ -88,8 +89,17 @@ export function Hero() {
   const lineOne = t(HOME_HERO.title[0])
   const lineTwo = t(HOME_HERO.title[1])
   const lead = t(HOME_HERO.lead)
-  const counts = useTypewriter([label, lineOne, lineTwo, lead], !reducedMotion)
-  const active = counts.findIndex((count, i) => count < [label, lineOne, lineTwo, lead][i].length)
+  // English only: the typed prefix drops its last word, which becomes the orange rotor.
+  // Translated lines keep their whole text typed and static — splitting them breaks grammar.
+  const isEn = useLang() === 'en'
+  const splitAt = lineTwo.lastIndexOf(' ')
+  const typedLine = isEn && splitAt > -1 ? lineTwo.slice(0, splitAt) : lineTwo
+  const counts = useTypewriter([label, lineOne, typedLine, lead], !reducedMotion)
+  const active = counts.findIndex((count, i) => count < [label, lineOne, typedLine, lead][i].length)
+  const typedDone = reducedMotion || counts[2] >= typedLine.length
+  const words = HOME_HERO.rotatingWords.map((word) => t(word))
+  const wordIndex = useRotatingWord(words.length, 2600, isEn && typedDone)
+  const previousWord = (wordIndex - 1 + words.length) % words.length
 
   useEffect(() => {
     const hero = ref.current
@@ -179,7 +189,19 @@ export function Hero() {
           </div>
           <div className="hero__br" aria-hidden="true">
             <span className="hero__line">
-              <Typed text={lineTwo} count={counts[2]} caret={active === 2} />
+              <Typed text={typedLine} count={counts[2]} caret={active === 2} />
+              {isEn && (
+                <span className="rotor" aria-live="off">
+                  {words.map((word, index) => (
+                    <span
+                      key={word}
+                      className={`rotor__word${index === wordIndex ? ' is-active' : ''}${index === previousWord && !reducedMotion ? ' is-prev' : ''}`}
+                    >
+                      {word}
+                    </span>
+                  ))}
+                </span>
+              )}
             </span>
             <p className="hero__lead">
               <Typed text={lead} count={counts[3]} caret={active === 3} />

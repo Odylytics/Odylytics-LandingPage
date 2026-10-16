@@ -40,6 +40,8 @@ export const NAV: NavGroup[] = [
 export const HOME_HERO = {
   eyebrow: 'AI firm',
   title: ['AI that works', 'when it matters'],
+  // The hero's last word is an orange rotator (English only); the first entry is the headline default.
+  rotatingWords: ['matters', 'counts', 'adapts', 'protects'],
   lead: 'Research-grounded products for climate resilience and accessibility.',
   cue: 'Scroll to find out',
 }
@@ -103,6 +105,8 @@ export type ProductGroup = {
   /** Solution ids whose card shows a 'status' other than live; the key is the solution id. */
   status: Record<string, string>
   problem: { label: string; title: string; text: string }[]
+  /** Looping demo reel shown in the home Product frame instead of solution logos. */
+  demo?: { video: string; poster: string }
 }
 
 export const PRODUCT_GROUPS: Record<ProductGroupId, ProductGroup> = {
@@ -118,6 +122,7 @@ export const PRODUCT_GROUPS: Record<ProductGroupId, ProductGroup> = {
       { label: 'Our approach', title: 'One live map for everyone involved.', text: 'Victims send SOS requests, rescue teams see them on a live flood map and coordinators dispatch from the same view. It runs on web and mobile.' },
       { label: 'Evidence', title: 'Tested in Vietnam’s flood season.', text: 'AquaGuard has won 1st prize at the OISP Presentation Contest and the EPICS 8th Competition, and 2nd prize at Bach Khoa Innovation.' },
     ],
+    demo: { video: '/assets/products/aquaguard-demo.mp4', poster: '/assets/products/aquaguard-cover.jpg' },
   },
   accessibility: {
     id: 'accessibility',
@@ -131,6 +136,7 @@ export const PRODUCT_GROUPS: Record<ProductGroupId, ProductGroup> = {
       { label: 'Our approach', title: 'Adapt the interface to the person.', text: 'EnableCode turns head movement into cursor control for drag-and-drop coding. Includio lets candidates rehearse interviews with AI as often as they like.' },
       { label: 'Evidence', title: 'Recognised by judges and educators.', text: 'EnableCode won 1st prize at Fessior DevCamp 2026 Prometheus, and Includio reached a working MVP at the RMIT ADC Hackathon 2026.' },
     ],
+    demo: { video: '/assets/products/enablecode-demo.mp4', poster: '/assets/products/enablecode-cover.jpg' },
   },
   incoming: {
     id: 'incoming',
