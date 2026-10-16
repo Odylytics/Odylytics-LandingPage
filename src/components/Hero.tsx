@@ -96,9 +96,11 @@ export function Hero() {
   const typedLine = isEn && splitAt > -1 ? lineTwo.slice(0, splitAt) : lineTwo
   const counts = useTypewriter([label, lineOne, typedLine, lead], !reducedMotion)
   const active = counts.findIndex((count, i) => count < [label, lineOne, typedLine, lead][i].length)
-  const typedDone = reducedMotion || counts[2] >= typedLine.length
+  // The orange rotor waits for the whole typewriter (including the lead) to finish.
+  const typedDone = reducedMotion || active === -1
+  const rotorOn = isEn && typedDone
   const words = HOME_HERO.rotatingWords.map((word) => t(word))
-  const wordIndex = useRotatingWord(words.length, 2600, isEn && typedDone)
+  const wordIndex = useRotatingWord(words.length, 2600, rotorOn)
   const previousWord = (wordIndex - 1 + words.length) % words.length
   // The rotor box tracks the active word's width (words are vw-sized, so also on resize),
   // so the right-aligned prefix slides horizontally and stays flush with the orange word.
@@ -213,7 +215,7 @@ export function Hero() {
                       ref={(el) => {
                         wordRefs.current[index] = el
                       }}
-                      className={`rotor__word${index === wordIndex ? ' is-active' : ''}${index === previousWord && !reducedMotion ? ' is-prev' : ''}`}
+                      className={`rotor__word${rotorOn && index === wordIndex ? ' is-active' : ''}${rotorOn && !reducedMotion && index === previousWord ? ' is-prev' : ''}`}
                     >
                       {word}
                     </span>
