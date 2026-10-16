@@ -149,10 +149,6 @@ export const DICTIONARY: Record<string, [string, string, string, string]> = {
   // Settings
   Settings: ['Cài đặt', 'Paramètres', '设置', '設定'],
   Language: ['Ngôn ngữ', 'Langue', '语言', '言語'],
-  Theme: ['Giao diện', 'Thème', '主题', 'テーマ'],
-  Light: ['Sáng', 'Clair', '浅色', 'ライト'],
-  Dark: ['Tối', 'Sombre', '深色', 'ダーク'],
-  System: ['Hệ thống', 'Système', '跟随系统', 'システム'],
   'Reduce motion': ['Giảm hiệu ứng chuyển động', "Réduire les animations", '减少动画', 'アニメーションを減らす'],
   Yes: ['Có', 'Oui', '是', 'はい'],
   No: ['Không', 'Non', '否', 'いいえ'],

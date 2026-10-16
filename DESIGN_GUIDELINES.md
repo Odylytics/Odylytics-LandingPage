@@ -1,6 +1,6 @@
 # Odylytics — Design Guidelines (v4)
 
-Direction: an AI-firm site in the spirit of Anthropic, Factory and Cursor. Calm warm-white pages, large sans headlines, serif body text, bracketed full-orange mono labels like [ PARTNERSHIPS ], one dark panel per page for contrast. Black and white first; purple and orange only as accents taken from the Odylytics logo. No italics anywhere, no gradients, no glow, no box shadows.
+Direction: an AI-firm site in the spirit of Anthropic, Factory and Cursor. Calm warm-white pages, large sans headlines, serif body text, bracketed full-orange mono labels like [ PARTNERSHIPS ], one dark panel per page for contrast. Black and white first; purple and orange only as accents taken from the Odylytics logo. No italics anywhere, no gradients, no glow. The one shadow exception: media frames (product demo reels, photos) carry the soft `--shadow-media` ambient shadow so they lift off the surface.
 
 ## Type
 
@@ -14,7 +14,7 @@ Never use `font-style: italic`. Emphasis in headlines is an underline (`<u>`, pu
 
 ## Colour (semantic tokens only)
 
-Light is the default; dark via `<html data-theme="dark">`. `.scope-dark` forces the dark tokens (footer, impact band, closing panel).
+One fixed look, no theme switching: the base palette is light, and the home route's zone morph (`--zone-mix`) paints the top dark and scrubs to light through the product band. `.scope-dark` forces the dark tokens (footer, impact band, closing panel).
 
 | Token | Light | Dark |
 |---|---|---|

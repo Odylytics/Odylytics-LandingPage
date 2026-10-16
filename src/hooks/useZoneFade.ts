@@ -1,5 +1,4 @@
 import { useLayoutEffect } from 'react'
-import { THEME_COLOR } from './useTheme'
 
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value))
 /** The swap begins once the incoming section's top passes this fraction of the viewport. */
@@ -12,7 +11,7 @@ const TRAVEL = 0.6
  * from the scroll position blends every colour token from the old near-black palette to
  * the light one as the product section scrolls in, and back as the blog arrives. Scrubbed,
  * so scrolling back reverses it mid-way. The `zone-on` class scopes the blend block in
- * index.css to this route; an explicit dark theme pins the page dark instead.
+ * index.css to this route.
  */
 export function useZoneFade(route: string) {
   useLayoutEffect(() => {
@@ -24,7 +23,6 @@ export function useZoneFade(route: string) {
 
     const apply = (mix: number) => {
       root.style.setProperty('--zone-mix', mix.toFixed(3))
-      if (root.dataset.theme === 'dark') return
       root.style.colorScheme = mix > 0.5 ? 'light' : 'dark'
       meta?.setAttribute('content', mix > 0.5 ? '#FAFAFB' : '#0B0A0E')
     }
@@ -62,7 +60,7 @@ export function useZoneFade(route: string) {
       root.classList.remove('zone-on')
       root.style.removeProperty('--zone-mix')
       root.style.colorScheme = ''
-      if (root.dataset.theme !== 'dark') meta?.setAttribute('content', THEME_COLOR.light)
+      meta?.setAttribute('content', '#F3F2EE')
     }
   }, [route])
 }

@@ -75,7 +75,7 @@ export function Consent() {
             <li>
               <div>
                 <strong>Strictly necessary</strong>
-                <span>Remembers your theme, language and member sign-in. Cannot be switched off.</span>
+                <span>Remembers your language and member sign-in. Cannot be switched off.</span>
               </div>
               <span className="switch is-on is-locked" aria-label="Always on" />
             </li>

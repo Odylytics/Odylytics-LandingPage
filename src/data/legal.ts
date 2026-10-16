@@ -51,7 +51,7 @@ export const PRIVACY: LegalDoc = {
         'Member account data. If you are an invited member, we process your email address, a securely hashed password (we cannot read your password), your sign-in sessions and the content you create or edit in the dashboard, such as news posts, testimonials, photos, links and the names or quotes they contain.',
         'Technical data collected automatically. Our hosting provider records standard request information such as IP address, browser and device type, operating system, language, the pages requested, the referring page and timestamps. We use it to deliver the Site, keep it secure and diagnose faults.',
         'Anonymous usage data. We use Vercel Web Analytics to understand which pages are visited and from which countries, browsers and devices. It records the page address, the referring page, the approximate country or region, the browser, operating system and device type, and counts unique visitors with a short-lived value derived from technical data that cannot be turned back into your identity. It does not use cookies and we do not use it to follow you across other websites.',
-        'Preferences stored on your device. We save your chosen theme (light or dark) and language in your browser. They stay on your device and are not sent to us.',
+        'Preferences stored on your device. We save your chosen language in your browser. It stays on your device and is not sent to us.',
         'Information from you at events or through partners. If we meet you at an event, competition or through a partner organisation and you give us your contact details, we use them only to follow up on that conversation.',
       ],
       after: [
@@ -67,7 +67,7 @@ export const PRIVACY: LegalDoc = {
         'To create and run member accounts, authenticate members and let them manage Site content. Basis: performance of our arrangement with the member and our legitimate interest in keeping the Site accurate and secure.',
         'To host and deliver the Site, keep it secure, detect and prevent abuse, and find and fix errors. Basis: our legitimate interest in a safe, working website.',
         'To measure how the Site is used in aggregate and improve its content and speed. Basis: our legitimate interest in understanding and improving the Site, balanced against your interests; the analytics we use is designed to be privacy-preserving.',
-        'To remember your theme and language. Basis: it is a setting you choose and is stored only on your device.',
+        'To remember your language. Basis: it is a setting you choose and is stored only on your device.',
         'To keep records, enforce our terms, establish or defend legal claims and meet legal obligations that apply to us. Basis: legal obligation and our legitimate interest in protecting our rights.',
       ],
       after: [
@@ -447,7 +447,7 @@ export const COOKIES: LegalDoc = {
       heading: 'The short version',
       items: [
         'We do not use advertising, marketing or cross-site tracking cookies.',
-        'We store your theme and language on your device, and a sign-in session if you are a member.',
+        'We store your language on your device, and a sign-in session if you are a member.',
         'We measure visits with Vercel Web Analytics, which is designed to work without cookies and without following you across websites.',
       ],
     },
@@ -455,7 +455,6 @@ export const COOKIES: LegalDoc = {
       heading: 'What this Site stores on your device',
       body: ['The Site stores the following items in your browser:'],
       items: [
-        'odylytics-theme (local storage): your chosen light or dark theme. Kept until you clear it. A preference only; it is never sent to us.',
         'odylytics-lang (local storage): your chosen language. Kept until you clear it. A preference only; it is never sent to us.',
         'Member session (local storage): only if you sign in as a member. Our sign-in provider, Supabase, stores a session token so you stay signed in, and it is removed when you sign out or the session expires.',
       ],
@@ -490,7 +489,7 @@ export const COOKIES: LegalDoc = {
     {
       heading: 'How to control or remove stored data',
       items: [
-        'Clear the Site’s stored data in your browser settings, under site data or cookies and site data. This resets your theme and language and signs you out.',
+        'Clear the Site’s stored data in your browser settings, under site data or cookies and site data. This resets your language and signs you out.',
         'Block or restrict third-party requests and trackers with your browser’s privacy settings or an extension. The Site continues to work.',
         'Use a private or incognito window; most browsers delete stored data when it is closed.',
         'If you are a member, sign out when you use a shared device.',

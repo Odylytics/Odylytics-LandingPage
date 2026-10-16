@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { LANGUAGES, setLang, useLang, useT } from '../lib/lang'
 import type { Lang } from '../lib/lang'
 import { setReduceMotion, useReducedMotion } from '../lib/motion'
-import { setThemePreference, useThemePreference } from '../hooks/useTheme'
-import type { ThemePref } from '../hooks/useTheme'
 import { CheckIcon, ChevronDownIcon, GearIcon } from './Icons'
 
 function Segmented<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: { id: T; text: string }[]; onChange: (value: T) => void }) {
@@ -54,28 +52,13 @@ function LanguageList() {
   )
 }
 
-/** Theme, language and motion controls, in that order. Used inside the popover and in the mobile menu. */
+/** Language and motion controls, in that order. Used inside the popover and in the mobile menu. */
 export function SettingsPanel() {
   const t = useT()
-  const theme = useThemePreference()
   const reduced = useReducedMotion()
 
   return (
     <div className="settings__panel">
-      <section className="settings__group" aria-label={t('Theme')}>
-        <h3 className="settings__label">{t('Theme')}</h3>
-        <Segmented<ThemePref>
-          label={t('Theme')}
-          value={theme}
-          onChange={setThemePreference}
-          options={[
-            { id: 'light', text: t('Light') },
-            { id: 'dark', text: t('Dark') },
-            { id: 'system', text: t('System') },
-          ]}
-        />
-      </section>
-
       <section className="settings__group" aria-label={t('Language')}>
         <h3 className="settings__label">{t('Language')}</h3>
         <LanguageList />
