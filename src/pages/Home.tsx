@@ -8,21 +8,25 @@ import { PostCard } from '../components/PostCard'
 import { Label, SectionHead } from '../components/Section'
 import { SolutionLoop } from '../components/SolutionLoop'
 import { Testimonials } from '../components/Testimonials'
-import { IMPACT, IMPACT_NOTE, POSTS, RECOGNITION, SOLUTIONS, TEAM } from '../data/content'
+import { IMPACT, IMPACT_NOTE, POSTS, RECOGNITION, TEAM } from '../data/content'
 import { HOME_BAND, HOME_CLOSING, HOME_PILLARS, HOME_WORK, PRODUCT_GROUPS } from '../data/site'
-import { useBrandAssets } from '../hooks/useBrandAssets'
 import { postsStore } from '../lib/stores'
+import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { useT } from '../lib/lang'
 
 export function Home() {
   const t = useT()
-  const { solutionLogo } = useBrandAssets()
+  const reducedMotion = usePrefersReducedMotion()
   const stored = postsStore.useItems()
   const posts = (postsStore.isSeeded() ? POSTS : stored).slice(0, 3)
   const prizes = RECOGNITION.flatMap((group) => group.items.map((item) => ({ ...item, product: group.solutionName })))
-  const live = (id: string) => SOLUTIONS.find((solution) => solution.id === id)
   const climate = PRODUCT_GROUPS['climate-tech']
   const access = PRODUCT_GROUPS.accessibility
+
+  // React renders `muted` unreliably as an attribute; the property is what browsers obey.
+  const mutedVideo = (el: HTMLVideoElement | null) => {
+    if (el) el.muted = true
+  }
 
   return (
     <>
@@ -54,7 +58,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="band scope-dark" aria-labelledby="band-title">
+      <section className="band" aria-labelledby="band-title">
         <Contours />
         <div className="container band__inner">
           <div className="band__head">
@@ -105,16 +109,20 @@ export function Home() {
               <a key={group.id} className="productcard" href={`#/product/${group.id}`} data-reveal>
                 <p className="productcard__label">{t(group.label.replace('Product · ', ''))}</p>
                 <h3 className="productcard__title">{t(group.title)}</h3>
-                <ul className="productcard__logos">
-                  {group.solutions.map((id) => {
-                    const solution = live(id)
-                    return solution?.logo ? (
-                      <li key={id}>
-                        <img src={solutionLogo(solution.logo)} alt={solution.name} />
-                      </li>
-                    ) : null
-                  })}
-                </ul>
+                {group.demo && (
+                  <div className="productcard__media">
+                    <video
+                      ref={mutedVideo}
+                      src={group.demo.video}
+                      poster={group.demo.poster}
+                      autoPlay={!reducedMotion}
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                  </div>
+                )}
                 <span className="link-arrow">
                   {t('Explore')} <span aria-hidden="true">→</span>
                 </span>
@@ -203,7 +211,7 @@ export function Home() {
       </section>
 
       <section className="container closing-wrap">
-        <div className="closing closing--photo scope-dark">
+        <div className="closing closing--photo">
           <div className="closing__copy">
             <Label>{t('Get in touch')}</Label>
             <h2 className="closing__title">{t(HOME_CLOSING.title)}</h2>
