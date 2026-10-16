@@ -173,6 +173,12 @@
 .heroart__symbol--light { opacity: var(--zone-mix, 0); }
 :root[data-theme='dark'] .heroart__symbol { opacity: 1; }
 :root[data-theme='dark'] .heroart__symbol--light { opacity: 0; }
+/* Same crossfade for the mobile flow core (HowFlow). */
+.flow__logo { display: grid; }
+.flow__symbol { grid-area: 1 / 1; opacity: calc(1 - var(--zone-mix, 0)); }
+.flow__symbol--light { opacity: var(--zone-mix, 0); }
+:root[data-theme='dark'] .flow__symbol { opacity: 1; }
+:root[data-theme='dark'] .flow__symbol--light { opacity: 0; }
 
 /* ─── Partner strip ─────────────────────────────────────────────────────── */
 
@@ -584,9 +590,6 @@ a.post-card:hover { transform: translateY(-3px); }
 .footer__statement { max-width: 100ch; padding-bottom: 32px; font-size: 14px; line-height: 1.6; color: var(--text-3); }
 .footer__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 24px; border-top: 1px solid var(--border); font-family: var(--font-sans); font-size: 14px; color: var(--text-3); }
 .footer__bar-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.theme-toggle { display: inline-flex; padding: 3px; border-radius: 0; border: 1px solid var(--border-strong); }
-.theme-toggle button { height: 28px; padding: 0 14px; border-radius: 0; font-family: var(--font-sans); font-size: 13px; color: var(--text-2); }
-.theme-toggle button.is-active { background: #F3F2EE; color: #141413; }
 @media (max-width: 1100px) { .footer__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
@@ -736,8 +739,7 @@ a.post-card:hover { transform: translateY(-3px); }
   .flow__mark { width: 6px; height: 6px; background: var(--signal); }
   .flow__mark--purple { background: var(--accent); }
   .flow__wire { display: block; width: 2px; height: 36px; background: linear-gradient(to bottom, var(--border-strong) 50%, var(--signal) 50%); background-size: 2px 12px; }
-  .flow__core { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; background: #141413; color: #F3F2EE; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
-  :root[data-theme='dark'] .flow__core { background: var(--surface-2); border: 1px solid var(--border-strong); }
+  .flow__core { display: inline-flex; align-items: center; gap: 12px; padding: 14px 0; color: var(--text); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
 
   /* Product and band */
   .productcard { padding: 24px; gap: 16px; }

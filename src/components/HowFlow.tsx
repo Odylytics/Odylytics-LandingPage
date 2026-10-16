@@ -15,7 +15,10 @@ export function HowFlow() {
       </ul>
       <span className="flow__wire" />
       <div className="flow__core">
-        <img src="/assets/brand/odylytics-symbol-dark.svg" alt="" width="28" height="28" />
+        <span className="flow__logo" aria-hidden="true">
+          <img src="/assets/brand/odylytics-symbol-dark.svg" alt="" width="28" height="28" className="flow__symbol" />
+          <img src="/assets/brand/odylytics-symbol.svg" alt="" width="28" height="28" className="flow__symbol flow__symbol--light" />
+        </span>
         AI core
       </div>
       <span className="flow__wire" />
