@@ -10,9 +10,9 @@ const TRAVEL = 0.6
 /**
  * Mercury-style background morph, home only: scrubbing `--zone-mix` (0→1, see index.css)
  * from the scroll position blends every colour token from the old near-black palette to
- * the light one as the "How it works" section scrolls in, and back as the blog arrives.
- * Scrubbed, so scrolling back reverses it mid-way. The `zone-on` class scopes the blend
- * block in index.css to this route; an explicit dark theme pins the page dark instead.
+ * the light one as the product section scrolls in, and back as the blog arrives. Scrubbed,
+ * so scrolling back reverses it mid-way. The `zone-on` class scopes the blend block in
+ * index.css to this route; an explicit dark theme pins the page dark instead.
  */
 export function useZoneFade(route: string) {
   useLayoutEffect(() => {
@@ -31,13 +31,13 @@ export function useZoneFade(route: string) {
 
     const update = () => {
       raf = 0
-      const how = document.getElementById('how')
+      const product = document.getElementById('product')
       const blog = document.getElementById('blog')
       let mix = 0
-      if (how && blog) {
+      if (product && blog) {
         const vh = window.innerHeight
         const span = vh * TRAVEL
-        const into = clamp01((vh * LEAD - how.getBoundingClientRect().top) / span)
+        const into = clamp01((vh * LEAD - product.getBoundingClientRect().top) / span)
         const outof = clamp01((vh * LEAD - blog.getBoundingClientRect().top) / span)
         mix = into * (1 - outof)
       }

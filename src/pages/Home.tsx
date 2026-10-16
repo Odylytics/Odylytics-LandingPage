@@ -97,7 +97,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--tight">
+      <section id="product" className="section section--tight">
         <div className="container">
           <SectionHead label="Product" title="Solutions built on one shared AI core." action={{ href: '#/product/incoming', text: 'See what is incoming' }} />
           <div className="productgrid">
