@@ -247,7 +247,7 @@
 
 .prizes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .prize { display: flex; flex-direction: column; overflow: hidden; border-radius: 0; background: var(--surface); }
-.prize__media { aspect-ratio: 4 / 3; background: var(--media-bg); }
+.prize__media { aspect-ratio: 4 / 3; background: var(--media-bg); min-height: 0; }
 .prize__media img { width: 100%; height: 100%; object-fit: cover; }
 .prize__body { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px 24px; }
 .prize__place { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal-ink); }
