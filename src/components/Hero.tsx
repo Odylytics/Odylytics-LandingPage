@@ -115,7 +115,17 @@ export function Hero() {
     }
     fit()
     window.addEventListener('resize', fit)
-    return () => window.removeEventListener('resize', fit)
+    // On a cold load the first measure uses the fallback font; once the webfonts
+    // land the words render wider and the right-aligned overflow would clip the
+    // first letter's left edge — so measure again when the fonts finish.
+    let alive = true
+    document.fonts.ready.then(() => {
+      if (alive) fit()
+    })
+    return () => {
+      alive = false
+      window.removeEventListener('resize', fit)
+    }
   }, [wordIndex])
 
   useEffect(() => {
