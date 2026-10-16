@@ -2,8 +2,8 @@
 
 .nav { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--nav-h); background: var(--bg); border-bottom: 1px solid transparent; transition: border-color 200ms, background-color 200ms; }
 .nav.is-scrolled { border-bottom-color: var(--border); }
-.nav__inner { display: flex; align-items: center; gap: 40px; height: 100%; width: 100%; max-width: calc(var(--container) + var(--pad) * 2); margin-inline: auto; padding-inline: var(--pad); }
-.nav__brand { display: block; width: 138px; flex: none; }
+.nav__inner { position: relative; display: flex; align-items: center; gap: 40px; height: 100%; width: 100%; max-width: calc(var(--container) + var(--pad) * 2); margin-inline: auto; padding-inline: var(--pad); }
+.nav__brand { display: block; width: 112px; flex: none; }
 .nav__brand img { width: 100%; height: auto; }
 /* Home morph: both wordmarks stacked; the zone mix crossfades white ↔ black
    (see useZoneFade / index.css). Explicit dark pins the white one. */
@@ -13,7 +13,9 @@
 .nav__brand-img--light { opacity: var(--zone-mix, 0); }
 :root[data-theme='dark'] .nav__brand-img { opacity: 1; }
 :root[data-theme='dark'] .nav__brand-img--light { opacity: 0; }
-.nav__links { flex: 1; }
+/* Menu centred in the bar: pulled out of the flex row and anchored to the
+   navbar's true centre, independent of the brand and action widths. */
+.nav__links { position: absolute; left: 50%; transform: translateX(-50%); flex: none; }
 .nav__links > ul { display: flex; gap: 4px; }
 .nav__item { position: relative; }
 .nav__trigger { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: 0; font-family: var(--font-sans); font-size: 15px; font-weight: 500; color: var(--text-2); transition: color 150ms, background-color 150ms; }
@@ -28,7 +30,7 @@
 .nav__dd-title { font-family: var(--font-sans); font-weight: 500; font-size: 15px; }
 .nav__dd-desc { font-size: 14px; line-height: 1.4; color: var(--text-3); }
 @keyframes dd-in { from { opacity: 0; transform: translateY(-4px); } }
-.nav__actions { display: flex; align-items: center; gap: 4px; }
+.nav__actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .nav__cta { margin-left: 10px; }
 .nav__login { display: inline-flex; align-items: center; height: 38px; padding: 0 10px; border-radius: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; line-height: 1; text-transform: uppercase; font-weight: 500; color: var(--text-2); }
 .nav__login:hover { color: var(--text); background: var(--surface-2); }
@@ -694,7 +696,7 @@ a.post-card:hover { transform: translateY(-3px); }
 @media (max-width: 640px) {
   /* Nav */
   .nav__inner { gap: 10px; }
-  .nav__brand { width: 124px; }
+  .nav__brand { width: 100px; }
   .nav__toggle { margin-right: -10px; }
   .nav__menu { padding-bottom: 28px; }
   .nav__menu-groups { gap: 20px; }
@@ -801,7 +803,7 @@ a.post-card:hover { transform: translateY(-3px); }
 }
 
 @media (max-width: 380px) {
-  .nav__brand { width: 112px; }
+  .nav__brand { width: 92px; }
   .nav__cta { padding: 0 12px; font-size: 11px; }
   .hero__line { font-size: 12vw; }
 }
