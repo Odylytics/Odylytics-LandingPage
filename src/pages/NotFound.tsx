@@ -1,24 +1,20 @@
 import { useEffect } from 'react'
-import { Button } from '../components/Button'
-import { useBrandAssets } from '../hooks/useBrandAssets'
-import { useUi } from '../hooks/useContent'
+import { StateScreen } from '../components/StateScreen'
 import { isUnknownPath } from '../hooks/useRoute'
 
-/** Shown for unknown `#/…` routes, missing team profiles and any path other than `/`. */
+/** Shown for unknown `#/…` routes, missing profiles and any path other than `/`. */
 export function NotFound() {
-  const ui = useUi()
-  const brand = useBrandAssets()
   const requested = isUnknownPath() ? window.location.pathname : window.location.hash.slice(1)
 
   useEffect(() => {
     const title = document.title
-    document.title = `${ui.notFoundTitle} — Odylytics`
+    document.title = 'Page not found - Odylytics'
     return () => {
       document.title = title
     }
-  }, [ui.notFoundTitle])
+  }, [])
 
-  // On a bad path, `#contact` would resolve to `/bad-path#contact` and stay on this page.
+  // On a bad path, a `#/…` link would resolve to `/bad-path#/…` and stay on this page.
   useEffect(() => {
     if (!isUnknownPath()) return
     const onClick = (event: MouseEvent) => {
@@ -32,43 +28,42 @@ export function NotFound() {
   }, [])
 
   return (
-    <section className="section page notfound" aria-labelledby="notfound-title">
-      <div className="aurora" aria-hidden="true" />
-      <div className="container notfound__inner">
-        <p className="eyebrow">{ui.notFoundEyebrow}</p>
-        <p className="notfound__code" aria-hidden="true">
-          <span>4</span>
-          <img className="notfound__symbol" src={brand.symbol} alt="" />
-          <span>4</span>
-        </p>
-        <h1 id="notfound-title" className="h2-serif">
-          {ui.notFoundHeading} <span className="em">{ui.notFoundTail}</span>
-        </h1>
-        <p className="body-l notfound__text">{ui.notFoundText}</p>
-        <div className="notfound__actions">
-          <Button href="#home">{ui.notFoundHome}</Button>
-          <Button href="#contact" variant="outline" arrow={false}>
-            {ui.notFoundContact}
-          </Button>
-        </div>
-
-        <nav className="notfound__links" aria-label={ui.notFoundTry}>
-          <span className="label">{ui.notFoundTry}</span>
-          <ul>
-            {ui.notFoundLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
+    <StateScreen
+      kind="lost"
+      label="Error 404"
+      title="This page took a wrong turn."
+      text="The link may be broken, or the page may have moved. Head back home, or tell us what you were looking for."
+      actions={
+        <>
+          <a className="btn btn--primary" href="#/">
+            Back to home
+          </a>
+          <a className="btn btn--outline" href="#/contact">
+            Contact us
+          </a>
+        </>
+      }
+      note={
+        <>
+          <ul className="state__links">
+            {[
+              ['Product', '#/product/climate-tech'],
+              ['Research', '#/research'],
+              ['Team', '#/team/co-founders'],
+              ['Blog', '#/blog'],
+            ].map(([label, href]) => (
+              <li key={href}>
+                <a href={href}>{label}</a>
               </li>
             ))}
           </ul>
-        </nav>
-
-        {requested && (
-          <p className="notfound__path">
-            <span>{ui.notFoundRequested}</span> <code>{requested}</code>
-          </p>
-        )}
-      </div>
-    </section>
+          {requested && (
+            <p className="state__path">
+              Requested <code>{requested}</code>
+            </p>
+          )}
+        </>
+      }
+    />
   )
 }

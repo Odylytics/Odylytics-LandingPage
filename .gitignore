@@ -23,3 +23,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Temporary local clone of Quan repo (never push this)
+Odylytics-MinhQuanCooked/

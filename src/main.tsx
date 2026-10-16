@@ -1,12 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { inject } from '@vercel/analytics'
 import './index.css'
 import App from './App.tsx'
 import { initLang } from './lib/lang'
+import { initMotion } from './lib/motion'
+import { initTheme } from './hooks/useTheme'
+
 
 initLang()
-inject()
+initMotion()
+initTheme()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
