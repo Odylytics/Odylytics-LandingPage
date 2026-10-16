@@ -100,6 +100,21 @@ export function Hero() {
   const words = HOME_HERO.rotatingWords.map((word) => t(word))
   const wordIndex = useRotatingWord(words.length, 2600, isEn && typedDone)
   const previousWord = (wordIndex - 1 + words.length) % words.length
+  // The rotor box tracks the active word's width (words are vw-sized, so also on resize),
+  // so the right-aligned prefix slides horizontally and stays flush with the orange word.
+  const rotorRef = useRef<HTMLSpanElement>(null)
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([])
+  useEffect(() => {
+    const rotor = rotorRef.current
+    if (!rotor) return
+    const fit = () => {
+      const word = wordRefs.current[wordIndex]
+      if (word) rotor.style.width = `${word.offsetWidth}px`
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    return () => window.removeEventListener('resize', fit)
+  }, [wordIndex])
 
   useEffect(() => {
     const hero = ref.current
@@ -191,10 +206,13 @@ export function Hero() {
             <span className="hero__line">
               <Typed text={typedLine} count={counts[2]} caret={active === 2} />
               {isEn && (
-                <span className="rotor" aria-live="off">
+                <span className="rotor" ref={rotorRef} aria-live="off">
                   {words.map((word, index) => (
                     <span
                       key={word}
+                      ref={(el) => {
+                        wordRefs.current[index] = el
+                      }}
                       className={`rotor__word${index === wordIndex ? ' is-active' : ''}${index === previousWord && !reducedMotion ? ' is-prev' : ''}`}
                     >
                       {word}
