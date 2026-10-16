@@ -54,20 +54,6 @@ export function Home() {
         </div>
       </section>
 
-      <section id="how" className="section section--tight">
-        <div className="container how">
-          <div className="how__copy" data-reveal>
-            <Label>{t('How it works')}</Label>
-            <h2 className="sechead__title">{t('Many inputs. One shared AI core.')}</h2>
-            <p>{t('Community reports, sensor readings and webcam signals all flow through the same foundation, so every new product launches faster and learns from the others.')}</p>
-          </div>
-          <div className="how__art" data-reveal>
-            <HeroArt />
-            <HowFlow />
-          </div>
-        </div>
-      </section>
-
       <section className="band scope-dark" aria-labelledby="band-title">
         <Contours />
         <div className="container band__inner">
@@ -94,6 +80,20 @@ export function Home() {
             ))}
           </dl>
           <p className="band__note">{t(IMPACT_NOTE)}</p>
+        </div>
+      </section>
+
+      <section id="how" className="section section--tight">
+        <div className="container how">
+          <div className="how__copy" data-reveal>
+            <Label>{t('How it works')}</Label>
+            <h2 className="sechead__title">{t('Many inputs. One shared AI core.')}</h2>
+            <p>{t('Community reports, sensor readings and webcam signals all flow through the same foundation, so every new product launches faster and learns from the others.')}</p>
+          </div>
+          <div className="how__art" data-reveal>
+            <HeroArt />
+            <HowFlow />
+          </div>
         </div>
       </section>
 
