@@ -1,9 +1,11 @@
 import type { Solution } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
+import { useT } from '../lib/lang'
 
 /** One solution: logo, status, and either its summary or an 'Updating soon' line. */
 export function SolutionCard({ solution, status }: { solution: Solution; status?: string }) {
   const { solutionLogo } = useBrandAssets()
+  const t = useT()
   return (
     <article className={`solution${solution.soon ? ' is-soon' : ''}`} data-reveal>
       {solution.image && (
@@ -14,11 +16,11 @@ export function SolutionCard({ solution, status }: { solution: Solution; status?
       <div className="solution__body">
         <div className="solution__top">
           {solution.logo ? <img className="solution__logo" src={solutionLogo(solution.logo)} alt={solution.name} /> : <h3 className="solution__name">{solution.name}</h3>}
-          {status && <span className={`status${status === 'Pilot' || status === 'MVP' || status === 'Prototype' ? ' status--live' : ''}`}>{status}</span>}
+          {status && <span className={`status${status === 'Pilot' || status === 'MVP' || status === 'Prototype' ? ' status--live' : ''}`}>{t(status)}</span>}
         </div>
-        {solution.category && <p className="solution__cat">{solution.category}</p>}
-        {solution.oneLiner && <p className="solution__line">{solution.oneLiner}</p>}
-        {solution.description ? <p className="solution__text">{solution.description}</p> : <p className="solution__soon">Details updating soon.</p>}
+        {solution.category && <p className="solution__cat">{t(solution.category)}</p>}
+        {solution.oneLiner && <p className="solution__line">{t(solution.oneLiner)}</p>}
+        {solution.description ? <p className="solution__text">{t(solution.description)}</p> : <p className="solution__soon">{t('Details updating soon.')}</p>}
       </div>
     </article>
   )

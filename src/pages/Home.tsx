@@ -202,7 +202,7 @@ export function Home() {
           </div>
           <div className="work__body" data-reveal>
             <h2 className="work__title">{t(HOME_WORK.title)}</h2>
-            <p>{HOME_WORK.text}</p>
+            <p>{t(HOME_WORK.text)}</p>
             <a className="btn btn--outline" href="#/team/co-founders">
               {t(HOME_WORK.cta)}
             </a>

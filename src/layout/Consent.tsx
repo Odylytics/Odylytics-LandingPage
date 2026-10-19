@@ -42,7 +42,7 @@ export function Consent() {
         <aside className="consent" role="region" aria-label="Cookie preferences">
           <p className="consent__title">{t('Your privacy')}</p>
           <p className="consent__text">
-            {t('We store your theme choice so the site looks the way you left it. With your permission we also measure visits with Vercel Analytics. Read the')} <a href="#/legal/cookies">{t('Cookie Policy')}</a>.
+            {t('We keep a few essentials so the site works: your language, motion setting and member sign-in. With your permission we also measure visits with Vercel Analytics. Read the')} <a href="#/legal/cookies">{t('Cookie Policy')}</a>.
           </p>
           <div className="consent__actions">
             <button type="button" className="btn btn--primary btn--sm" onClick={() => decide(true)}>

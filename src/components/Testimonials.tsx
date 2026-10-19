@@ -1,18 +1,20 @@
 import { TESTIMONIALS } from '../data/content'
 import type { Testimonial } from '../data/content'
+import { useT } from '../lib/lang'
 import { testimonialsStore } from '../lib/stores'
 
 function Quote({ item }: { item: Testimonial }) {
+  const t = useT()
   return (
     <figure className="quote" data-reveal>
-      <blockquote>“{item.quote}”</blockquote>
+      <blockquote>“{t(item.quote)}”</blockquote>
       <figcaption>
         <span className="avatar" aria-hidden="true">
           {item.avatar ? <img src={item.avatar} alt="" /> : item.name.charAt(0)}
         </span>
         <span>
           <span className="quote__name">{item.name}</span>
-          <span className="quote__role">{item.role}</span>
+          <span className="quote__role">{t(item.role)}</span>
         </span>
       </figcaption>
     </figure>

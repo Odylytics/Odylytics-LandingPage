@@ -22,8 +22,8 @@ export function Product({ id }: { id: ProductGroupId }) {
               {group.problem.map((step) => (
                 <li key={step.label} data-reveal>
                   <Label>{step.label}</Label>
-                  <h2 className="story__title">{step.title}</h2>
-                  <p>{step.text}</p>
+                  <h2 className="story__title">{t(step.title)}</h2>
+                  <p>{t(step.text)}</p>
                 </li>
               ))}
             </ol>
@@ -50,8 +50,8 @@ export function Product({ id }: { id: ProductGroupId }) {
               {INCOMING_STAGES.map((stage, index) => (
                 <li key={stage.label} data-reveal>
                   <span className="stages__n">0{index + 1}</span>
-                  <h3>{stage.label}</h3>
-                  <p>{stage.text}</p>
+                  <h3>{t(stage.label)}</h3>
+                  <p>{t(stage.text)}</p>
                 </li>
               ))}
             </ol>
@@ -71,8 +71,8 @@ export function Product({ id }: { id: ProductGroupId }) {
       <section className="container closing-wrap">
         <div className="closing scope-dark">
           <Label>Pilots</Label>
-          <h2 className="closing__title">{id === 'incoming' ? 'Have a problem we should look at?' : 'Run a pilot with us.'}</h2>
-          <p>{id === 'incoming' ? 'Tell us who is affected and what a better outcome looks like.' : 'We work with universities, public bodies and companies who want to test AI on a real problem.'}</p>
+          <h2 className="closing__title">{t(id === 'incoming' ? 'Have a problem we should look at?' : 'Run a pilot with us.')}</h2>
+          <p>{t(id === 'incoming' ? 'Tell us who is affected and what a better outcome looks like.' : 'We work with universities, public bodies and companies who want to test AI on a real problem.')}</p>
           <a className="btn btn--accent" href="#/contact">
             {t('Get in touch')}
           </a>

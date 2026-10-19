@@ -14,13 +14,13 @@ export function LegalHub() {
         <div className="container">
           {LEGAL_GROUPS.map((group) => (
             <div key={group} className="legalgroup">
-              <h2 className="legalgroup__title">{group}</h2>
+              <h2 className="legalgroup__title">{t(group)}</h2>
               <ul className="legalgrid">
                 {LEGAL_ENTRIES.filter((entry) => entry.group === group).map((entry) => (
                   <li key={entry.slug}>
                     <a className="legalcard" href={`#/legal/${entry.slug}`} data-reveal>
-                      <h3>{entry.title}</h3>
-                      <p>{entry.summary}</p>
+                      <h3>{t(entry.title)}</h3>
+                      <p>{t(entry.summary)}</p>
                       <span className="link-arrow">
                         {t('Read')} <span aria-hidden="true">→</span>
                       </span>

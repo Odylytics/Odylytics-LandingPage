@@ -36,7 +36,7 @@ export function Footer() {
           ))}
         </div>
 
-        <p className="footer__statement">{FOOTER_STATEMENT}</p>
+        <p className="footer__statement">{t(FOOTER_STATEMENT)}</p>
 
         <div className="footer__bar">
           <p>

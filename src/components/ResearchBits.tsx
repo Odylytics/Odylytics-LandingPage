@@ -74,8 +74,8 @@ export function EntryCard({ entry, project = false }: { entry: ResearchEntry; pr
           {!project && entry.date && <span>{formatDate(entry.date)}</span>}
         </p>
         {project && <p className="ecard__identity"><span>{entry.code ?? t('Unassigned')}</span><span>{formatDate(entry.date) || t('Date not set')}</span></p>}
-        <h3 className="ecard__title">{entry.title}</h3>
-        <p className="ecard__text">{project ? entry.question : entry.summary}</p>
+        <h3 className="ecard__title">{t(entry.title)}</h3>
+        <p className="ecard__text">{t((project ? entry.question : entry.summary) ?? '')}</p>
         {entry.fields?.length ? <ul className="research-tags" aria-label={t('AI fields')}>{entry.fields.map((field) => <li key={field}>{t(fieldLabel(field))}</li>)}</ul> : null}
         {project && entry.stage && <StageBar stage={entry.stage} />}
         <span className="link-arrow">
@@ -95,8 +95,8 @@ export function EntryRow({ entry, example = false }: { entry: ResearchEntry; exa
       <span className="erow__date">{formatDate(entry.date) || '—'}</span>
       <span className="erow__area">{area && t(area.short)}</span>
       <span className="erow__main">
-        <span className="erow__title">{entry.title}</span>
-        <span className="erow__sum">{entry.summary}</span>
+        <span className="erow__title">{t(entry.title)}</span>
+        <span className="erow__sum">{t(entry.summary)}</span>
       </span>
       <span className="erow__kind">{t(entry.kind)}</span>
       <span className="erow__arrow" aria-hidden="true">

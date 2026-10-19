@@ -17,8 +17,8 @@ export function PostCard({ post, large = false }: { post: Post; large?: boolean 
           <span>{t(post.category)}</span>
           {meta && <span>{meta}</span>}
         </p>
-        <h3 className="post-card__title">{post.title}</h3>
-        <p className="post-card__excerpt">{post.excerpt}</p>
+        <h3 className="post-card__title">{t(post.title)}</h3>
+        <p className="post-card__excerpt">{t(post.excerpt)}</p>
         {post.href && (
           <span className="post-card__read">
             {t('Read article')} <ArrowUpRightIcon />

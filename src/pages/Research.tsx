@@ -91,8 +91,8 @@ export function ResearchOverview() {
             {RESEARCH_PRINCIPLES.map((item) => (
               <li key={item.index} data-reveal>
                 <span className="principles__n">{item.index}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
+                <h3>{t(item.title)}</h3>
+                <p>{t(item.text)}</p>
               </li>
             ))}
           </ol>
@@ -283,12 +283,12 @@ export function ResearchArticle({ slug }: { slug: string }) {
 
         <header className="article__head">
           <Label>{`${t(area?.short ?? 'Research')} · ${t(entry.kind)}`}</Label>
-          <h1 className="article__title">{entry.title}</h1>
-          <p className="article__lead">{entry.summary}</p>
+          <h1 className="article__title">{t(entry.title)}</h1>
+          <p className="article__lead">{t(entry.summary)}</p>
           <p className="article__meta">
             {entry.date && <span>{formatDate(entry.date)}</span>}
             {entry.authors?.length ? <span>{entry.authors.join(', ')}</span> : null}
-            {entry.venue && <span>{entry.venue}</span>}
+            {entry.venue && <span>{t(entry.venue)}</span>}
           </p>
           {entry.links?.length ? (
             <div className="article__links">
@@ -335,13 +335,13 @@ export function ResearchArticle({ slug }: { slug: string }) {
             {entry.question && (
               <section className="profile__sec">
                 <h2 className="profile__h">{t('Question')}</h2>
-                <p className="profile__about">{entry.question}</p>
+                <p className="profile__about">{t(entry.question)}</p>
               </section>
             )}
             {['Overview', 'Method', 'Findings'].map((heading) => (
               <section key={heading} className="profile__sec">
                 <h2 className="profile__h">{t(heading)}</h2>
-                {named(heading) ? named(heading)?.body.map((paragraph) => <p key={paragraph} className="profile__about">{paragraph}</p>) : soon}
+                {named(heading) ? named(heading)?.body.map((paragraph) => <p key={paragraph} className="profile__about">{t(paragraph)}</p>) : soon}
               </section>
             ))}
             {sections

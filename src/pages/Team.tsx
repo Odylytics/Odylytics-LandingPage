@@ -18,7 +18,7 @@ export function CoFounders() {
                   <span className="founder__photo">{member.photo && <img src={member.photo} alt={`${t('Portrait of')} ${member.name}`} loading="lazy" />}</span>
                   <span className="founder__role">{t(member.role)}</span>
                   <span className="founder__name">{member.name}</span>
-                  <span className="founder__bio">{member.bio}</span>
+                  <span className="founder__bio">{t(member.bio)}</span>
                 </a>
               </li>
             ))}
@@ -34,7 +34,7 @@ export function CoFounders() {
               <li key={advisor.name} className="advisor" data-reveal>
                 <span className="advisor__role">{t(advisor.role)}</span>
                 <span className="advisor__name">{advisor.name}</span>
-                <span className="advisor__org">{advisor.affiliation}</span>
+                <span className="advisor__org">{t(advisor.affiliation)}</span>
               </li>
             ))}
           </ul>
@@ -74,13 +74,13 @@ export function PartnersPage() {
         <div className="container">
           {groups.map((group) => (
             <div key={group} className="partnergroup">
-              <h2 className="partnergroup__title">{group}</h2>
+              <h2 className="partnergroup__title">{t(group)}</h2>
               <ul className="partners">
                 {PARTNERS.filter((partner) => partner.type === group).map((partner) => (
                   <li key={partner.name} className="partner" data-reveal>
                     <div className="partner__logo">{partner.logo && <img src={partner.logo} alt="" loading="lazy" />}</div>
-                    <h3>{partner.name}</h3>
-                    <p>{PARTNER_NOTES[partner.name]}</p>
+                    <h3>{t(partner.name)}</h3>
+                    <p>{t(PARTNER_NOTES[partner.name])}</p>
                   </li>
                 ))}
               </ul>
@@ -121,7 +121,7 @@ export function Resources() {
         <div className="container resources">
           <div data-reveal>
             <SectionHead label="About" title="Boilerplate" />
-            <p className="resources__text">{RESOURCES_PAGE.boilerplate}</p>
+            <p className="resources__text">{t(RESOURCES_PAGE.boilerplate)}</p>
             <button type="button" className="btn btn--outline btn--sm" onClick={copy}>
               {t(copied ? 'Copied' : 'Copy text')}
             </button>
@@ -129,8 +129,8 @@ export function Resources() {
           <dl className="facts" data-reveal>
             {RESOURCES_PAGE.facts.map((fact) => (
               <div key={fact.k}>
-                <dt>{fact.k}</dt>
-                <dd>{fact.v}</dd>
+                <dt>{t(fact.k)}</dt>
+                <dd>{t(fact.v)}</dd>
               </div>
             ))}
           </dl>
@@ -147,8 +147,8 @@ export function Resources() {
                   <img src={asset.file} alt="" />
                 </div>
                 <div className="asset__meta">
-                  <strong>{asset.name}</strong>
-                  <span>{asset.note}</span>
+                  <strong>{t(asset.name)}</strong>
+                  <span>{t(asset.note)}</span>
                   <a href={asset.file} download>
                     {t('Download SVG')}
                   </a>
@@ -168,7 +168,7 @@ export function Resources() {
               <li key={item.href}>
                 <a href={item.href} target="_blank" rel="noreferrer">
                   <span className="coverage__src">{item.source}</span>
-                  <span className="coverage__title">{item.title}</span>
+                  <span className="coverage__title">{t(item.title)}</span>
                 </a>
               </li>
             ))}

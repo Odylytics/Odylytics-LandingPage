@@ -33,7 +33,7 @@ export function TeamProfile({ slug }: { slug: string }) {
           <header className="profile__head">
             <Label>{t(member.role)}</Label>
             <h1 className="profile__name">{member.name}</h1>
-            <p className="profile__bio">{member.bio}</p>
+            <p className="profile__bio">{t(member.bio)}</p>
             <ul className="profile__links" aria-label={t('Links')}>
               {links.map((link) => (
                 <li key={link.label}>
@@ -61,9 +61,9 @@ export function TeamProfile({ slug }: { slug: string }) {
               {member.about?.length ? (
                 <div className="profile__about">
                   {member.about.map((para) => (
-                    <p key={para}>{para}</p>
+                    <p key={para}>{t(para)}</p>
                   ))}
-                  {member.quote && <blockquote className="profile__quote">{member.quote}</blockquote>}
+                  {member.quote && <blockquote className="profile__quote">{t(member.quote)}</blockquote>}
                 </div>
               ) : (
                 <Soon />
@@ -74,7 +74,7 @@ export function TeamProfile({ slug }: { slug: string }) {
               <h2 className="profile__h">{t('What they own')}</h2>
               <ul className="profile__list">
                 {member.responsibilities.map((duty) => (
-                  <li key={duty}>{duty}</li>
+                  <li key={duty}>{t(duty)}</li>
                 ))}
               </ul>
             </section>
@@ -84,7 +84,7 @@ export function TeamProfile({ slug }: { slug: string }) {
               <ul className="profile__rows">
                 <li>
                   <strong>{t(EDUCATION.degree)}</strong>
-                  <span>{EDUCATION.schools.join(' · ')}</span>
+                  <span>{EDUCATION.schools.map((school) => t(school)).join(' · ')}</span>
                   <span className="profile__note">{t(EDUCATION.programme)} · {t(EDUCATION.note)}</span>
                 </li>
               </ul>
@@ -97,8 +97,8 @@ export function TeamProfile({ slug }: { slug: string }) {
                   {member.background.map((item) => (
                     <li key={item.title}>
                       <strong>{t(item.title)}</strong>
-                      <span>{item.org}</span>
-                      {item.note && <span className="profile__note">{item.note}</span>}
+                      <span>{t(item.org)}</span>
+                      {item.note && <span className="profile__note">{t(item.note)}</span>}
                     </li>
                   ))}
                 </ul>
@@ -112,7 +112,7 @@ export function TeamProfile({ slug }: { slug: string }) {
                 <h2 className="profile__h">{t('Highlights')}</h2>
                 <ul className="profile__list">
                   {member.highlights.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>{t(item)}</li>
                   ))}
                 </ul>
               </section>

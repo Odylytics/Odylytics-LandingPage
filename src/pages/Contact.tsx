@@ -57,7 +57,7 @@ export function Contact() {
             <label className="check">
               <input type="checkbox" required />
               <span>
-                I agree that Odylytics may use these details to reply to me, as described in the <a href="#/legal/privacy">{t('Privacy Policy')}</a>.
+                {t('I agree that Odylytics may use these details to reply to me, as described in the')} <a href="#/legal/privacy">{t('Privacy Policy')}</a>.
               </span>
             </label>
             <div className="form__actions">
@@ -89,17 +89,17 @@ export function Contact() {
                 </div>
               ))}
               <div>
-                <dt>Address</dt>
-                <dd>{CONTACT.address}</dd>
+                <dt>{t('Address')}</dt>
+                <dd>{t(CONTACT.address)}</dd>
               </div>
               <div>
-                <dt>Privacy requests</dt>
+                <dt>{t('Privacy requests')}</dt>
                 <dd>
-                  <a href="#/legal/data-requests">How to submit</a>
+                  <a href="#/legal/data-requests">{t('How to submit')}</a>
                 </dd>
               </div>
               <div>
-                <dt>Security reports</dt>
+                <dt>{t('Security reports')}</dt>
                 <dd>
                   <a href="#/legal/disclosure">{t('Responsible disclosure')}</a>
                 </dd>
@@ -115,8 +115,8 @@ export function Contact() {
           <div>
             {FAQ.map((item) => (
               <details key={item.q} className="faq__item">
-                <summary>{item.q}</summary>
-                <p>{item.a}</p>
+                <summary>{t(item.q)}</summary>
+                <p>{t(item.a)}</p>
               </details>
             ))}
           </div>
