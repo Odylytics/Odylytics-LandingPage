@@ -297,6 +297,14 @@ export const ADVISORS: Advisor[] = [
 // TODO(content): add members here (same shape as TEAM) when they are ready; an empty group shows an 'Updating soon' frame.
 export const MEMBERS: TeamMember[] = []
 
+/** All five co-founders study the same dual-degree programme, so the profile pages share one Education block. */
+export const EDUCATION = {
+  degree: 'Bachelor of Artificial Intelligence',
+  programme: 'Dual degree',
+  schools: ['University of Technology Sydney (UTS)', 'Ho Chi Minh City University of Technology (HCMUT)'],
+  note: 'Second year',
+}
+
 // TODO(content): confirm roles, bios and responsibilities.
 export const TEAM: TeamMember[] = [
   {
@@ -321,7 +329,6 @@ export const TEAM: TeamMember[] = [
     ],
     quote: 'The secret of getting ahead is getting started.',
     background: [
-      { title: 'Bachelor of Artificial Intelligence', org: 'University of Technology Sydney (UTS) and Ho Chi Minh City University of Technology (HCMUT)', note: 'Second year' },
       { title: 'Chief Executive Officer', org: 'Odylytics', note: 'Present' },
       { title: 'Venture Analyst', org: 'B71 (NUS Enterprise)', note: '2026' },
       { title: 'Research Assistant', org: 'URA Research Group', note: '2026' },
@@ -366,11 +373,6 @@ export const TEAM: TeamMember[] = [
     quote: 'Turning research into technology that makes a difference.',
     background: [
       {
-        title: 'Bachelor of Artificial Intelligence',
-        org: 'University of Technology Sydney (UTS) and Ho Chi Minh City University of Technology (HCMUT)',
-        note: 'Second year · GPA: 6.9/7.0',
-      },
-      {
         title: 'Chief Technology Officer',
         org: 'Odylytics',
         note: '2026 – Present',
@@ -413,7 +415,7 @@ export const TEAM: TeamMember[] = [
       { label: 'Email (UTS)', href: 'mailto:tuannghia.tran@student.uts.edu.au' },
     ],
     highlights: [
-      "Dean's List — UTS (2026): Recognized for outstanding academic performance.",
+      "Dean's List — UTS (2026): Recognized for outstanding academic performance, GPA 6.9/7.0.",
       'Research Presenter — CTMIA 2026: Presented research on geometry-informed pothole surface reconstruction using depth functions and monotonic neural networks.',
     ],
   },
@@ -426,9 +428,19 @@ export const TEAM: TeamMember[] = [
     photo: '/assets/team/son.png',
     linkedin: 'https://www.linkedin.com/in/shynnguyen/',
     responsibilities: [
-      'Owns the product roadmap across every Odylytics solution',
-      'Runs user research with rescue teams and people with disabilities',
-      'Leads interface design and the Odylytics design system',
+      'Owns the product roadmap across every Odylytics solution, deciding what ships next and why.',
+      'Runs user research with rescue teams, residents and people with disabilities, and turns what he hears into requirements.',
+      'Leads interface design and the Odylytics design system, so every product feels like it comes from the same team.',
+      'Designs for stress: flows that stay simple when someone is in a flood, on a bad connection or using only a head tracker.',
+      'Works with engineering to prototype, test and refine each feature before it reaches a pilot.',
+    ],
+    about: [
+      'Second-year Artificial Intelligence student at UTS and HCMUT, Chief Product Officer and Co-Founder of Odylytics. He decides what Odylytics builds and how it feels to use, from the first sketch to the pilot with real users.',
+      'He cares about products that stay simple under pressure, and believes good design is the quickest way to make AI useful to people who were never the target audience of technology.',
+    ],
+    quote: 'If it is hard to use in a crisis, it is not finished.',
+    background: [
+      { title: 'Chief Product Officer', org: 'Odylytics', note: '2026 – Present' },
     ],
     links: [
       { label: 'GitHub', href: 'https://github.com/shynnguyen1004' },
@@ -444,9 +456,19 @@ export const TEAM: TeamMember[] = [
     photo: '/assets/team/quan-b.png',
     linkedin: 'https://www.linkedin.com/in/nguy%E1%BB%85n-qu%C3%A2n-25a33540a/',
     responsibilities: [
-      'Owns brand, website and social channels',
-      'Pitches stories to press and manages the news page',
-      'Prepares award entries and partner decks',
+      'Owns the Odylytics brand, website and social channels, keeping voice and visuals consistent everywhere we appear.',
+      'Pitches stories to press and manages the news page, from competition wins to product launches.',
+      'Prepares award entries, partner decks and pitch material with the rest of the founding team.',
+      'Plans campaigns and events that bring AquaGuard, EnableCode and Includio to the communities that need them.',
+      'Listens to users and partners, and brings what they say back into how we describe and position our products.',
+    ],
+    about: [
+      'Second-year Artificial Intelligence student at UTS and HCMUT, Head of Marketing and Co-Founder of Odylytics. He shapes how governments, partners and communities hear about our work, and tells the stories behind the impact.',
+      'He enjoys the space between technology and people: turning a technical result into something a mayor, a teacher or a rescue volunteer can understand and trust.',
+    ],
+    quote: 'A solution only helps the people who find out about it.',
+    background: [
+      { title: 'Head of Marketing', org: 'Odylytics', note: '2026 – Present' },
     ],
     links: [
       { label: 'GitHub', href: 'https://github.com/Qu4n66' },
@@ -470,7 +492,6 @@ export const TEAM: TeamMember[] = [
       'Second-year Bachelor of Artificial Intelligence student at UTS and HCMUT, and Software and DevOps Engineer at Odylytics. He works on AquaGuard, a web and iOS platform that issues flood alerts, lets residents send SOS requests with their live location and coordinates the nearest rescue teams in real time. He loves exploring new technologies and applying AI to make real work more efficient and impactful.',
     ],
     background: [
-      { title: 'Bachelor of Artificial Intelligence', org: 'University of Technology Sydney (UTS) and Ho Chi Minh City University of Technology (HCMUT)', note: 'Second year' },
       { title: 'Software and DevOps Engineer', org: 'Odylytics' },
     ],
     highlights: ['1st place, OISP Presentation Contest (with the AquaGuard team)', '1st place, EPICS 8th Competition (with the AquaGuard team)'],

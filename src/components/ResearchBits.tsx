@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AREAS, STAGES, areaOf, fieldLabel, bibtex, formatDate } from '../data/research'
 import type { ResearchEntry, Stage } from '../data/research'
+import { useT } from '../lib/lang'
 import { ArrowUpRightIcon } from './Icons'
 
 /** Generated cover for entries without a photo: a small pattern per research area, in the circuit-diagram language. */
@@ -41,15 +42,16 @@ export function ResearchTile({ area }: { area: string }) {
 
 /** Five squares, filled up to the current stage. */
 export function StageBar({ stage }: { stage: Stage }) {
+  const t = useT()
   const current = STAGES.indexOf(stage)
   return (
-    <div className="stagebar" role="img" aria-label={`Stage: ${stage}`}>
+    <div className="stagebar" role="img" aria-label={`${t('Stage')}: ${t(stage)}`}>
       <ol>
         {STAGES.map((item, index) => (
           <li key={item} className={index <= current ? 'is-done' : ''} />
         ))}
       </ol>
-      <span>{stage}</span>
+      <span>{t(stage)}</span>
     </div>
   )
 }
@@ -60,23 +62,24 @@ function Cover({ entry }: { entry: ResearchEntry }) {
 
 /** Large card for featured research and for the Ongoing page. */
 export function EntryCard({ entry, project = false }: { entry: ResearchEntry; project?: boolean }) {
+  const t = useT()
   const area = areaOf(entry.area)
   return (
     <a className="ecard" href={`#/research/${entry.slug}`} data-reveal>
       <Cover entry={entry} />
       <div className="ecard__body">
         <p className="ecard__meta">
-          <span>{area?.short}</span>
-          <span>{entry.kind}</span>
+          <span>{area && t(area.short)}</span>
+          <span>{t(entry.kind)}</span>
           {!project && entry.date && <span>{formatDate(entry.date)}</span>}
         </p>
-        {project && <p className="ecard__identity"><span>{entry.code ?? 'Unassigned'}</span><span>{formatDate(entry.date) || 'Date not set'}</span></p>}
+        {project && <p className="ecard__identity"><span>{entry.code ?? t('Unassigned')}</span><span>{formatDate(entry.date) || t('Date not set')}</span></p>}
         <h3 className="ecard__title">{entry.title}</h3>
         <p className="ecard__text">{project ? entry.question : entry.summary}</p>
-        {entry.fields?.length ? <ul className="research-tags" aria-label="AI fields">{entry.fields.map((field) => <li key={field}>{fieldLabel(field)}</li>)}</ul> : null}
+        {entry.fields?.length ? <ul className="research-tags" aria-label={t('AI fields')}>{entry.fields.map((field) => <li key={field}>{t(fieldLabel(field))}</li>)}</ul> : null}
         {project && entry.stage && <StageBar stage={entry.stage} />}
         <span className="link-arrow">
-          Read more <span aria-hidden="true">→</span>
+          {t('Read more')} <span aria-hidden="true">→</span>
         </span>
       </div>
     </a>
@@ -85,16 +88,17 @@ export function EntryCard({ entry, project = false }: { entry: ResearchEntry; pr
 
 /** One line of the research list: date, subject, title. */
 export function EntryRow({ entry, example = false }: { entry: ResearchEntry; example?: boolean }) {
+  const t = useT()
   const area = areaOf(entry.area)
   const inner = (
     <>
       <span className="erow__date">{formatDate(entry.date) || '—'}</span>
-      <span className="erow__area">{area?.short}</span>
+      <span className="erow__area">{area && t(area.short)}</span>
       <span className="erow__main">
         <span className="erow__title">{entry.title}</span>
         <span className="erow__sum">{entry.summary}</span>
       </span>
-      <span className="erow__kind">{entry.kind}</span>
+      <span className="erow__kind">{t(entry.kind)}</span>
       <span className="erow__arrow" aria-hidden="true">
         <ArrowUpRightIcon />
       </span>
@@ -113,9 +117,10 @@ export function EntryRow({ entry, example = false }: { entry: ResearchEntry; exa
 
 /** Greyed-out sample of a published entry, so the format is visible before the first real one is added. */
 export function ExampleList({ children }: { children: React.ReactNode }) {
+  const t = useT()
   return (
     <div className="example">
-      <p className="example__tag">[ Example format ]</p>
+      <p className="example__tag">[ {t('Example format')} ]</p>
       {children}
     </div>
   )
@@ -123,6 +128,7 @@ export function ExampleList({ children }: { children: React.ReactNode }) {
 
 /** Copyable BibTeX block. */
 export function CiteBlock({ entry }: { entry: ResearchEntry }) {
+  const t = useT()
   const [copied, setCopied] = useState(false)
   const text = bibtex(entry)
   const copy = async () => {
@@ -138,7 +144,7 @@ export function CiteBlock({ entry }: { entry: ResearchEntry }) {
     <div className="cite">
       <pre>{text}</pre>
       <button type="button" className="btn btn--outline btn--sm" onClick={copy}>
-        {copied ? 'Copied' : 'Copy BibTeX'}
+        {t(copied ? 'Copied' : 'Copy BibTeX')}
       </button>
     </div>
   )

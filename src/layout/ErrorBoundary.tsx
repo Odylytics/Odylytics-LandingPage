@@ -1,6 +1,29 @@
 import { Component } from 'react'
 import type { ReactNode } from 'react'
 import { StateScreen } from '../components/StateScreen'
+import { useT } from '../lib/lang'
+
+function CrashScreen() {
+  const t = useT()
+  return (
+    <StateScreen
+      kind="error"
+      label="Something broke"
+      title="That didn’t go to plan."
+      text="An unexpected error stopped this page from loading. Reloading usually fixes it. If it keeps happening, let us know."
+      actions={
+        <>
+          <button type="button" className="btn btn--primary" onClick={() => window.location.reload()}>
+            {t('Reload page')}
+          </button>
+          <a className="btn btn--outline" href="#/contact">
+            {t('Contact us')}
+          </a>
+        </>
+      }
+    />
+  )
+}
 
 type Props = { children: ReactNode }
 type State = { failed: boolean }
@@ -14,26 +37,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   render() {
-    if (this.state.failed) {
-      return (
-        <StateScreen
-          kind="error"
-          label="Something broke"
-          title="That didn’t go to plan."
-          text="An unexpected error stopped this page from loading. Reloading usually fixes it. If it keeps happening, let us know."
-          actions={
-            <>
-              <button type="button" className="btn btn--primary" onClick={() => window.location.reload()}>
-                Reload page
-              </button>
-              <a className="btn btn--outline" href="#/contact">
-                Contact us
-              </a>
-            </>
-          }
-        />
-      )
-    }
+    if (this.state.failed) return <CrashScreen />
     return this.props.children
   }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
 import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
+import { useT } from '../lib/lang'
 import { CloseIcon } from './Icons'
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 
 /** Native `<dialog>` modal: the browser handles inert background and Escape; we add scroll-lock and focus return. */
 export function Modal({ open, onClose, labelledBy, children }: Props) {
+  const t = useT()
   const ref = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export function Modal({ open, onClose, labelledBy, children }: Props) {
       }}
     >
       <div className="modal__panel">
-        <button type="button" className="modal__close" onClick={onClose} aria-label="Close dialog">
+        <button type="button" className="modal__close" onClick={onClose} aria-label={t('Close dialog')}>
           <CloseIcon />
         </button>
         {children}

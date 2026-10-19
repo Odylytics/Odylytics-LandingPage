@@ -22,7 +22,7 @@ export function LegalHub() {
                       <h3>{entry.title}</h3>
                       <p>{entry.summary}</p>
                       <span className="link-arrow">
-                        Read <span aria-hidden="true">→</span>
+                        {t('Read')} <span aria-hidden="true">→</span>
                       </span>
                     </a>
                   </li>
@@ -31,9 +31,9 @@ export function LegalHub() {
                   <li>
                     <button type="button" className="legalcard legalcard--button" onClick={openConsentSettings}>
                       <h3>{t('Cookie settings')}</h3>
-                      <p>Review and change what this site may store or measure.</p>
+                      <p>{t('Review and change what this site may store or measure.')}</p>
                       <span className="link-arrow">
-                        Open <span aria-hidden="true">→</span>
+                        {t('Open')} <span aria-hidden="true">→</span>
                       </span>
                     </button>
                   </li>
@@ -48,6 +48,7 @@ export function LegalHub() {
 }
 
 export function Legal({ slug }: { slug: string }) {
+  const t = useT()
   const [tocOpen, setTocOpen] = useState(false)
   const entry = LEGAL_ENTRIES.find((item) => item.slug === slug)
   useEffect(() => {
@@ -64,11 +65,11 @@ export function Legal({ slug }: { slug: string }) {
 
   return (
     <>
-      <PageHead label={`Legal · ${entry.group}`} title={doc.title} lead={doc.intro} />
+      <PageHead label={`${t('Legal')} · ${t(entry.group)}`} title={doc.title} lead={doc.intro} />
       <section className="section section--tight">
         <div className="container legal">
           <aside className="legal__side">
-            <nav className={`legal__toc${tocOpen ? ' is-open' : ''}`} aria-label="Contents">
+            <nav className={`legal__toc${tocOpen ? ' is-open' : ''}`} aria-label={t('Contents')}>
               <button type="button" className="legal__tocbtn" aria-expanded={tocOpen} onClick={() => setTocOpen((value) => !value)}>
                 <Label>Contents</Label>
                 <span aria-hidden="true">{tocOpen ? '−' : '+'}</span>
@@ -89,16 +90,16 @@ export function Legal({ slug }: { slug: string }) {
             </nav>
             <dl className="legal__meta">
               <div>
-                <dt>Last updated</dt>
+                <dt>{t('Last updated')}</dt>
                 <dd>{doc.updated}</dd>
               </div>
               <div>
-                <dt>Version</dt>
+                <dt>{t('Version')}</dt>
                 <dd>1.0</dd>
               </div>
             </dl>
             <button type="button" className="btn btn--outline btn--sm" onClick={() => window.print()}>
-              Print or save as PDF
+              {t('Print or save as PDF')}
             </button>
           </aside>
 

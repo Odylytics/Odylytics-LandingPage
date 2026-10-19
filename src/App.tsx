@@ -9,6 +9,7 @@ import { useRoute } from './hooks/useRoute'
 import { useReveal } from './hooks/useReveal'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { useZoneFade } from './hooks/useZoneFade'
+import { useT } from './lib/lang'
 import { Admin } from './pages/Admin'
 import { Blog } from './pages/Blog'
 import { Contact } from './pages/Contact'
@@ -67,6 +68,7 @@ function Page({ route: fullRoute }: { route: string }) {
 
 function App() {
   const route = useRoute()
+  const t = useT()
   useReveal(route)
   useSmoothScroll()
   useZoneFade(route)
@@ -74,7 +76,7 @@ function App() {
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to content
+        {t('Skip to content')}
       </a>
       <Nav route={route} />
       <main id="main">

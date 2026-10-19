@@ -1,7 +1,9 @@
 import type { Post } from '../data/content'
+import { useT } from '../lib/lang'
 import { ArrowUpRightIcon } from './Icons'
 
 export function PostCard({ post, large = false }: { post: Post; large?: boolean }) {
+  const t = useT()
   const meta = [post.source, post.date].filter(Boolean).join(' · ')
   const body = (
     <>
@@ -12,14 +14,14 @@ export function PostCard({ post, large = false }: { post: Post; large?: boolean 
       )}
       <div className="post-card__body">
         <p className="post-card__meta">
-          <span>{post.category}</span>
+          <span>{t(post.category)}</span>
           {meta && <span>{meta}</span>}
         </p>
         <h3 className="post-card__title">{post.title}</h3>
         <p className="post-card__excerpt">{post.excerpt}</p>
         {post.href && (
           <span className="post-card__read">
-            Read article <ArrowUpRightIcon />
+            {t('Read article')} <ArrowUpRightIcon />
           </span>
         )}
       </div>

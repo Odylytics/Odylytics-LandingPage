@@ -1,16 +1,19 @@
 import { ArrowUpRightIcon, LinkedInIcon } from '../components/Icons'
 import { Label } from '../components/Section'
-import { TEAM } from '../data/content'
+import { EDUCATION, TEAM } from '../data/content'
+import { useT } from '../lib/lang'
 import { NotFound } from './NotFound'
 
 const LINK_SLOTS = ['LinkedIn', 'Portfolio', 'GitHub', 'Facebook', 'Email (HCMUT)', 'Email (UTS)']
 
 function Soon() {
-  return <p className="profile__soon">Updating soon.</p>
+  const t = useT()
+  return <p className="profile__soon">{t('Updating soon.')}</p>
 }
 
 /** One member's page. Every member gets the same sections in the same order; missing ones read 'Updating soon'. */
 export function TeamProfile({ slug }: { slug: string }) {
+  const t = useT()
   const member = TEAM.find((item) => item.slug === slug)
   if (!member) return <NotFound />
   const previous = TEAM[(TEAM.indexOf(member) - 1 + TEAM.length) % TEAM.length]
@@ -22,16 +25,16 @@ export function TeamProfile({ slug }: { slug: string }) {
     <section className="section profile-page">
       <div className="container profile">
         <a className="link-arrow link-arrow--back" href="#/team/co-founders">
-          <span aria-hidden="true">←</span> All co-founders
+          <span aria-hidden="true">←</span> {t('All co-founders')}
         </a>
 
         <div className="profile__layout">
-          <div className="profile__photo">{member.photo && <img src={member.photo} alt={`Portrait of ${member.name}`} />}</div>
+          <div className="profile__photo">{member.photo && <img src={member.photo} alt={`${t('Portrait of')} ${member.name}`} />}</div>
           <header className="profile__head">
-            <Label>{member.role}</Label>
+            <Label>{t(member.role)}</Label>
             <h1 className="profile__name">{member.name}</h1>
             <p className="profile__bio">{member.bio}</p>
-            <ul className="profile__links" aria-label="Links">
+            <ul className="profile__links" aria-label={t('Links')}>
               {links.map((link) => (
                 <li key={link.label}>
                   {link.href ? (
@@ -54,7 +57,7 @@ export function TeamProfile({ slug }: { slug: string }) {
 
         <div className="profile__main">
             <section className="profile__sec">
-              <h2 className="profile__h">About</h2>
+              <h2 className="profile__h">{t('About')}</h2>
               {member.about?.length ? (
                 <div className="profile__about">
                   {member.about.map((para) => (
@@ -68,7 +71,7 @@ export function TeamProfile({ slug }: { slug: string }) {
             </section>
 
             <section className="profile__sec">
-              <h2 className="profile__h">What they own</h2>
+              <h2 className="profile__h">{t('What they own')}</h2>
               <ul className="profile__list">
                 {member.responsibilities.map((duty) => (
                   <li key={duty}>{duty}</li>
@@ -77,12 +80,23 @@ export function TeamProfile({ slug }: { slug: string }) {
             </section>
 
             <section className="profile__sec">
-              <h2 className="profile__h">Background</h2>
+              <h2 className="profile__h">{t('Education')}</h2>
+              <ul className="profile__rows">
+                <li>
+                  <strong>{t(EDUCATION.degree)}</strong>
+                  <span>{EDUCATION.schools.join(' · ')}</span>
+                  <span className="profile__note">{t(EDUCATION.programme)} · {t(EDUCATION.note)}</span>
+                </li>
+              </ul>
+            </section>
+
+            <section className="profile__sec">
+              <h2 className="profile__h">{t('Experience')}</h2>
               {member.background?.length ? (
                 <ul className="profile__rows">
                   {member.background.map((item) => (
                     <li key={item.title}>
-                      <strong>{item.title}</strong>
+                      <strong>{t(item.title)}</strong>
                       <span>{item.org}</span>
                       {item.note && <span className="profile__note">{item.note}</span>}
                     </li>
@@ -93,28 +107,26 @@ export function TeamProfile({ slug }: { slug: string }) {
               )}
             </section>
 
-            <section className="profile__sec">
-              <h2 className="profile__h">Highlights</h2>
-              {member.highlights?.length ? (
+            {member.highlights?.length ? (
+              <section className="profile__sec">
+                <h2 className="profile__h">{t('Highlights')}</h2>
                 <ul className="profile__list">
                   {member.highlights.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-              ) : (
-                <Soon />
-              )}
-            </section>
+              </section>
+            ) : null}
         </div>
 
-        <nav className="profile__navigation" aria-label="Co-founder profiles">
+        <nav className="profile__navigation" aria-label={t('Co-founder profiles')}>
           <a className="profile__neighbor" href={`#/team/${previous.slug}`} rel="prev">
-            <span>Previous</span>
-            <strong><span aria-hidden="true">←</span> {previous.name}, {previous.shortRole}</strong>
+            <span>{t('Previous')}</span>
+            <strong><span aria-hidden="true">←</span> {previous.name}, {t(previous.shortRole)}</strong>
           </a>
           <a className="profile__neighbor profile__neighbor--next" href={`#/team/${next.slug}`} rel="next">
-            <span>Next</span>
-            <strong>{next.name}, {next.shortRole} <span aria-hidden="true">→</span></strong>
+            <span>{t('Next')}</span>
+            <strong>{next.name}, {t(next.shortRole)} <span aria-hidden="true">→</span></strong>
           </a>
         </nav>
       </div>

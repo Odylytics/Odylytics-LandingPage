@@ -5,6 +5,7 @@ import { PARTNERS_PAGE, PARTNER_NOTES, RESOURCES_PAGE, TEAM_PAGE } from '../data
 import { useT } from '../lib/lang'
 
 export function CoFounders() {
+  const t = useT()
   return (
     <>
       <PageHead label={TEAM_PAGE.label} title={TEAM_PAGE.title} lead={TEAM_PAGE.lead} />
@@ -14,8 +15,8 @@ export function CoFounders() {
             {TEAM.map((member) => (
               <li key={member.slug} data-reveal>
                 <a className="founder" href={`#/team/${member.slug}`}>
-                  <span className="founder__photo">{member.photo && <img src={member.photo} alt={`Portrait of ${member.name}`} loading="lazy" />}</span>
-                  <span className="founder__role">{member.role}</span>
+                  <span className="founder__photo">{member.photo && <img src={member.photo} alt={`${t('Portrait of')} ${member.name}`} loading="lazy" />}</span>
+                  <span className="founder__role">{t(member.role)}</span>
                   <span className="founder__name">{member.name}</span>
                   <span className="founder__bio">{member.bio}</span>
                 </a>
@@ -31,7 +32,7 @@ export function CoFounders() {
           <ul className="advisors">
             {ADVISORS.map((advisor) => (
               <li key={advisor.name} className="advisor" data-reveal>
-                <span className="advisor__role">{advisor.role}</span>
+                <span className="advisor__role">{t(advisor.role)}</span>
                 <span className="advisor__name">{advisor.name}</span>
                 <span className="advisor__org">{advisor.affiliation}</span>
               </li>
@@ -47,14 +48,14 @@ export function CoFounders() {
             <ul className="advisors">
               {MEMBERS.map((member) => (
                 <li key={member.slug} className="advisor">
-                  <span className="advisor__role">{member.role}</span>
+                  <span className="advisor__role">{t(member.role)}</span>
                   <span className="advisor__name">{member.name}</span>
                 </li>
               ))}
             </ul>
           ) : (
             <div className="callout">
-              <p>Members will be listed here soon.</p>
+              <p>{t('Members will be listed here soon.')}</p>
             </div>
           )}
         </div>
@@ -90,8 +91,8 @@ export function PartnersPage() {
       <section className="container closing-wrap">
         <div className="closing scope-dark">
           <Label>Partnerships</Label>
-          <h2 className="closing__title">Become a partner.</h2>
-          <p>Offer a testbed, a lab, a stage or funding, and help us put AI where it is needed.</p>
+          <h2 className="closing__title">{t('Become a partner.')}</h2>
+          <p>{t('Offer a testbed, a lab, a stage or funding, and help us put AI where it is needed.')}</p>
           <a className="btn btn--accent" href="#/contact">
             {t('Get in touch')}
           </a>
@@ -122,7 +123,7 @@ export function Resources() {
             <SectionHead label="About" title="Boilerplate" />
             <p className="resources__text">{RESOURCES_PAGE.boilerplate}</p>
             <button type="button" className="btn btn--outline btn--sm" onClick={copy}>
-              {copied ? 'Copied' : 'Copy text'}
+              {t(copied ? 'Copied' : 'Copy text')}
             </button>
           </div>
           <dl className="facts" data-reveal>
@@ -149,13 +150,13 @@ export function Resources() {
                   <strong>{asset.name}</strong>
                   <span>{asset.note}</span>
                   <a href={asset.file} download>
-                    Download SVG
+                    {t('Download SVG')}
                   </a>
                 </div>
               </li>
             ))}
           </ul>
-          <p className="resources__note">Please keep clear space around the logo, do not recolour or distort it. See the brand section of the <a href="#/legal/terms">{t('Terms of Use')}</a>.</p>
+          <p className="resources__note">{t('Please keep clear space around the logo, do not recolour or distort it. See the brand section of the')} <a href="#/legal/terms">{t('Terms of Use')}</a>.</p>
         </div>
       </section>
 
@@ -174,7 +175,7 @@ export function Resources() {
           </ul>
           <div className="callout">
             <Label>Reports</Label>
-            <p>Impact reports and public datasets will appear here. Press enquiries: <a href="mailto:odylytics@gmail.com">odylytics@gmail.com</a>.</p>
+            <p>{t('Impact reports and public datasets will appear here. Press enquiries:')} <a href="mailto:odylytics@gmail.com">odylytics@gmail.com</a>.</p>
           </div>
         </div>
       </section>

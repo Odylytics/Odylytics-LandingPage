@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { StateScreen } from '../components/StateScreen'
 import { isUnknownPath } from '../hooks/useRoute'
+import { useT } from '../lib/lang'
 
 /** Shown for unknown `#/…` routes, missing profiles and any path other than `/`. */
 export function NotFound() {
+  const t = useT()
   const requested = isUnknownPath() ? window.location.pathname : window.location.hash.slice(1)
 
   useEffect(() => {
@@ -36,10 +38,10 @@ export function NotFound() {
       actions={
         <>
           <a className="btn btn--primary" href="#/">
-            Back to home
+            {t('Back to home')}
           </a>
           <a className="btn btn--outline" href="#/contact">
-            Contact us
+            {t('Contact us')}
           </a>
         </>
       }
@@ -53,13 +55,13 @@ export function NotFound() {
               ['Blog', '#/blog'],
             ].map(([label, href]) => (
               <li key={href}>
-                <a href={href}>{label}</a>
+                <a href={href}>{t(label)}</a>
               </li>
             ))}
           </ul>
           {requested && (
             <p className="state__path">
-              Requested <code>{requested}</code>
+              {t('Requested')} <code>{requested}</code>
             </p>
           )}
         </>

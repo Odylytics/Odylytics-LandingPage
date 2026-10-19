@@ -72,7 +72,7 @@ export function Nav({ route }: { route: string }) {
   return (
     <header className={`nav${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}${route === '/' && !scrolled && !open ? ' is-clear' : ''}`}>
       <div className="nav__inner">
-        <a className="nav__brand" href="#/" aria-label="Odylytics, home">
+        <a className="nav__brand" href="#/" aria-label={t('Odylytics, home')}>
           {route === '/' ? (
             <>
               {/* Home morph: both wordmarks stacked; --zone-mix crossfades white ↔ black (see App.css). */}
@@ -84,7 +84,7 @@ export function Nav({ route }: { route: string }) {
           )}
         </a>
 
-        <nav className="nav__links" aria-label="Primary" ref={linksRef}>
+        <nav className="nav__links" aria-label={t('Primary')} ref={linksRef}>
           <ul>
             {NAV.map((group, index) => (
               <li key={group.label} className="nav__item" onMouseEnter={() => group.items && setDropdown(index)} onMouseLeave={() => setDropdown(null)}>
@@ -125,14 +125,14 @@ export function Nav({ route }: { route: string }) {
           <a className="btn btn--accent btn--sm nav__cta" href="#/contact">
             {t('Get in touch')}
           </a>
-          <button ref={toggleRef} type="button" className="nav__toggle" aria-expanded={open} aria-controls="mobile-menu" aria-label="Menu" onClick={() => setOpen((value) => !value)}>
+          <button ref={toggleRef} type="button" className="nav__toggle" aria-expanded={open} aria-controls="mobile-menu" aria-label={t('Menu')} onClick={() => setOpen((value) => !value)}>
             {open ? <CloseIcon /> : <MenuIcon />}
           </button>
         </div>
       </div>
 
       <div id="mobile-menu" ref={menuRef} className="nav__menu" hidden={!open} data-lenis-prevent>
-        <nav aria-label="Mobile">
+        <nav aria-label={t('Mobile')}>
           <ul className="nav__menu-groups">
             {NAV.map((group) => (
               <li key={group.label}>

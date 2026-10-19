@@ -3,8 +3,10 @@ import type { FormEvent } from 'react'
 import { Label } from '../components/Section'
 import { backendConfigured, demoMode } from '../lib/backend'
 import { signIn, useAuth } from '../lib/auth'
+import { useT } from '../lib/lang'
 
 export function Login() {
+  const t = useT()
   const { member } = useAuth()
   const [error, setError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
@@ -31,23 +33,23 @@ export function Login() {
         <form className="login__form" onSubmit={onSubmit}>
           <Label>Members only</Label>
           <h1 id="login-title" className="login__title">
-            Welcome back
+            {t('Welcome back')}
           </h1>
-          <p className="login__lead">Sign in with the account the Odylytics team created for you. Members publish news and manage testimonials.</p>
+          <p className="login__lead">{t('Sign in with the account the Odylytics team created for you. Members publish news and manage testimonials.')}</p>
 
-          {demoMode && <p className="notice">Demo mode: no Supabase project is connected, so any email and password works and edits stay in this browser.</p>}
-          {!available && <p className="notice">Member login is not switched on for this site yet. The site owner needs to connect the member database.</p>}
+          {demoMode && <p className="notice">{t('Demo mode: no Supabase project is connected, so any email and password works and edits stay in this browser.')}</p>}
+          {!available && <p className="notice">{t('Member login is not switched on for this site yet. The site owner needs to connect the member database.')}</p>}
 
           <label className="field">
-            <span className="field__label">Email</span>
+            <span className="field__label">{t('Email')}</span>
             <input name="email" type="email" autoComplete="email" placeholder="you@odylytics.com" required disabled={!available} />
           </label>
           <label className="field">
-            <span className="field__label">Password</span>
+            <span className="field__label">{t('Password')}</span>
             <span className="field__password">
               <input name="password" type={show ? 'text' : 'password'} autoComplete="current-password" required disabled={!available} />
               <button type="button" className="field__toggle" onClick={() => setShow((value) => !value)} aria-pressed={show}>
-                {show ? 'Hide' : 'Show'}
+                {t(show ? 'Hide' : 'Show')}
               </button>
             </span>
           </label>
@@ -59,10 +61,10 @@ export function Login() {
           )}
 
           <button className="btn btn--primary login__submit" type="submit" disabled={busy}>
-            {busy ? 'Signing in…' : 'Sign in'}
+            {t(busy ? 'Signing in…' : 'Sign in')}
           </button>
           <p className="login__fine">
-            By signing in you agree to the <a href="#/legal/terms">Terms of Use</a> and the <a href="#/legal/privacy">Privacy Policy</a>.
+            {t('By signing in you agree to the')} <a href="#/legal/terms">{t('Terms of Use')}</a> {t('and the')} <a href="#/legal/privacy">{t('Privacy Policy')}</a>.
           </p>
         </form>
       </div>

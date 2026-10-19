@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react'
+import { useT } from '../lib/lang'
 import { Label } from './Section'
 
 type Art = 'lost' | 'offline' | 'error'
 
 /** Line illustrations for the system screens: nodes and wires drawn in the same language as the home circuit. */
 export function StateArt({ kind }: { kind: Art }) {
+  const t = useT()
   return (
-    <svg className="stateart" viewBox="0 0 480 360" role="img" aria-label={kind === 'lost' ? 'A path that stops before it reaches its destination' : kind === 'offline' ? 'A wifi signal crossed out' : 'A node with a broken connection'}>
+    <svg className="stateart" viewBox="0 0 480 360" role="img" aria-label={t(kind === 'lost' ? 'A path that stops before it reaches its destination' : kind === 'offline' ? 'A wifi signal crossed out' : 'A node with a broken connection')}>
       <defs>
         <pattern id={`dots-${kind}`} width="24" height="24" patternUnits="userSpaceOnUse">
           <circle cx="2" cy="2" r="1.2" className="stateart__dot" />
@@ -60,13 +62,14 @@ type Props = {
 }
 
 export function StateScreen({ kind, label, title, text, actions, note }: Props) {
+  const t = useT()
   return (
     <div className="state">
       <div className="container state__inner">
         <div className="state__copy">
           <Label>{label}</Label>
-          <h1 className="state__title">{title}</h1>
-          <p className="state__text">{text}</p>
+          <h1 className="state__title">{t(title)}</h1>
+          <p className="state__text">{t(text)}</p>
           <div className="state__actions">{actions}</div>
           {note}
         </div>

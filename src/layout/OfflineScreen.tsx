@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { StateScreen } from '../components/StateScreen'
+import { useT } from '../lib/lang'
 
 /** Full-screen notice when the connection drops. Reading what is already loaded stays possible. */
 export function OfflineScreen() {
+  const t = useT()
   const [online, setOnline] = useState(() => navigator.onLine)
   const [dismissed, setDismissed] = useState(false)
 
@@ -35,10 +37,10 @@ export function OfflineScreen() {
         actions={
           <>
             <button type="button" className="btn btn--primary" onClick={() => setOnline(navigator.onLine)}>
-              Try again
+              {t('Try again')}
             </button>
             <button type="button" className="btn btn--outline" onClick={() => setDismissed(true)}>
-              Keep reading
+              {t('Keep reading')}
             </button>
           </>
         }

@@ -68,38 +68,38 @@ export function Consent() {
       <Modal open={settings} onClose={() => setSettings(false)} labelledBy="consent-title">
         <div className="consent-dialog">
           <h2 id="consent-title" className="h3">
-            Cookie settings
+            {t('Cookie settings')}
           </h2>
-          <p>Choose what this site may store or measure. You can change this at any time from the footer.</p>
+          <p>{t('Choose what this site may store or measure. You can change this at any time from the footer.')}</p>
           <ul className="consent-dialog__list">
             <li>
               <div>
-                <strong>Strictly necessary</strong>
-                <span>Remembers your language and member sign-in. Cannot be switched off.</span>
+                <strong>{t('Strictly necessary')}</strong>
+                <span>{t('Remembers your language and member sign-in. Cannot be switched off.')}</span>
               </div>
-              <span className="switch is-on is-locked" aria-label="Always on" />
+              <span className="switch is-on is-locked" aria-label={t('Always on')} />
             </li>
             <li>
               <div>
-                <strong>Analytics</strong>
-                <span>Vercel Analytics counts page views without advertising profiles.</span>
+                <strong>{t('Analytics')}</strong>
+                <span>{t('Vercel Analytics counts page views without advertising profiles.')}</span>
               </div>
-              <button type="button" role="switch" aria-checked={analytics} aria-label="Analytics" className={`switch${analytics ? ' is-on' : ''}`} onClick={() => setAnalytics((value) => !value)} />
+              <button type="button" role="switch" aria-checked={analytics} aria-label={t('Analytics')} className={`switch${analytics ? ' is-on' : ''}`} onClick={() => setAnalytics((value) => !value)} />
             </li>
             <li>
               <div>
-                <strong>Marketing</strong>
-                <span>We do not use marketing or advertising cookies.</span>
+                <strong>{t('Marketing')}</strong>
+                <span>{t('We do not use marketing or advertising cookies.')}</span>
               </div>
-              <span className="switch is-locked" aria-label="Not used" />
+              <span className="switch is-locked" aria-label={t('Not used')} />
             </li>
           </ul>
           <div className="consent-dialog__actions">
             <button type="button" className="btn btn--primary" onClick={() => decide(analytics)}>
-              Save choices
+              {t('Save choices')}
             </button>
             <button type="button" className="btn btn--outline" onClick={() => decide(true)}>
-              Accept all
+              {t('Accept all')}
             </button>
           </div>
         </div>

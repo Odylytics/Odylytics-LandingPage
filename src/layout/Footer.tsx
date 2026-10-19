@@ -12,10 +12,10 @@ export function Footer() {
     <footer className="footer scope-dark">
       <div className="container">
         <div className="footer__top">
-          <a className="footer__brand" href="#/" aria-label="Odylytics, home">
+          <a className="footer__brand" href="#/" aria-label={t('Odylytics, home')}>
             <img src="/assets/brand/odylytics-wordmark-dark.svg" alt="" width="1826" height="565" />
           </a>
-          <p className="footer__tagline">{t('One AI firm. Six solutions.')}</p>
+          <p className="footer__tagline">{t('Engineering changes.')}</p>
           <a className="btn btn--outline" href="#/contact">
             {t('Get in touch')}
           </a>
