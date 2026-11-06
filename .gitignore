@@ -26,3 +26,6 @@ dist-ssr
 
 # Temporary local clone of Quan repo (never push this)
 Odylytics-MinhQuanCooked/
+
+# Email signature source package (images copied to public/email-signature/)
+odylytics-signatures-hosted/
