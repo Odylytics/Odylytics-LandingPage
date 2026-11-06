@@ -1,10 +1,17 @@
 import { useLayoutEffect } from 'react'
 
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value))
-/** The swap begins once the incoming section's top passes this fraction of the viewport. */
+const smoothstep = (value: number) => value * value * (3 - 2 * value)
+/** The swap to light begins once the product section's top passes this fraction of the viewport. */
 const LEAD = 0.92
 /** …and completes after its top has climbed this fraction of the viewport further. */
 const TRAVEL = 0.6
+/**
+ * The swap back to dark runs only while the viewport's centre line crosses the empty gap
+ * between the last row of the section before the blog (the team portraits) and the blog
+ * heading, so no content is centred mid-swap. The gap is padded to at least EXIT_MIN_GAP px.
+ */
+const EXIT_MIN_GAP = 120
 
 /**
  * Mercury-style background morph, home only: scrubbing `--zone-mix` (0→1, see index.css)
@@ -34,9 +41,13 @@ export function useZoneFade(route: string) {
       let mix = 0
       if (product && blog) {
         const vh = window.innerHeight
-        const span = vh * TRAVEL
-        const into = clamp01((vh * LEAD - product.getBoundingClientRect().top) / span)
-        const outof = clamp01((vh * LEAD - blog.getBoundingClientRect().top) / span)
+        const into = clamp01((vh * LEAD - product.getBoundingClientRect().top) / (vh * TRAVEL))
+        const before = blog.previousElementSibling?.querySelector('.container')?.lastElementChild
+        const heading = blog.querySelector('.container')?.firstElementChild
+        const blogTop = blog.getBoundingClientRect().top
+        const gapStart = before ? before.getBoundingClientRect().bottom : blogTop
+        const gapEnd = Math.max(heading ? heading.getBoundingClientRect().top : blogTop, gapStart + EXIT_MIN_GAP)
+        const outof = smoothstep(clamp01((gapStart - vh / 2) / (gapStart - gapEnd)))
         mix = into * (1 - outof)
       }
       if (Math.abs(mix - last) >= 0.001) {
