@@ -11,12 +11,16 @@ import { Testimonials } from '../components/Testimonials'
 import { IMPACT, IMPACT_NOTE, POSTS, RECOGNITION, TEAM } from '../data/content'
 import { HOME_BAND, HOME_CLOSING, HOME_PILLARS, HOME_WORK, PRODUCT_GROUPS } from '../data/site'
 import { postsStore } from '../lib/stores'
+import { useIntroGlide } from '../hooks/useIntroGlide'
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { useT } from '../lib/lang'
+import { useRef } from 'react'
 
 export function Home() {
   const t = useT()
   const reducedMotion = usePrefersReducedMotion()
+  const stripRef = useRef<HTMLElement>(null)
+  useIntroGlide(stripRef)
   const stored = postsStore.useItems()
   const posts = (postsStore.isSeeded() ? POSTS : stored).slice(0, 3)
   const prizes = RECOGNITION.flatMap((group) => group.items.map((item) => ({ ...item, product: group.solutionName })))
@@ -32,7 +36,7 @@ export function Home() {
     <>
       <Hero />
 
-      <section className="strip" aria-label="Partners">
+      <section ref={stripRef} className="strip" aria-label="Partners">
         <div className="container">
           <Label>{t('Built with universities and companies')}</Label>
         </div>
