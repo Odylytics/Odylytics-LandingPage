@@ -13,20 +13,6 @@ function scrollToTarget(target: HTMLElement) {
 }
 
 /**
- * Eased, uninterruptible scroll to an absolute `top`. Falls back to native scrolling when
- * Lenis is off (reduced motion), jumping instantly under `data-motion='reduce'`.
- */
-export function glideTo(top: number, { duration, onComplete }: { duration: number; onComplete: () => void }) {
-  if (lenis) {
-    lenis.scrollTo(top, { duration, lock: true, force: true, easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2), onComplete })
-    return
-  }
-  const reduce = document.documentElement.dataset.motion === 'reduce'
-  window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' })
-  window.setTimeout(onComplete, reduce ? 0 : duration * 1000)
-}
-
-/**
  * Lock page scrolling (mobile menu, modal). Lenis drives scroll position itself,
  * so `overflow: hidden` alone would not stop wheel scrolling — it must be paused too.
  */

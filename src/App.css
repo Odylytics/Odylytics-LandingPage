@@ -582,6 +582,9 @@ a.post-card:hover { transform: translateY(-3px); }
 .footer__brand { display: block; width: 180px; }
 .footer__brand img { width: 100%; height: auto; }
 .footer__tagline { flex: 1; font-family: var(--font-sans); font-size: 18px; color: var(--text-2); }
+.footer__social { display: flex; gap: 8px; }
+.footer__social a { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--border-strong); color: var(--text-2); transition: color 150ms, border-color 150ms, background-color 150ms; }
+.footer__social a:hover { color: var(--text); border-color: var(--text-3); background: var(--surface); }
 .footer__cols { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 32px 24px; padding-block: 48px; }
 .footer__label { margin-bottom: 18px; font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); line-height: 1.4; }
 .footer__col ul { display: grid; gap: 10px; }

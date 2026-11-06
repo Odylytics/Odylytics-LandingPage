@@ -497,9 +497,10 @@ export const CONTACT = {
   email: 'odylytics@gmail.com',
 }
 
-// TODO(content): add Facebook / YouTube when the pages exist.
 export const SOCIALS: NavItem[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/odylytics' },
+  { label: 'Facebook', href: 'https://www.facebook.com/odylytics' },
+  { label: 'Instagram', href: 'https://www.instagram.com/odylytics/' },
 ]
 
 // ─── 9. News / Blog ─────────────────────────────────────────────────────────
